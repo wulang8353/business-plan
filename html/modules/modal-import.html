@@ -1,0 +1,38 @@
+    <!-- ==================== 导入商品弹窗 ==================== -->
+    <div class="modal-overlay" id="modal-import">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">导入商品</h3>
+                <button class="modal-close" onclick="closeModal('import')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="import-warning">
+                    <span>⚠️</span>
+                    <span>最多支持一次导入1,000条数据</span>
+                </div>
+                <div class="upload-area" onclick="document.getElementById('file-input').click()">
+                    <div class="upload-icon">☁️</div>
+                    <div class="upload-text">
+                        拖拽或<span class="upload-link">点击此处选择文件</span>
+                    </div>
+                    <div class="upload-hint">仅支持Excel文件，大小限制500M</div>
+                    <input type="file" id="file-input" style="display: none;" accept=".xlsx,.xls">
+                </div>
+                <div class="template-download">
+                    <span class="upload-link">📥 下载模板</span>
+                </div>
+                <div class="import-instructions">
+                    <div class="import-instructions-title">导入说明：</div>
+                    <ol class="import-instructions-list">
+                        <li>上传的文件格式请和模板保持一致；</li>
+                        <li>确保表格内只有一个工作簿，如果有多个工作簿只有第一张会被处理；</li>
+                        <li>多选项值之间用竖线分隔，例如A|B|C</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="closeModal('import')">取消</button>
+                <button class="btn btn-primary" onclick="closeModal('import')">确定</button>
+            </div>
+        </div>
+    </div>

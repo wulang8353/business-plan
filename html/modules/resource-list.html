@@ -1,0 +1,120 @@
+        <!-- 关联资源列表区域 -->
+        <section class="resource-section" id="resource-section">
+            <h2 class="section-title">关联资源列表</h2>
+            <div class="resource-tabs">
+                <div class="resource-tab active" data-resource="promotion">促销资源</div>
+                <div class="resource-tab" data-resource="position">点位资源</div>
+            </div>
+
+            <!-- 促销资源表格 -->
+            <div class="table-container" id="promotion-table">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>促销活动名称</th>
+                            <th>促销活动ID</th>
+                            <th>促销活动范围</th>
+                            <th>促销活动时间</th>
+                            <th>商品范围</th>
+                            <th>促销类型</th>
+                            <th>促销机制</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>玛氏满赠活动</td>
+                            <td>cx123456</td>
+                            <td>江西、长沙</td>
+                            <td>2026.01.20-2026.02.20</td>
+                            <td>卫龙辣条、口水娃辣（共计2个）</td>
+                            <td>满赠</td>
+                            <td>满18元送红包1个<br>满99元送一个发财抱枕</td>
+                            <td class="table-actions">
+                                <span class="action-link">变更</span>
+                                <span class="action-link danger">删除</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>MD-S级大单品夏威夷果</td>
+                            <td>cx123456</td>
+                            <td>全国门店</td>
+                            <td>2026.01.16-2026.02.28</td>
+                            <td>卫龙辣条、口水娃辣（共计2个）</td>
+                            <td>--</td>
+                            <td>--</td>
+                            <td class="table-actions">
+                                <span class="action-link">变更</span>
+                                <span class="action-link danger">删除</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>伊利纯牛奶专项活动</td>
+                            <td>cx123456</td>
+                            <td>全国门店</td>
+                            <td>2026.01.10-2026.02.28</td>
+                            <td>卫龙辣条、口水娃辣（共计2个）</td>
+                            <td>满减</td>
+                            <td>立减5元</td>
+                            <td class="table-actions">
+                                <span class="action-link">变更</span>
+                                <span class="action-link danger">删除</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 点位资源表格 -->
+            <div class="table-container" id="position-table" style="display: none;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>点位名称</th>
+                            <th>点位类型</th>
+                            <th>所属区域</th>
+                            <th>点位状态</th>
+                            <th>开始时间</th>
+                            <th>结束时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>收银台广告位-A1</td>
+                            <td>广告位</td>
+                            <td>华东区</td>
+                            <td>已占用</td>
+                            <td>2026-01-01</td>
+                            <td>2026-02-28</td>
+                            <td class="table-actions">
+                                <span class="action-link">查看</span>
+                                <span class="action-link danger">删除</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 分页 -->
+            <div class="pagination">
+                <span>共 10 条</span>
+                <button class="page-btn" disabled>&lt;</button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">&gt;</button>
+                <div class="page-jumper">
+                    <span>跳至</span>
+                    <input type="text" class="page-input" value="1">
+                    <span>页</span>
+                </div>
+            </div>
+        </section>
+    </main>

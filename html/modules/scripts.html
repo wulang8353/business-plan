@@ -1,0 +1,501 @@
+    <!-- ==================== JavaScript 交互逻辑 ==================== -->
+    <script>
+        // ==================== 页面导航切换 ====================
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                const section = this.dataset.section;
+                document.getElementById(section + '-section').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // ==================== 商品清单 Tab 切换 ====================
+        function switchProductTab(tab) {
+            document.querySelectorAll('.stats-item').forEach(item => item.classList.remove('active'));
+            document.querySelector(`.stats-item[data-tab="${tab}"]`).classList.add('active');
+            
+            if (tab === 'added') {
+                document.getElementById('added-products-table').style.display = 'block';
+                document.getElementById('abnormal-products-table').style.display = 'none';
+            } else {
+                document.getElementById('added-products-table').style.display = 'none';
+                document.getElementById('abnormal-products-table').style.display = 'block';
+            }
+        }
+
+        // ==================== 资源列表 Tab 切换 ====================
+        document.querySelectorAll('.resource-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.resource-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                const resource = this.dataset.resource;
+                if (resource === 'promotion') {
+                    document.getElementById('promotion-table').style.display = 'block';
+                    document.getElementById('position-table').style.display = 'none';
+                } else {
+                    document.getElementById('promotion-table').style.display = 'none';
+                    document.getElementById('position-table').style.display = 'block';
+                }
+            });
+        });
+
+        // ==================== 弹窗控制 ====================
+        function openModal(modalId) {
+            document.getElementById('modal-' + modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById('modal-' + modalId).classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                document.body.style.overflow = '';
+            }
+        });
+
+        // ==================== 添加商品 - 双面板选择器 ====================
+        let selectedProducts = [];
+
+        function toggleProduct(item) {
+            const checkbox = item.querySelector('.panel-item-checkbox');
+            checkbox.checked = !checkbox.checked;
+            item.classList.toggle('selected', checkbox.checked);
+            
+            const productName = item.querySelector('.panel-item-name').textContent;
+            const productMeta = item.querySelector('.panel-item-meta').textContent;
+            
+            if (checkbox.checked) {
+                addToSelected(productName, productMeta);
+            } else {
+                removeFromSelected(productName);
+            }
+            
+            updateSelectedCount();
+        }
+
+        function addToSelected(name, meta) {
+            const container = document.getElementById('selected-products');
+            const item = document.createElement('div');
+            item.className = 'panel-item';
+            item.dataset.name = name;
+            item.innerHTML = `
+                <div class="panel-item-info">
+                    <div class="panel-item-name">${name}</div>
+                    <div class="panel-item-meta">${meta}</div>
+                </div>
+                <span class="panel-item-remove" onclick="removeSelectedItem(this, '${name}')">&times;</span>
+            `;
+            container.appendChild(item);
+            selectedProducts.push(name);
+        }
+
+        function removeFromSelected(name) {
+            const container = document.getElementById('selected-products');
+            const item = container.querySelector(`[data-name="${name}"]`);
+            if (item) {
+                item.remove();
+            }
+            selectedProducts = selectedProducts.filter(p => p !== name);
+            
+            document.querySelectorAll('#available-products .panel-item').forEach(item => {
+                const itemName = item.querySelector('.panel-item-name').textContent;
+                if (itemName === name) {
+                    item.classList.remove('selected');
+                    item.querySelector('.panel-item-checkbox').checked = false;
+                }
+            });
+        }
+
+        function removeSelectedItem(btn, name) {
+            removeFromSelected(name);
+            updateSelectedCount();
+        }
+
+        function clearSelected() {
+            document.getElementById('selected-products').innerHTML = '';
+            selectedProducts = [];
+            document.querySelectorAll('#available-products .panel-item').forEach(item => {
+                item.classList.remove('selected');
+                item.querySelector('.panel-item-checkbox').checked = false;
+            });
+            updateSelectedCount();
+        }
+
+        function updateSelectedCount() {
+            document.getElementById('selected-count').textContent = selectedProducts.length;
+        }
+
+        function confirmAddProducts() {
+            closeModal('add-product');
+            const currentCount = parseInt(document.getElementById('product-count').textContent);
+            document.getElementById('product-count').textContent = currentCount + selectedProducts.length;
+            clearSelected();
+        }
+
+        // ==================== 预警详情 Tab 切换 ====================
+        function switchWarningTab(tab) {
+            document.querySelectorAll('.warning-menu-item').forEach(item => item.classList.remove('active'));
+            document.querySelector(`.warning-menu-item[data-warning-tab="${tab}"]`).classList.add('active');
+            
+            // 隐藏所有内容
+            document.getElementById('warning-plan-content').style.display = 'none';
+            document.getElementById('warning-coverage-content').style.display = 'none';
+            document.getElementById('warning-supply-content').style.display = 'none';
+            
+            // 显示对应内容
+            if (tab === 'plan') {
+                document.getElementById('warning-plan-content').style.display = 'block';
+            } else if (tab === 'coverage') {
+                document.getElementById('warning-coverage-content').style.display = 'block';
+            } else if (tab === 'supply') {
+                document.getElementById('warning-supply-content').style.display = 'block';
+            }
+        }
+
+        // ==================== 供应链备货计划排序 ====================
+        function sortSupplyPlans() {
+            const sortType = document.getElementById('supply-sort-select').value;
+            const container = document.querySelector('.supply-plans-container');
+            const cards = Array.from(container.querySelectorAll('.supply-plan-card'));
+            
+            cards.sort((a, b) => {
+                let valueA, valueB;
+                
+                switch(sortType) {
+                    case 'quantity-desc':
+                        valueA = parseInt(a.dataset.quantity);
+                        valueB = parseInt(b.dataset.quantity);
+                        return valueB - valueA;
+                    case 'quantity-asc':
+                        valueA = parseInt(a.dataset.quantity);
+                        valueB = parseInt(b.dataset.quantity);
+                        return valueA - valueB;
+                    case 'target-percent-desc':
+                        valueA = parseFloat(a.dataset.targetPercent);
+                        valueB = parseFloat(b.dataset.targetPercent);
+                        return valueB - valueA;
+                    case 'target-percent-asc':
+                        valueA = parseFloat(a.dataset.targetPercent);
+                        valueB = parseFloat(b.dataset.targetPercent);
+                        return valueA - valueB;
+                    case 'collab-percent-desc':
+                        valueA = parseFloat(a.dataset.collabPercent);
+                        valueB = parseFloat(b.dataset.collabPercent);
+                        return valueB - valueA;
+                    case 'collab-percent-asc':
+                        valueA = parseFloat(a.dataset.collabPercent);
+                        valueB = parseFloat(b.dataset.collabPercent);
+                        return valueA - valueB;
+                    default:
+                        return 0;
+                }
+            });
+            
+            // 重新排列DOM元素
+            cards.forEach(card => container.appendChild(card));
+        }
+
+        // ==================== 全选功能 ====================
+        document.getElementById('select-all-added')?.addEventListener('change', function() {
+            document.querySelectorAll('#added-products-tbody .checkbox').forEach(cb => {
+                cb.checked = this.checked;
+            });
+        });
+
+        document.getElementById('select-all-abnormal')?.addEventListener('change', function() {
+            document.querySelectorAll('#abnormal-products-tbody .checkbox').forEach(cb => {
+                cb.checked = this.checked;
+            });
+        });
+
+        // ==================== 商品范围选择器 ====================
+        let selectedRegions = [];
+
+        function handleScopeChange(select) {
+            const panel = document.getElementById('scope-panel');
+            const hint = document.querySelector('.scope-hint');
+            
+            if (select.value === 'custom') {
+                panel.style.display = 'block';
+                hint.textContent = `当前已选 ${selectedRegions.length} 个区域`;
+            } else {
+                panel.style.display = 'none';
+                hint.textContent = '当前已选 20 个区域';
+            }
+        }
+
+        function toggleRegion(item) {
+            const checkbox = item.querySelector('.panel-item-checkbox');
+            checkbox.checked = !checkbox.checked;
+            item.classList.toggle('selected', checkbox.checked);
+        }
+
+        function addSelectedRegions() {
+            const availableList = document.getElementById('available-regions');
+            const selectedList = document.getElementById('selected-regions');
+            
+            availableList.querySelectorAll('.panel-item.selected').forEach(item => {
+                const regionName = item.querySelector('.panel-item-name').textContent;
+                const regionMeta = item.querySelector('.panel-item-meta').textContent;
+                
+                if (!selectedRegions.includes(regionName)) {
+                    const newItem = document.createElement('div');
+                    newItem.className = 'panel-item';
+                    newItem.dataset.name = regionName;
+                    newItem.innerHTML = `
+                        <input type="checkbox" class="panel-item-checkbox checkbox" onchange="toggleSelectedRegion(this)">
+                        <div class="panel-item-info">
+                            <div class="panel-item-name">${regionName}</div>
+                            <div class="panel-item-meta">${regionMeta}</div>
+                        </div>
+                    `;
+                    selectedList.appendChild(newItem);
+                    selectedRegions.push(regionName);
+                }
+                
+                item.classList.remove('selected');
+                item.querySelector('.panel-item-checkbox').checked = false;
+            });
+            
+            updateRegionCount();
+        }
+
+        function removeSelectedRegions() {
+            const selectedList = document.getElementById('selected-regions');
+            
+            selectedList.querySelectorAll('.panel-item').forEach(item => {
+                const checkbox = item.querySelector('.panel-item-checkbox');
+                if (checkbox.checked) {
+                    const regionName = item.querySelector('.panel-item-name').textContent;
+                    selectedRegions = selectedRegions.filter(r => r !== regionName);
+                    item.remove();
+                }
+            });
+            
+            updateRegionCount();
+        }
+
+        function toggleSelectedRegion(checkbox) {
+            checkbox.closest('.panel-item').classList.toggle('selected', checkbox.checked);
+        }
+
+        function clearSelectedRegions() {
+            document.getElementById('selected-regions').innerHTML = '';
+            selectedRegions = [];
+            updateRegionCount();
+        }
+
+        function updateRegionCount() {
+            document.getElementById('selected-region-count').textContent = selectedRegions.length;
+            const hint = document.querySelector('.scope-hint');
+            if (document.getElementById('product-scope-select')?.value === 'custom') {
+                hint.textContent = `当前已选 ${selectedRegions.length} 个区域`;
+            }
+        }
+
+        // ==================== 省份展开收起 ====================
+        function toggleProvinceDetail(provinceId) {
+            const detailRow = document.getElementById('detail-' + provinceId);
+            const icon = document.getElementById('icon-' + provinceId);
+            
+            if (detailRow.style.display === 'none') {
+                detailRow.style.display = 'table-row';
+                icon.classList.add('expanded');
+                icon.textContent = '▼';
+            } else {
+                detailRow.style.display = 'none';
+                icon.classList.remove('expanded');
+                icon.textContent = '▶';
+            }
+        }
+
+        // ==================== 批量编辑 ====================
+        function handleBatchScopeChange(select) {
+            if (select.value === 'custom') {
+                // 可以在这里打开区域选择弹窗
+                console.log('打开自定义区域选择');
+            }
+        }
+
+        function deleteBatchRow(btn) {
+            const row = btn.closest('tr');
+            row.remove();
+        }
+
+        function applyBatchEdit() {
+            alert('修改已应用');
+        }
+
+        function saveBatchEdit() {
+            alert('保存成功');
+            closeModal('batch-edit');
+        }
+
+        // ==================== 全选 - 批量编辑 ====================
+        document.getElementById('select-all-batch')?.addEventListener('change', function() {
+            const table = this.closest('table');
+            table.querySelectorAll('tbody .checkbox').forEach(cb => {
+                cb.checked = this.checked;
+            });
+        });
+
+        // ==================== 文件上传 ====================
+        document.getElementById('file-input')?.addEventListener('change', function(e) {
+            if (e.target.files.length > 0) {
+                alert('已选择文件：' + e.target.files[0].name);
+            }
+        });
+
+        // ==================== 拖拽上传 ====================
+        const uploadArea = document.querySelector('.upload-area');
+        if (uploadArea) {
+            uploadArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.style.borderColor = '#ff7a45';
+                this.style.background = '#fff7e6';
+            });
+
+            uploadArea.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                this.style.borderColor = '#d9d9d9';
+                this.style.background = '';
+            });
+
+            uploadArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.style.borderColor = '#d9d9d9';
+                this.style.background = '';
+                
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    alert('已拖拽文件：' + files[0].name);
+                }
+            });
+        }
+
+        // ==================== 全量校验功能 ====================
+        let validationInterval = null;
+        
+        function startFullValidation() {
+            // 显示确认对话框
+            if (!confirm('确认进行全量商品校验？此操作可能需要几分钟时间。')) {
+                return;
+            }
+            
+            // 禁用校验按钮
+            const validateBtn = document.getElementById('validate-all-btn');
+            validateBtn.disabled = true;
+            validateBtn.innerHTML = '<span class="validate-icon">⏳</span>校验进行中...';
+            
+            // 显示进度条
+            const progressContainer = document.getElementById('validation-progress');
+            progressContainer.style.display = 'block';
+            
+            // 重置进度
+            let progress = 0;
+            let validatedCount = 0;
+            let abnormalFound = 0;
+            const totalCount = 56;
+            
+            document.getElementById('validation-progress-fill').style.width = '0%';
+            document.getElementById('validated-count').textContent = '0';
+            document.getElementById('abnormal-found-count').textContent = '0';
+            document.getElementById('validation-status').textContent = '正在进行商品校验，请稍候...';
+            document.getElementById('validation-time').textContent = '预计剩余时间：30秒';
+            
+            // 模拟校验进度
+            validationInterval = setInterval(() => {
+                progress += Math.random() * 5 + 2;
+                validatedCount = Math.floor((progress / 100) * totalCount);
+                
+                if (validatedCount > totalCount) validatedCount = totalCount;
+                
+                // 随机发现异常商品
+                if (Math.random() > 0.7 && abnormalFound < 8) {
+                    abnormalFound++;
+                }
+                
+                // 更新UI
+                document.getElementById('validation-progress-fill').style.width = progress + '%';
+                document.getElementById('validated-count').textContent = validatedCount;
+                document.getElementById('abnormal-found-count').textContent = abnormalFound;
+                
+                // 更新预计时间
+                const remainingTime = Math.ceil((100 - progress) / 10);
+                document.getElementById('validation-time').textContent = `预计剩余时间：${remainingTime}秒`;
+                
+                // 校验完成
+                if (progress >= 100) {
+                    clearInterval(validationInterval);
+                    completeValidation(validatedCount, abnormalFound);
+                }
+            }, 200);
+        }
+        
+        function completeValidation(total, abnormal) {
+            // 更新状态文本
+            document.getElementById('validation-status').textContent = '校验完成';
+            document.getElementById('validation-time').textContent = '';
+            
+            // 3秒后隐藏进度条
+            setTimeout(() => {
+                document.getElementById('validation-progress').style.display = 'none';
+            }, 3000);
+            
+            // 恢复按钮
+            const validateBtn = document.getElementById('validate-all-btn');
+            validateBtn.disabled = false;
+            validateBtn.innerHTML = '<span class="validate-icon">🔍</span>全量校验';
+            
+            // 显示结果通知
+            showValidationToast(total, abnormal);
+        }
+        
+        function showValidationToast(total, abnormal) {
+            const toast = document.getElementById('validation-toast');
+            const message = document.getElementById('toast-message');
+            const icon = document.getElementById('toast-icon');
+            
+            message.textContent = `校验完成！共校验${total}件商品，发现${abnormal}件异常商品`;
+            
+            if (abnormal > 0) {
+                icon.style.background = '#ff4d4f';
+                icon.textContent = '!';
+            } else {
+                icon.style.background = '#52c41a';
+                icon.textContent = '✓';
+            }
+            
+            toast.style.display = 'flex';
+            
+            // 5秒后自动隐藏
+            setTimeout(() => {
+                hideValidationToast();
+            }, 5000);
+        }
+        
+        function hideValidationToast() {
+            const toast = document.getElementById('validation-toast');
+            toast.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

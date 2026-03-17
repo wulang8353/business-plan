@@ -1,0 +1,64 @@
+        <!-- 基本信息区域 -->
+        <section class="basic-info-section" id="basic-section">
+            <h2 class="section-title">基本信息</h2>
+            <div class="form-row">
+                <div class="form-item">
+                    <label class="form-label required">项目名称</label>
+                    <input type="text" class="form-input" placeholder="请输入项目名称">
+                </div>
+                <div class="form-item">
+                    <label class="form-label">项目ID</label>
+                    <input type="text" class="form-input" placeholder="系统自动生成" disabled>
+                </div>
+                <div class="form-item">
+                    <label class="form-label required">项目目标</label>
+                    <input type="text" class="form-input" placeholder="请输入项目目标">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-item">
+                    <label class="form-label">创建人</label>
+                    <input type="text" class="form-input" placeholder="当前用户" disabled>
+                </div>
+                <div class="form-item">
+                    <label class="form-label required">区域范围</label>
+                    <select class="form-select">
+                        <option value="">请选择区域范围</option>
+                        <option value="全国">全国</option>
+                        <option value="华东">华东</option>
+                        <option value="华南">华南</option>
+                        <option value="华北">华北</option>
+                    </select>
+                </div>
+                <div class="form-item">
+                    <label class="form-label">时间范围</label>
+                    <div class="date-range">
+                        <input type="datetime-local" class="date-input" value="2021-11-22T06:12:21">
+                        <span>至</span>
+                        <input type="datetime-local" class="date-input" value="2021-11-30T06:12:21">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-item">
+                    <label class="form-label required">项目归属人</label>
+                    <input type="text" class="form-input" placeholder="请输入项目归属人">
+                </div>
+                <div class="form-item">
+                    <label class="form-label required">项目类型</label>
+                    <select class="form-select">
+                        <option value="">请选择项目类型</option>
+                        <option value="促销活动">促销活动</option>
+                        <option value="新品上市">新品上市</option>
+                        <option value="渠道拓展">渠道拓展</option>
+                    </select>
+                </div>
+                <div class="form-item">
+                    <label class="form-label">所属计划</label>
+                    <select class="form-select">
+                        <option value="">请选择所属计划</option>
+                        <option value="2024年度计划">2024年度计划</option>
+                    </select>
+                </div>
+            </div>
+        </section>

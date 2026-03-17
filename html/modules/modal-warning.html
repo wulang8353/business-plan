@@ -1,0 +1,536 @@
+    <!-- ==================== 预警详情弹窗 ==================== -->
+    <div class="modal-overlay" id="modal-warning-detail">
+        <div class="modal-container warning-modal">
+            <div class="modal-header">
+                <div class="warning-header" style="margin: 0; flex: 1;">
+                    <h3 class="modal-title">预警详情分析面板</h3>
+                    <span class="warning-tag">S级核心商品</span>
+                    <span class="warning-code">编码：100893 | 德芙丝滑牛奶巧克力43g</span>
+                </div>
+                <button class="modal-close" onclick="closeModal('warning-detail')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="warning-layout">
+                    <!-- 左侧菜单 -->
+                    <div class="warning-sidebar">
+                        <div class="warning-menu-item active" data-warning-tab="plan" onclick="switchWarningTab('plan')">
+                            <span>关联计划详情</span>
+                            <span class="warning-menu-badge">2</span>
+                        </div>
+                        <div class="warning-menu-item" data-warning-tab="coverage" onclick="switchWarningTab('coverage')">
+                            <span>区域覆盖分析</span>
+                            <span class="warning-menu-badge">2</span>
+                        </div>
+                        <div class="warning-menu-item" data-warning-tab="supply" onclick="switchWarningTab('supply')">
+                            <span>供应链备货进度</span>
+                            <span class="warning-menu-badge">3</span>
+                        </div>
+                    </div>
+
+                    <!-- 右侧内容 -->
+                    <div class="warning-content">
+                        <!-- 关联计划详情 -->
+                        <div id="warning-plan-content">
+                            <div class="warning-section-title">进行中计划列表 (横向滚动切换)</div>
+                            <div class="plan-cards">
+                                <div class="plan-card active">
+                                    <div class="plan-card-title">计划 A：夏季零食节</div>
+                                    <div class="plan-card-meta">ID: P202601 | 阶段：锁定</div>
+                                    <span class="plan-card-status inactive">已作废</span>
+                                </div>
+                                <div class="plan-card">
+                                    <div class="plan-card-title">计划 B：华南特促方案</div>
+                                    <div class="plan-card-meta">ID: P202602 | 阶段：提报</div>
+                                </div>
+                            </div>
+
+                            <div class="plan-tracking-section">
+                                <div class="plan-tracking-header">
+                                    <span class="plan-tracking-title">选定计划追踪：</span>
+                                    <span class="plan-tracking-id">P202601</span>
+                                </div>
+                                
+                                <!-- 商品计划进度 - 1:1还原设计图 -->
+                                <div class="plan-progress-vertical">
+                                    <!-- 阶段1: 提报 -->
+                                    <div class="progress-stage completed">
+                                        <div class="stage-header">
+                                            <div class="stage-number">1</div>
+                                            <div class="stage-info">
+                                                <div class="stage-title">提报</div>
+                                                <div class="stage-deadline">提报截止日期：2026-10-10</div>
+                                            </div>
+                                        </div>
+                                        <div class="stage-content">
+                                            <div class="stage-section-title">商品提报</div>
+                                            <div class="task-list">
+                                                <div class="task-item">
+                                                    <div class="task-name">商品提报</div>
+                                                    <div class="task-status completed">已完成</div>
+                                                    <div class="task-info">张三完成于2026-10-10</div>
+                                                    <div class="task-deadline">截止日期：2026-10-10</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- 阶段2: 锁定 -->
+                                    <div class="progress-stage current">
+                                        <div class="stage-header">
+                                            <div class="stage-number">2</div>
+                                            <div class="stage-info">
+                                                <div class="stage-title">锁定</div>
+                                                <div class="stage-deadline">锁定截止日期：2026-10-20</div>
+                                            </div>
+                                        </div>
+                                        <div class="stage-content">
+                                            <div class="stage-section-title">
+                                                上新审批&陈列任务
+                                                <span class="view-detail-link">查看详情</span>
+                                            </div>
+                                            <div class="task-list">
+                                                <div class="task-item">
+                                                    <div class="task-name">品规管理审批</div>
+                                                    <div class="task-status completed">已完成</div>
+                                                    <div class="task-info">张三完成于2026-10-10</div>
+                                                    <div class="task-deadline">截止日期：2026-10-10</div>
+                                                </div>
+                                                <div class="task-item">
+                                                    <div class="task-name">产品合规审批</div>
+                                                    <div class="task-status completed">已完成</div>
+                                                    <div class="task-info">张三完成于2026-10-10</div>
+                                                    <div class="task-deadline">截止日期：2026-10-10</div>
+                                                </div>
+                                                <div class="task-item">
+                                                    <div class="task-name">产品品控审批</div>
+                                                    <div class="task-status completed">已完成</div>
+                                                    <div class="task-info">张三完成于2026-10-10</div>
+                                                    <div class="task-deadline">截止日期：2026-10-10</div>
+                                                </div>
+                                                <div class="task-item">
+                                                    <div class="task-name">陈列图制作</div>
+                                                    <div class="task-status completed">已完成</div>
+                                                    <div class="task-info">张三完成于2026-10-10</div>
+                                                    <div class="task-deadline">截止日期：2026-10-10</div>
+                                                </div>
+                                                <div class="task-item">
+                                                    <div class="task-name">卖点卡上传</div>
+                                                    <div class="task-status completed">已完成</div>
+                                                    <div class="task-info">张三完成于2026-10-10</div>
+                                                    <div class="task-deadline">截止日期：2026-10-10</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- 阶段3: 执行 -->
+                                    <div class="progress-stage pending">
+                                        <div class="stage-header">
+                                            <div class="stage-number">3</div>
+                                            <div class="stage-info">
+                                                <div class="stage-title">执行</div>
+                                                <div class="stage-deadline">执行截止日期：2026-10-30</div>
+                                            </div>
+                                        </div>
+                                        <div class="stage-content">
+                                            <div class="stage-section-title">
+                                                供应链订货
+                                                <span class="view-detail-link">查看订货进度</span>
+                                            </div>
+                                            <div class="task-list">
+                                                <div class="task-item">
+                                                    <div class="task-name">生成采购单进度</div>
+                                                    <div class="task-status completed">已完成</div>
+                                                    <div class="task-info">张三完成于2026-10-10</div>
+                                                    <div class="task-deadline">截止日期：2026-10-10</div>
+                                                </div>
+                                                <div class="task-item">
+                                                    <div class="task-name">仓到货进度</div>
+                                                    <div class="task-status in-progress">进行中</div>
+                                                    <div class="task-info">--</div>
+                                                    <div class="task-deadline">截止日期：2026-10-10</div>
+                                                </div>
+                                            </div>
+                                            <div class="stage-section-title" style="margin-top: 16px;">门店要货</div>
+                                            <div class="task-list">
+                                                <div class="task-item">
+                                                    <div class="task-name">门店订货进度</div>
+                                                    <div class="task-status pending">待开始</div>
+                                                    <div class="task-info">--</div>
+                                                    <div class="task-deadline">截止日期：2026-10-10</div>
+                                                </div>
+                                                <div class="task-item">
+                                                    <div class="task-name">门店到货进度</div>
+                                                    <div class="task-status pending">待开始</div>
+                                                    <div class="task-info">--</div>
+                                                    <div class="task-deadline">截止日期：2026-10-10</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 区域覆盖分析 -->
+                        <div id="warning-coverage-content" style="display: none;">
+                            <div class="coverage-stats">
+                                <div class="coverage-title">全国总 UA 比例</div>
+                                <div class="coverage-value">
+                                    <span>76.8%</span>
+                                    <span style="font-size: 20px;">↓</span>
+                                </div>
+                                <div class="coverage-target">
+                                    <span>⚠️</span>
+                                    <span>低于业务目标 (80%)</span>
+                                </div>
+                            </div>
+                            <div class="warning-section-title">区域覆盖明细</div>
+                            <table class="data-table coverage-table">
+                                <thead>
+                                    <tr>
+                                        <th>行政区域</th>
+                                        <th>UA 比例</th>
+                                        <th>状态判定</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- 湖南省 - 可展开 -->
+                                    <tr class="province-row" onclick="toggleProvinceDetail('hunan')">
+                                        <td>
+                                            <span class="expand-icon" id="icon-hunan">▶</span>
+                                            湖南省
+                                        </td>
+                                        <td style="color: #52c41a; font-weight: 500;">92.5%</td>
+                                        <td><span class="status-tag normal">正常</span></td>
+                                    </tr>
+                                    <tr class="city-detail-row" id="detail-hunan" style="display: none;">
+                                        <td colspan="3">
+                                            <table class="city-detail-table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>长沙市</td>
+                                                        <td style="color: #52c41a;">95.2%</td>
+                                                        <td><span class="status-tag normal">正常</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>株洲市</td>
+                                                        <td style="color: #52c41a;">91.8%</td>
+                                                        <td><span class="status-tag normal">正常</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>湘潭市</td>
+                                                        <td style="color: #52c41a;">89.5%</td>
+                                                        <td><span class="status-tag normal">正常</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <!-- 广东省 - 可展开 -->
+                                    <tr class="province-row" onclick="toggleProvinceDetail('guangdong')">
+                                        <td>
+                                            <span class="expand-icon" id="icon-guangdong">▶</span>
+                                            广东省
+                                        </td>
+                                        <td style="color: #52c41a; font-weight: 500;">88.3%</td>
+                                        <td><span class="status-tag normal">正常</span></td>
+                                    </tr>
+                                    <tr class="city-detail-row" id="detail-guangdong" style="display: none;">
+                                        <td colspan="3">
+                                            <table class="city-detail-table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>广州市</td>
+                                                        <td style="color: #52c41a;">92.1%</td>
+                                                        <td><span class="status-tag normal">正常</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>深圳市</td>
+                                                        <td style="color: #52c41a;">89.7%</td>
+                                                        <td><span class="status-tag normal">正常</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>东莞市</td>
+                                                        <td style="color: #52c41a;">83.2%</td>
+                                                        <td><span class="status-tag normal">正常</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <!-- 湖北省 - 可展开 -->
+                                    <tr class="province-row" onclick="toggleProvinceDetail('hubei')">
+                                        <td>
+                                            <span class="expand-icon" id="icon-hubei">▶</span>
+                                            湖北省
+                                        </td>
+                                        <td style="color: #ff4d4f; font-weight: 500;">65.2%</td>
+                                        <td><span class="status-tag abnormal">异常</span></td>
+                                    </tr>
+                                    <tr class="city-detail-row" id="detail-hubei" style="display: none;">
+                                        <td colspan="3">
+                                            <table class="city-detail-table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>武汉市</td>
+                                                        <td style="color: #ff4d4f;">58.3%</td>
+                                                        <td><span class="status-tag abnormal">异常</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>宜昌市</td>
+                                                        <td style="color: #ff4d4f;">62.1%</td>
+                                                        <td><span class="status-tag abnormal">异常</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>襄阳市</td>
+                                                        <td style="color: #faad14;">75.2%</td>
+                                                        <td><span class="status-tag warning">警告</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <!-- 江西省 - 可展开 -->
+                                    <tr class="province-row" onclick="toggleProvinceDetail('jiangxi')">
+                                        <td>
+                                            <span class="expand-icon" id="icon-jiangxi">▶</span>
+                                            江西省
+                                        </td>
+                                        <td style="color: #ff4d4f; font-weight: 500;">58.7%</td>
+                                        <td><span class="status-tag abnormal">异常</span></td>
+                                    </tr>
+                                    <tr class="city-detail-row" id="detail-jiangxi" style="display: none;">
+                                        <td colspan="3">
+                                            <table class="city-detail-table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>南昌市</td>
+                                                        <td style="color: #ff4d4f;">52.1%</td>
+                                                        <td><span class="status-tag abnormal">异常</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>九江市</td>
+                                                        <td style="color: #ff4d4f;">55.8%</td>
+                                                        <td><span class="status-tag abnormal">异常</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>赣州市</td>
+                                                        <td style="color: #faad14;">68.2%</td>
+                                                        <td><span class="status-tag warning">警告</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- 供应链备货进度 -->
+                        <div id="warning-supply-content" style="display: none;">
+                            <div class="supply-stats-header">
+                                <div class="supply-stats-item">
+                                    <span class="supply-stats-label">商品目标销量：</span>
+                                    <span class="supply-stats-value">100,000 件</span>
+                                </div>
+                                <div class="supply-stats-item">
+                                    <span class="supply-stats-label">目标销量协同值：</span>
+                                    <span class="supply-stats-value">150,000 件</span>
+                                </div>
+                                <div class="supply-stats-item">
+                                    <span class="supply-stats-label">备货计划总数：</span>
+                                    <span class="supply-stats-value">3 个</span>
+                                </div>
+                                <div class="supply-stats-item">
+                                    <span class="supply-stats-label">累计下单：</span>
+                                    <span class="supply-stats-value highlight">12,000 件</span>
+                                </div>
+                            </div>
+                            
+                            <div class="warning-section-title">
+                                备货计划列表
+                                <div class="supply-sort-controls">
+                                    <span class="sort-label">排序：</span>
+                                    <select class="sort-select" id="supply-sort-select" onchange="sortSupplyPlans()">
+                                        <option value="quantity-desc">下单数量 ↓</option>
+                                        <option value="quantity-asc">下单数量 ↑</option>
+                                        <option value="target-percent-desc">占目标销量% ↓</option>
+                                        <option value="target-percent-asc">占目标销量% ↑</option>
+                                        <option value="collab-percent-desc">占协同值% ↓</option>
+                                        <option value="collab-percent-asc">占协同值% ↑</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="supply-plans-container">
+                                <!-- 备货计划1 -->
+                                <div class="supply-plan-card" data-quantity="4000" data-target-percent="4.00" data-collab-percent="2.67">
+                                    <div class="supply-plan-header">
+                                        <div class="supply-plan-title">备货计划1</div>
+                                        <div class="supply-plan-id">ID: SP202601001</div>
+                                        <span class="supply-plan-status active">执行中</span>
+                                    </div>
+                                    <div class="supply-plan-body">
+                                        <div class="supply-plan-metrics">
+                                            <div class="supply-metric">
+                                                <div class="supply-metric-value">4,000</div>
+                                                <div class="supply-metric-label">下单数量（件）</div>
+                                            </div>
+                                            <div class="supply-metric">
+                                                <div class="supply-metric-value percent-target">4.00%</div>
+                                                <div class="supply-metric-label">占目标销量</div>
+                                                <div class="supply-metric-hint">100,000件</div>
+                                            </div>
+                                            <div class="supply-metric">
+                                                <div class="supply-metric-value percent-collab">2.67%</div>
+                                                <div class="supply-metric-label">占协同值</div>
+                                                <div class="supply-metric-hint">150,000件</div>
+                                            </div>
+                                        </div>
+                                        <div class="supply-plan-progress">
+                                            <div class="progress-bar-container">
+                                                <div class="progress-bar-label">
+                                                    <span>占目标销量</span>
+                                                    <span>4.00%</span>
+                                                </div>
+                                                <div class="progress-bar">
+                                                    <div class="progress-bar-fill" style="width: 4.00%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="progress-bar-container">
+                                                <div class="progress-bar-label">
+                                                    <span>占协同值</span>
+                                                    <span>2.67%</span>
+                                                </div>
+                                                <div class="progress-bar">
+                                                    <div class="progress-bar-fill collab" style="width: 2.67%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 备货计划2 -->
+                                <div class="supply-plan-card" data-quantity="5000" data-target-percent="5.00" data-collab-percent="3.33">
+                                    <div class="supply-plan-header">
+                                        <div class="supply-plan-title">备货计划2</div>
+                                        <div class="supply-plan-id">ID: SP202601002</div>
+                                        <span class="supply-plan-status active">执行中</span>
+                                    </div>
+                                    <div class="supply-plan-body">
+                                        <div class="supply-plan-metrics">
+                                            <div class="supply-metric">
+                                                <div class="supply-metric-value">5,000</div>
+                                                <div class="supply-metric-label">下单数量（件）</div>
+                                            </div>
+                                            <div class="supply-metric">
+                                                <div class="supply-metric-value percent-target">5.00%</div>
+                                                <div class="supply-metric-label">占目标销量</div>
+                                                <div class="supply-metric-hint">100,000件</div>
+                                            </div>
+                                            <div class="supply-metric">
+                                                <div class="supply-metric-value percent-collab">3.33%</div>
+                                                <div class="supply-metric-label">占协同值</div>
+                                                <div class="supply-metric-hint">150,000件</div>
+                                            </div>
+                                        </div>
+                                        <div class="supply-plan-progress">
+                                            <div class="progress-bar-container">
+                                                <div class="progress-bar-label">
+                                                    <span>占目标销量</span>
+                                                    <span>5.00%</span>
+                                                </div>
+                                                <div class="progress-bar">
+                                                    <div class="progress-bar-fill" style="width: 5.00%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="progress-bar-container">
+                                                <div class="progress-bar-label">
+                                                    <span>占协同值</span>
+                                                    <span>3.33%</span>
+                                                </div>
+                                                <div class="progress-bar">
+                                                    <div class="progress-bar-fill collab" style="width: 3.33%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 备货计划3 -->
+                                <div class="supply-plan-card" data-quantity="3000" data-target-percent="3.00" data-collab-percent="2.00">
+                                    <div class="supply-plan-header">
+                                        <div class="supply-plan-title">备货计划3</div>
+                                        <div class="supply-plan-id">ID: SP202601003</div>
+                                        <span class="supply-plan-status pending">待执行</span>
+                                    </div>
+                                    <div class="supply-plan-body">
+                                        <div class="supply-plan-metrics">
+                                            <div class="supply-metric">
+                                                <div class="supply-metric-value">3,000</div>
+                                                <div class="supply-metric-label">下单数量（件）</div>
+                                            </div>
+                                            <div class="supply-metric">
+                                                <div class="supply-metric-value percent-target">3.00%</div>
+                                                <div class="supply-metric-label">占目标销量</div>
+                                                <div class="supply-metric-hint">100,000件</div>
+                                            </div>
+                                            <div class="supply-metric">
+                                                <div class="supply-metric-value percent-collab">2.00%</div>
+                                                <div class="supply-metric-label">占协同值</div>
+                                                <div class="supply-metric-hint">150,000件</div>
+                                            </div>
+                                        </div>
+                                        <div class="supply-plan-progress">
+                                            <div class="progress-bar-container">
+                                                <div class="progress-bar-label">
+                                                    <span>占目标销量</span>
+                                                    <span>3.00%</span>
+                                                </div>
+                                                <div class="progress-bar">
+                                                    <div class="progress-bar-fill" style="width: 3.00%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="progress-bar-container">
+                                                <div class="progress-bar-label">
+                                                    <span>占协同值</span>
+                                                    <span>2.00%</span>
+                                                </div>
+                                                <div class="progress-bar">
+                                                    <div class="progress-bar-fill collab" style="width: 2.00%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 汇总信息 -->
+                            <div class="supply-summary">
+                                <div class="supply-summary-title">备货计划汇总</div>
+                                <div class="supply-summary-content">
+                                    <div class="supply-summary-item">
+                                        <span class="supply-summary-label">累计下单数量：</span>
+                                        <span class="supply-summary-value">12,000 件</span>
+                                    </div>
+                                    <div class="supply-summary-item">
+                                        <span class="supply-summary-label">累计占目标销量：</span>
+                                        <span class="supply-summary-value">12.00%</span>
+                                    </div>
+                                    <div class="supply-summary-item">
+                                        <span class="supply-summary-label">累计占协同值：</span>
+                                        <span class="supply-summary-value">8.00%</span>
+                                    </div>
+                                    <div class="supply-summary-item">
+                                        <span class="supply-summary-label">剩余目标缺口：</span>
+                                        <span class="supply-summary-value warning">88,000 件</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

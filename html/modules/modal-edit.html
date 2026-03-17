@@ -1,0 +1,177 @@
+    <!-- ==================== 编辑商品弹窗 ==================== -->
+    <div class="modal-overlay" id="modal-edit-product">
+        <div class="modal-container edit-product-modal">
+            <div class="modal-header">
+                <h3 class="modal-title">编辑商品</h3>
+                <button class="modal-close" onclick="closeModal('edit-product')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-form edit-form">
+                    <div class="modal-form-item">
+                        <label class="modal-form-label">商品编码</label>
+                        <div class="modal-form-text">12334566</div>
+                    </div>
+                    <div class="modal-form-item">
+                        <label class="modal-form-label">商品名称</label>
+                        <div class="modal-form-text">卫龙辣条辣条辣条辣条辣条</div>
+                    </div>
+                    <div class="modal-form-item">
+                        <label class="modal-form-label">商品类型</label>
+                        <div class="modal-form-text">饮料酒类</div>
+                    </div>
+                    <div class="modal-form-item">
+                        <label class="modal-form-label">商品品牌</label>
+                        <div class="modal-form-text">可口可乐</div>
+                    </div>
+                    <div class="modal-form-item">
+                        <label class="modal-form-label required">商品分层</label>
+                        <select class="modal-form-select">
+                            <option value="S级">S级</option>
+                            <option value="A级">A级</option>
+                            <option value="B级">B级</option>
+                        </select>
+                    </div>
+                    <div class="modal-form-item">
+                        <label class="modal-form-label">规格</label>
+                        <div class="modal-form-text">500ml*24瓶</div>
+                    </div>
+                    <div class="modal-form-item full-width">
+                        <label class="modal-form-label required">商品范围</label>
+                        <div class="scope-selector">
+                            <select class="modal-form-select scope-select" id="product-scope-select" onchange="handleScopeChange(this)">
+                                <option value="inherit">继承项目范围</option>
+                                <option value="custom">自定义选择</option>
+                            </select>
+                            <span class="scope-hint">当前已选 20 个区域</span>
+                        </div>
+                    </div>
+                    <div class="modal-form-item full-width scope-panel-container" id="scope-panel" style="display: none;">
+                        <div class="dual-panel scope-dual-panel">
+                            <!-- 左侧面板 - 全部区域 -->
+                            <div class="panel">
+                                <div class="panel-header">
+                                    <span class="panel-title">全部区域 (<span class="panel-count">20000</span>)</span>
+                                </div>
+                                <div class="panel-search">
+                                    <input type="text" class="panel-search-input" placeholder="输入区域名称/编码">
+                                </div>
+                                <div class="panel-list" id="available-regions">
+                                    <div class="panel-item" onclick="toggleRegion(this)">
+                                        <input type="checkbox" class="panel-item-checkbox checkbox">
+                                        <div class="panel-item-info">
+                                            <div class="panel-item-name">上海市</div>
+                                            <div class="panel-item-meta">编码：310000</div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-item" onclick="toggleRegion(this)">
+                                        <input type="checkbox" class="panel-item-checkbox checkbox">
+                                        <div class="panel-item-info">
+                                            <div class="panel-item-name">北京市</div>
+                                            <div class="panel-item-meta">编码：110000</div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-item" onclick="toggleRegion(this)">
+                                        <input type="checkbox" class="panel-item-checkbox checkbox">
+                                        <div class="panel-item-info">
+                                            <div class="panel-item-name">广州市</div>
+                                            <div class="panel-item-meta">编码：440100</div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-item" onclick="toggleRegion(this)">
+                                        <input type="checkbox" class="panel-item-checkbox checkbox">
+                                        <div class="panel-item-info">
+                                            <div class="panel-item-name">深圳市</div>
+                                            <div class="panel-item-meta">编码：440300</div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-item" onclick="toggleRegion(this)">
+                                        <input type="checkbox" class="panel-item-checkbox checkbox">
+                                        <div class="panel-item-info">
+                                            <div class="panel-item-name">杭州市</div>
+                                            <div class="panel-item-meta">编码：330100</div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-item" onclick="toggleRegion(this)">
+                                        <input type="checkbox" class="panel-item-checkbox checkbox">
+                                        <div class="panel-item-info">
+                                            <div class="panel-item-name">南京市</div>
+                                            <div class="panel-item-meta">编码：320100</div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-item" onclick="toggleRegion(this)">
+                                        <input type="checkbox" class="panel-item-checkbox checkbox">
+                                        <div class="panel-item-info">
+                                            <div class="panel-item-name">成都市</div>
+                                            <div class="panel-item-meta">编码：510100</div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-item" onclick="toggleRegion(this)">
+                                        <input type="checkbox" class="panel-item-checkbox checkbox">
+                                        <div class="panel-item-info">
+                                            <div class="panel-item-name">武汉市</div>
+                                            <div class="panel-item-meta">编码：420100</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 中间操作区 -->
+                            <div class="panel-actions">
+                                <button class="panel-action-btn" onclick="addSelectedRegions()">&gt;</button>
+                                <button class="panel-action-btn" onclick="removeSelectedRegions()">&lt;</button>
+                            </div>
+
+                            <!-- 右侧面板 - 已选区域 -->
+                            <div class="panel">
+                                <div class="panel-header">
+                                    <span class="panel-title">已选区域 (<span class="panel-count" id="selected-region-count">0</span>)</span>
+                                    <span class="panel-clear" onclick="clearSelectedRegions()">清空</span>
+                                </div>
+                                <div class="panel-search">
+                                    <input type="text" class="panel-search-input" placeholder="输入区域名称/编码">
+                                </div>
+                                <div class="panel-list" id="selected-regions">
+                                    <!-- 已选区域将动态添加到这里 -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-form-item">
+                        <label class="modal-form-label">促销活动</label>
+                        <select class="modal-form-select">
+                            <option value="">请选择</option>
+                            <option value="促销">促销</option>
+                            <option value="满减">满减</option>
+                            <option value="买赠">买赠</option>
+                        </select>
+                    </div>
+                    <div class="modal-form-item">
+                        <label class="modal-form-label required">建议档案零售价</label>
+                        <input type="text" class="modal-form-input" value="10.00">
+                    </div>
+                    <div class="modal-form-item">
+                        <label class="modal-form-label required">目标销量</label>
+                        <input type="text" class="modal-form-input" value="20,000">
+                    </div>
+                    <div class="modal-form-item">
+                        <label class="modal-form-label">目标销量协同值</label>
+                        <div class="modal-form-text collab-value-readonly">
+                            <span class="collab-value" onclick="openModal('collab-history')">18,500</span>
+                        </div>
+                    </div>
+                    <div class="modal-form-item">
+                        <label class="modal-form-label required">目标销售额</label>
+                        <input type="text" class="modal-form-input" value="200,000">
+                    </div>
+                    <div class="modal-form-item">
+                        <label class="modal-form-label">预提货单</label>
+                        <input type="text" class="modal-form-input" value="SS1234">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="closeModal('edit-product')">取消</button>
+                <button class="btn btn-primary" onclick="closeModal('edit-product')">确定</button>
+            </div>
+        </div>
+    </div>

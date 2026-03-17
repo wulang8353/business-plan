@@ -1,0 +1,491 @@
+        <!-- 项目商品清单区域 -->
+        <section class="product-section" id="product-section">
+            <div class="section-header">
+                <div class="section-actions">
+                    <button class="btn btn-primary" onclick="openModal('add-product')">添加商品</button>
+                    <button class="btn btn-default" onclick="openModal('import')">导入商品</button>
+                    <button class="btn btn-default" onclick="openModal('batch-edit')">批量编辑</button>
+                    <button class="btn btn-danger">批量删除</button>
+                    <button class="btn btn-default">导出商品</button>
+                    <button class="btn btn-secondary" id="validate-all-btn" onclick="startFullValidation()">
+                        <span class="validate-icon">🔍</span>全量校验
+                    </button>
+                </div>
+                <div class="stats-bar">
+                    <div class="stats-item active" data-tab="added" onclick="switchProductTab('added')">
+                        <span class="stats-text">已添加 <span class="stats-highlight" id="product-count">56</span> 个商品</span>
+                    </div>
+                    <div class="stats-item" data-tab="abnormal" onclick="switchProductTab('abnormal')">
+                        <span class="stats-text">异常商品 <span class="stats-danger">8</span></span>
+                    </div>
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="输入商品名称/编码">
+                        <button class="btn btn-default">自定义表头</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 校验进度条区域 -->
+            <div class="validation-progress-container" id="validation-progress" style="display: none;">
+                <div class="validation-header">
+                    <span class="validation-status" id="validation-status">正在进行商品校验，请稍候...</span>
+                    <span class="validation-time" id="validation-time">预计剩余时间：30秒</span>
+                </div>
+                <div class="validation-progress-bar">
+                    <div class="validation-progress-fill" id="validation-progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="validation-stats" id="validation-stats">
+                    <span>已校验：<strong id="validated-count">0</strong> / <strong id="total-count">56</strong> 件</span>
+                    <span>发现异常：<strong id="abnormal-found-count" class="abnormal-count">0</strong> 件</span>
+                </div>
+            </div>
+
+            <!-- 校验结果通知 -->
+            <div class="validation-result-toast" id="validation-toast" style="display: none;">
+                <span class="toast-icon" id="toast-icon">✓</span>
+                <span class="toast-message" id="toast-message">校验完成！共校验56件商品，发现8件异常商品</span>
+                <button class="toast-close" onclick="hideValidationToast()">×</button>
+            </div>
+
+            <!-- 已添加商品表格 -->
+            <div class="table-container" id="added-products-table">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" class="checkbox" id="select-all-added"></th>
+                            <th>状态</th>
+                            <th>商品编码</th>
+                            <th>商品名称</th>
+                            <th>商品类型</th>
+                            <th>商品分层</th>
+                            <th>规格</th>
+                            <th>商品范围</th>
+                            <th>促销活动</th>
+                            <th>目标销量</th>
+                            <th>目标销量协同值</th>
+                            <th>建议档案零售价</th>
+                            <th>目标销售额</th>
+                            <th>商品品牌</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="added-products-tbody">
+                        <tr>
+                            <td><input type="checkbox" class="checkbox"></td>
+                            <td><span class="status-tag normal">正常</span></td>
+                            <td>100701</td>
+                            <td>脆香米牛奶巧克力24g</td>
+                            <td>糖巧</td>
+                            <td>S级</td>
+                            <td>24g*24条*10盒</td>
+                            <td>继承项目范围</td>
+                            <td>促销</td>
+                            <td>20,000</td>
+                            <td>
+                                <span class="collab-value" onclick="openModal('collab-history')">18,500</span>
+                            </td>
+                            <td>¥10.00/件</td>
+                            <td>¥20,000</td>
+                            <td>脆香米</td>
+                            <td class="table-actions">
+                                <span class="action-link" onclick="openModal('edit-product')">编辑</span>
+                                <span class="action-link danger">删除</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox"></td>
+                            <td><span class="status-tag normal">正常</span></td>
+                            <td>100693</td>
+                            <td>德芙丝滑牛奶巧克力43g</td>
+                            <td>糖巧</td>
+                            <td>S级</td>
+                            <td>43g*12条*10盒</td>
+                            <td>继承项目范围</td>
+                            <td>--</td>
+                            <td>20,000</td>
+                            <td>
+                                <span class="collab-value" onclick="openModal('collab-history')">19,200</span>
+                            </td>
+                            <td>¥10.00/件</td>
+                            <td>¥20,000</td>
+                            <td>德芙</td>
+                            <td class="table-actions">
+                                <span class="action-link" onclick="openModal('edit-product')">编辑</span>
+                                <span class="action-link danger">删除</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox"></td>
+                            <td><span class="status-tag normal">正常</span></td>
+                            <td>136930</td>
+                            <td>士力架花生夹心巧克力51g</td>
+                            <td>糖巧</td>
+                            <td>A级</td>
+                            <td>51g*24条*8中盒</td>
+                            <td>自定义选择</td>
+                            <td>--</td>
+                            <td>20,000</td>
+                            <td>
+                                <span class="collab-value" onclick="openModal('collab-history')">20,000</span>
+                            </td>
+                            <td>¥10.00/件</td>
+                            <td>¥20,000</td>
+                            <td>士力架</td>
+                            <td class="table-actions">
+                                <span class="action-link" onclick="openModal('edit-product')">编辑</span>
+                                <span class="action-link danger">删除</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox"></td>
+                            <td><span class="status-tag abnormal">异常</span></td>
+                            <td>100696</td>
+                            <td>德芙榛仁巧克力43g</td>
+                            <td>糖巧</td>
+                            <td>A级</td>
+                            <td>43g*12条*10盒</td>
+                            <td>继承项目范围</td>
+                            <td>促销</td>
+                            <td>20,000</td>
+                            <td>
+                                <span class="collab-value" onclick="openModal('collab-history')">17,800</span>
+                            </td>
+                            <td>¥10.00/件</td>
+                            <td>¥20,000</td>
+                            <td>德芙</td>
+                            <td class="table-actions">
+                                <span class="action-link" onclick="openModal('edit-product')">编辑</span>
+                                <span class="action-link danger">删除</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox"></td>
+                            <td><span class="status-tag abnormal">异常</span></td>
+                            <td>100695</td>
+                            <td>德芙奶香白巧克力43g</td>
+                            <td>糖巧</td>
+                            <td>A级</td>
+                            <td>43g*12条*10盒</td>
+                            <td>继承项目范围</td>
+                            <td>促销</td>
+                            <td>20,000</td>
+                            <td>
+                                <span class="collab-value" onclick="openModal('collab-history')">19,500</span>
+                            </td>
+                            <td>¥10.00/件</td>
+                            <td>¥20,000</td>
+                            <td>德芙</td>
+                            <td class="table-actions">
+                                <span class="action-link" onclick="openModal('edit-product')">编辑</span>
+                                <span class="action-link danger">删除</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox"></td>
+                            <td><span class="status-tag normal">正常</span></td>
+                            <td>100702</td>
+                            <td>M&M's牛奶巧克力豆40g</td>
+                            <td>糖巧</td>
+                            <td>S级</td>
+                            <td>40g*12袋*10盒</td>
+                            <td>自定义选择</td>
+                            <td>满减</td>
+                            <td>15,000</td>
+                            <td>
+                                <span class="collab-value" onclick="openModal('collab-history')">14,200</span>
+                            </td>
+                            <td>¥8.50/件</td>
+                            <td>¥12,750</td>
+                            <td>M&M's</td>
+                            <td class="table-actions">
+                                <span class="action-link" onclick="openModal('edit-product')">编辑</span>
+                                <span class="action-link danger">删除</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox"></td>
+                            <td><span class="status-tag normal">正常</span></td>
+                            <td>100703</td>
+                            <td>彩虹糖原果味45g</td>
+                            <td>糖巧</td>
+                            <td>A级</td>
+                            <td>45g*20袋*8盒</td>
+                            <td>继承项目范围</td>
+                            <td>--</td>
+                            <td>18,000</td>
+                            <td>
+                                <span class="collab-value" onclick="openModal('collab-history')">16,800</span>
+                            </td>
+                            <td>¥6.00/件</td>
+                            <td>¥10,800</td>
+                            <td>彩虹糖</td>
+                            <td class="table-actions">
+                                <span class="action-link" onclick="openModal('edit-product')">编辑</span>
+                                <span class="action-link danger">删除</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox"></td>
+                            <td><span class="status-tag normal">正常</span></td>
+                            <td>100704</td>
+                            <td>绿箭无糖薄荷糖35粒</td>
+                            <td>糖巧</td>
+                            <td>B级</td>
+                            <td>35粒*12盒*6中盒</td>
+                            <td>继承项目范围</td>
+                            <td>买赠</td>
+                            <td>12,000</td>
+                            <td>
+                                <span class="collab-value" onclick="openModal('collab-history')">11,500</span>
+                            </td>
+                            <td>¥12.00/件</td>
+                            <td>¥14,400</td>
+                            <td>绿箭</td>
+                            <td class="table-actions">
+                                <span class="action-link" onclick="openModal('edit-product')">编辑</span>
+                                <span class="action-link danger">删除</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 异常商品表格 -->
+            <div class="abnormal-table-wrapper" id="abnormal-products-table" style="display: none;">
+                <table class="data-table abnormal-table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" class="checkbox" id="select-all-abnormal"></th>
+                            <th>状态</th>
+                            <th>异常原因</th>
+                            <th>商品编码</th>
+                            <th>商品名称</th>
+                            <th>商品类型</th>
+                            <th>商品分层</th>
+                            <th>规格</th>
+                            <th>商品范围</th>
+                            <th>促销活动</th>
+                            <th>目标销量</th>
+                            <th>目标销量协同值</th>
+                            <th>建议档案零售价</th>
+                            <th>目标销售额</th>
+                            <th>商品品牌</th>
+                            <th>是否预警</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="abnormal-products-tbody">
+                        <tr>
+                            <td><input type="checkbox" class="checkbox"></td>
+                            <td><span class="status-tag abnormal">异常</span></td>
+                            <td><span class="abnormal-reason" title="UA比例不足">UA比例不足</span></td>
+                            <td>100696</td>
+                            <td>德芙榛仁巧克力43g</td>
+                            <td>糖巧</td>
+                            <td>A级</td>
+                            <td>43g*12条*10盒</td>
+                            <td>继承项目范围</td>
+                            <td>促销</td>
+                            <td>20,000</td>
+                            <td>
+                                <span class="collab-value" onclick="openModal('collab-history')">17,800</span>
+                            </td>
+                            <td>¥10.00/件</td>
+                            <td>¥20,000</td>
+                            <td>德芙</td>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td class="table-actions">
+                                <span class="action-link" onclick="openModal('edit-product')">编辑</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">预警详情</span>
+                                <span class="action-link danger">删除</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox"></td>
+                            <td><span class="status-tag abnormal">异常</span></td>
+                            <td><span class="abnormal-reason" title="UA比例不足">UA比例不足</span></td>
+                            <td>100695</td>
+                            <td>德芙奶香白巧克力43g</td>
+                            <td>糖巧</td>
+                            <td>A级</td>
+                            <td>43g*12条*10盒</td>
+                            <td>继承项目范围</td>
+                            <td>促销</td>
+                            <td>20,000</td>
+                            <td>
+                                <span class="collab-value" onclick="openModal('collab-history')">19,500</span>
+                            </td>
+                            <td>¥10.00/件</td>
+                            <td>¥20,000</td>
+                            <td>德芙</td>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td class="table-actions">
+                                <span class="action-link" onclick="openModal('edit-product')">编辑</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">预警详情</span>
+                                <span class="action-link danger">删除</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox"></td>
+                            <td><span class="status-tag abnormal">异常</span></td>
+                            <td><span class="abnormal-reason" title="UA比例不足">UA比例不足</span></td>
+                            <td>100701</td>
+                            <td>脆香米牛奶巧克力24g</td>
+                            <td>糖巧</td>
+                            <td>S级</td>
+                            <td>24g*24条*10盒</td>
+                            <td>继承项目范围</td>
+                            <td>促销</td>
+                            <td>20,000</td>
+                            <td>
+                                <span class="collab-value" onclick="openModal('collab-history')">18,500</span>
+                            </td>
+                            <td>¥10.00/件</td>
+                            <td>¥20,000</td>
+                            <td>脆香米</td>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td class="table-actions">
+                                <span class="action-link" onclick="openModal('edit-product')">编辑</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">预警详情</span>
+                                <span class="action-link danger">删除</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox"></td>
+                            <td><span class="status-tag abnormal">异常</span></td>
+                            <td><span class="abnormal-reason" title="UA比例不足">UA比例不足</span></td>
+                            <td>100705</td>
+                            <td>益达无糖口香糖40粒</td>
+                            <td>糖巧</td>
+                            <td>A级</td>
+                            <td>40粒*6瓶*12盒</td>
+                            <td>自定义选择</td>
+                            <td>--</td>
+                            <td>25,000</td>
+                            <td>
+                                <span class="collab-value" onclick="openModal('collab-history')">23,200</span>
+                            </td>
+                            <td>¥15.00/件</td>
+                            <td>¥37,500</td>
+                            <td>益达</td>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td class="table-actions">
+                                <span class="action-link" onclick="openModal('edit-product')">编辑</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">预警详情</span>
+                                <span class="action-link danger">删除</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox"></td>
+                            <td><span class="status-tag abnormal">异常</span></td>
+                            <td><span class="abnormal-reason" title="UA比例不足">UA比例不足</span></td>
+                            <td>100706</td>
+                            <td>炫迈无糖口香糖28片</td>
+                            <td>糖巧</td>
+                            <td>A级</td>
+                            <td>28片*9盒*8中盒</td>
+                            <td>继承项目范围</td>
+                            <td>促销</td>
+                            <td>22,000</td>
+                            <td>
+                                <span class="collab-value" onclick="openModal('collab-history')">20,800</span>
+                            </td>
+                            <td>¥18.00/件</td>
+                            <td>¥39,600</td>
+                            <td>炫迈</td>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td class="table-actions">
+                                <span class="action-link" onclick="openModal('edit-product')">编辑</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">预警详情</span>
+                                <span class="action-link danger">删除</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox"></td>
+                            <td><span class="status-tag abnormal">异常</span></td>
+                            <td><span class="abnormal-reason" title="UA比例不足">UA比例不足</span></td>
+                            <td>100707</td>
+                            <td>德芙黑巧克力43g</td>
+                            <td>糖巧</td>
+                            <td>S级</td>
+                            <td>43g*12条*10盒</td>
+                            <td>继承项目范围</td>
+                            <td>满减</td>
+                            <td>30,000</td>
+                            <td>
+                                <span class="collab-value" onclick="openModal('collab-history')">28,500</span>
+                            </td>
+                            <td>¥10.00/件</td>
+                            <td>¥30,000</td>
+                            <td>德芙</td>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td class="table-actions">
+                                <span class="action-link" onclick="openModal('edit-product')">编辑</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">预警详情</span>
+                                <span class="action-link danger">删除</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox"></td>
+                            <td><span class="status-tag abnormal">异常</span></td>
+                            <td><span class="abnormal-reason" title="UA比例不足">UA比例不足</span></td>
+                            <td>100708</td>
+                            <td>真知棒水果棒棒糖108支</td>
+                            <td>糖巧</td>
+                            <td>B级</td>
+                            <td>108支*1桶</td>
+                            <td>自定义选择</td>
+                            <td>--</td>
+                            <td>8,000</td>
+                            <td>
+                                <span class="collab-value" onclick="openModal('collab-history')">7,200</span>
+                            </td>
+                            <td>¥35.00/件</td>
+                            <td>¥28,000</td>
+                            <td>真知棒</td>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td class="table-actions">
+                                <span class="action-link" onclick="openModal('edit-product')">编辑</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">预警详情</span>
+                                <span class="action-link danger">删除</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>

@@ -1,0 +1,212 @@
+    <!-- ==================== 批量编辑弹窗 ==================== -->
+    <div class="modal-overlay" id="modal-batch-edit">
+        <div class="modal-container batch-edit-modal">
+            <div class="modal-header">
+                <h3 class="modal-title">批量编辑商品</h3>
+                <button class="modal-close" onclick="closeModal('batch-edit')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="batch-edit-header">
+                    <span class="batch-edit-count">商品列表 (999)</span>
+                    <div class="batch-edit-actions">
+                        <button class="btn btn-default" onclick="applyBatchEdit()">应用修改</button>
+                        <button class="btn btn-primary" onclick="saveBatchEdit()">保存</button>
+                    </div>
+                </div>
+                <div class="batch-edit-table-wrapper">
+                    <table class="batch-edit-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" class="checkbox" id="select-all-batch"></th>
+                                <th>商品编码</th>
+                                <th>商品名称</th>
+                                <th>商品类型</th>
+                                <th>商品品牌</th>
+                                <th>商品分层</th>
+                                <th>规格</th>
+                                <th>商品范围</th>
+                                <th>促销活动</th>
+                                <th>建议档案零售价</th>
+                                <th>目标销量</th>
+                                <th>目标销量协同值</th>
+                                <th>目标销售额</th>
+                                <th>预提货单</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td class="readonly-cell">HKK123446</td>
+                                <td class="readonly-cell">卫龙辣条辣条辣条辣条辣条</td>
+                                <td class="readonly-cell">散称商品</td>
+                                <td class="readonly-cell">可口可乐</td>
+                                <td class="readonly-cell">S级</td>
+                                <td>
+                                    <input type="text" class="batch-edit-input" value="500g">
+                                </td>
+                                <td>
+                                    <select class="batch-edit-select scope-select" onchange="handleBatchScopeChange(this)">
+                                        <option value="inherit">继承项目范围</option>
+                                        <option value="custom">自定义选择</option>
+                                    </select>
+                                </td>
+                                <td class="readonly-cell">促销</td>
+                                <td class="readonly-cell">10.00元</td>
+                                <td class="readonly-cell">20,000</td>
+                                <td class="readonly-cell">
+                                    <span class="collab-value" onclick="openModal('collab-history')">18,500</span>
+                                </td>
+                                <td>
+                                    <input type="text" class="batch-edit-input" value="200,000">
+                                </td>
+                                <td>
+                                    <input type="text" class="batch-edit-input" value="SS1234">
+                                </td>
+                                <td><span class="action-link danger" onclick="deleteBatchRow(this)">删除</span></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td class="readonly-cell">HKK123447</td>
+                                <td class="readonly-cell">德芙丝滑牛奶巧克力43g</td>
+                                <td class="readonly-cell">糖巧</td>
+                                <td class="readonly-cell">德芙</td>
+                                <td class="readonly-cell">S级</td>
+                                <td>
+                                    <input type="text" class="batch-edit-input" value="43g*12条*10盒">
+                                </td>
+                                <td>
+                                    <select class="batch-edit-select scope-select" onchange="handleBatchScopeChange(this)">
+                                        <option value="inherit">继承项目范围</option>
+                                        <option value="custom" selected>自定义选择</option>
+                                    </select>
+                                </td>
+                                <td class="readonly-cell">满减</td>
+                                <td class="readonly-cell">10.00元</td>
+                                <td class="readonly-cell">15,000</td>
+                                <td class="readonly-cell">
+                                    <span class="collab-value" onclick="openModal('collab-history')">14,200</span>
+                                </td>
+                                <td>
+                                    <input type="text" class="batch-edit-input" value="150,000">
+                                </td>
+                                <td>
+                                    <input type="text" class="batch-edit-input" value="SS1235">
+                                </td>
+                                <td><span class="action-link danger" onclick="deleteBatchRow(this)">删除</span></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td class="readonly-cell">HKK123448</td>
+                                <td class="readonly-cell">士力架花生夹心巧克力51g</td>
+                                <td class="readonly-cell">糖巧</td>
+                                <td class="readonly-cell">士力架</td>
+                                <td class="readonly-cell">A级</td>
+                                <td>
+                                    <input type="text" class="batch-edit-input" value="51g*24条*8中盒">
+                                </td>
+                                <td>
+                                    <select class="batch-edit-select scope-select" onchange="handleBatchScopeChange(this)">
+                                        <option value="inherit" selected>继承项目范围</option>
+                                        <option value="custom">自定义选择</option>
+                                    </select>
+                                </td>
+                                <td class="readonly-cell">--</td>
+                                <td class="readonly-cell">8.50元</td>
+                                <td class="readonly-cell">25,000</td>
+                                <td class="readonly-cell">
+                                    <span class="collab-value" onclick="openModal('collab-history')">23,800</span>
+                                </td>
+                                <td>
+                                    <input type="text" class="batch-edit-input" value="212,500">
+                                </td>
+                                <td>
+                                    <input type="text" class="batch-edit-input" value="SS1236">
+                                </td>
+                                <td><span class="action-link danger" onclick="deleteBatchRow(this)">删除</span></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td class="readonly-cell">HKK123449</td>
+                                <td class="readonly-cell">脆香米牛奶巧克力24g</td>
+                                <td class="readonly-cell">糖巧</td>
+                                <td class="readonly-cell">脆香米</td>
+                                <td class="readonly-cell">S级</td>
+                                <td>
+                                    <input type="text" class="batch-edit-input" value="24g*24条*10盒">
+                                </td>
+                                <td>
+                                    <select class="batch-edit-select scope-select" onchange="handleBatchScopeChange(this)">
+                                        <option value="inherit">继承项目范围</option>
+                                        <option value="custom">自定义选择</option>
+                                    </select>
+                                </td>
+                                <td class="readonly-cell">促销</td>
+                                <td class="readonly-cell">12.00元</td>
+                                <td class="readonly-cell">18,000</td>
+                                <td class="readonly-cell">
+                                    <span class="collab-value" onclick="openModal('collab-history')">16,500</span>
+                                </td>
+                                <td>
+                                    <input type="text" class="batch-edit-input" value="216,000">
+                                </td>
+                                <td>
+                                    <input type="text" class="batch-edit-input" value="SS1237">
+                                </td>
+                                <td><span class="action-link danger" onclick="deleteBatchRow(this)">删除</span></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td class="readonly-cell">HKK123450</td>
+                                <td class="readonly-cell">M&M's牛奶巧克力豆40g</td>
+                                <td class="readonly-cell">糖巧</td>
+                                <td class="readonly-cell">M&M's</td>
+                                <td class="readonly-cell">B级</td>
+                                <td>
+                                    <input type="text" class="batch-edit-input" value="40g*12袋*10盒">
+                                </td>
+                                <td>
+                                    <select class="batch-edit-select scope-select" onchange="handleBatchScopeChange(this)">
+                                        <option value="inherit">继承项目范围</option>
+                                        <option value="custom" selected>自定义选择</option>
+                                    </select>
+                                </td>
+                                <td class="readonly-cell">买赠</td>
+                                <td class="readonly-cell">9.00元</td>
+                                <td class="readonly-cell">12,000</td>
+                                <td class="readonly-cell">
+                                    <span class="collab-value" onclick="openModal('collab-history')">11,200</span>
+                                </td>
+                                <td>
+                                    <input type="text" class="batch-edit-input" value="108,000">
+                                </td>
+                                <td>
+                                    <input type="text" class="batch-edit-input" value="SS1238">
+                                </td>
+                                <td><span class="action-link danger" onclick="deleteBatchRow(this)">删除</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination" style="margin-top: 16px;">
+                    <span>10条/页</span>
+                    <button class="page-btn" disabled>&lt;</button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <button class="page-btn">4</button>
+                    <button class="page-btn">5</button>
+                    <button class="page-btn">&gt;</button>
+                    <div class="page-jumper">
+                        <span>跳至</span>
+                        <input type="text" class="page-input" value="1">
+                        <span>页</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="closeModal('batch-edit')">取消</button>
+                <button class="btn btn-primary" onclick="closeModal('batch-edit')">确定</button>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,63 @@
+    <!-- ==================== 添加商品弹窗 ==================== -->
+    <div class="modal-overlay" id="modal-add-product">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">添加商品</h3>
+                <button class="modal-close" onclick="closeModal('add-product')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="dual-panel">
+                    <!-- 左侧面板 - 全部商品 -->
+                    <div class="panel">
+                        <div class="panel-header">
+                            <span class="panel-title">全部商品 (<span class="panel-count">20000</span>)</span>
+                        </div>
+                        <div class="panel-search">
+                            <input type="text" class="panel-search-input" placeholder="输入商品名称/编码">
+                        </div>
+                        <div class="panel-list" id="available-products">
+                            <div class="panel-item" onclick="toggleProduct(this)">
+                                <input type="checkbox" class="panel-item-checkbox checkbox">
+                                <div class="panel-item-info">
+                                    <div class="panel-item-name">卫龙辣条辣条辣条辣条</div>
+                                    <div class="panel-item-meta">编码：9808989 | 规格：500g | 零售单位：箱</div>
+                                </div>
+                            </div>
+                            <div class="panel-item" onclick="toggleProduct(this)">
+                                <input type="checkbox" class="panel-item-checkbox checkbox">
+                                <div class="panel-item-info">
+                                    <div class="panel-item-name">卫龙辣条辣条辣条辣条</div>
+                                    <div class="panel-item-meta">编码：9808989 | 规格：500g | 零售单位：箱</div>
+                                </div>
+                            </div>
+                            <div class="panel-item" onclick="toggleProduct(this)">
+                                <input type="checkbox" class="panel-item-checkbox checkbox">
+                                <div class="panel-item-info">
+                                    <div class="panel-item-name">卫龙辣条辣条辣条辣条</div>
+                                    <div class="panel-item-meta">编码：9808989 | 规格：500g | 零售单位：箱</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 右侧面板 - 已选商品 -->
+                    <div class="panel">
+                        <div class="panel-header">
+                            <span class="panel-title">已选商品 (<span class="panel-count" id="selected-count">0</span>)</span>
+                            <span class="panel-clear" onclick="clearSelected()">清空</span>
+                        </div>
+                        <div class="panel-search">
+                            <input type="text" class="panel-search-input" placeholder="输入商品名称/编码">
+                        </div>
+                        <div class="panel-list" id="selected-products">
+                            <!-- 已选商品将动态添加到这里 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="closeModal('add-product')">取消</button>
+                <button class="btn btn-primary" onclick="confirmAddProducts()">确定</button>
+            </div>
+        </div>
+    </div>
