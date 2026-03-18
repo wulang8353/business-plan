@@ -402,7 +402,8 @@
         .form-row {
             display: flex;
             gap: 24px;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+            align-items: flex-start;
         }
 
         .form-row:last-child {
@@ -413,17 +414,25 @@
             flex: 1;
             display: flex;
             align-items: center;
+            min-width: 0;
+            height: 32px;
         }
 
         .form-item.label-top {
             flex-direction: column;
             align-items: flex-start;
+            height: auto;
         }
 
         .form-label {
             color: #666;
-            min-width: 80px;
-            margin-right: 8px;
+            width: 90px;
+            min-width: 90px;
+            margin-right: 12px;
+            text-align: right;
+            font-size: 14px;
+            line-height: 32px;
+            flex-shrink: 0;
         }
 
         .form-label.required::before {
@@ -441,6 +450,8 @@
             border-radius: 4px;
             font-size: 14px;
             transition: all 0.3s;
+            min-width: 0;
+            box-sizing: border-box;
         }
 
         .form-input:focus,
@@ -454,11 +465,18 @@
             color: #bfbfbf;
         }
 
+        .form-input:disabled {
+            background: #f5f5f5;
+            color: #999;
+            cursor: not-allowed;
+        }
+
         .date-range {
             display: flex;
             align-items: center;
             gap: 8px;
             flex: 1;
+            height: 32px;
         }
 
         .date-input {
@@ -467,6 +485,33 @@
             padding: 0 12px;
             border: 1px solid #d9d9d9;
             border-radius: 4px;
+            font-size: 14px;
+            min-width: 0;
+            box-sizing: border-box;
+        }
+
+        /* 响应式布局 */
+        @media (max-width: 1200px) {
+            .form-row {
+                flex-wrap: wrap;
+            }
+
+            .form-item {
+                flex: 1 1 calc(50% - 12px);
+                min-width: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-item {
+                flex: 1 1 100%;
+                min-width: auto;
+            }
+
+            .form-label {
+                width: 80px;
+                min-width: 80px;
+            }
         }
 
         /* ==================== 项目商品清单区域 ==================== */
@@ -1049,7 +1094,208 @@
             display: flex;
             gap: 0;
             height: 100%;
-            max-height: calc(85vh - 60px);
+            max-height: calc(100vh - 140px);
+        }
+
+        /* ==================== 预警详情抽屉样式 ==================== */
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .drawer-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .drawer-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 70%;
+            min-width: 600px;
+            max-width: 900px;
+            height: 100vh;
+            background: #fff;
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            z-index: 1001;
+        }
+
+        .drawer-overlay.active .drawer-container {
+            transform: translateX(0);
+        }
+
+        .drawer-header {
+            flex-shrink: 0;
+            padding: 20px 24px;
+            background: linear-gradient(135deg, #fff7e6 0%, #fff 100%);
+            border-bottom: 1px solid #ffd591;
+        }
+
+        .drawer-header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .drawer-title-section {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .drawer-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin: 0 0 12px 0;
+            line-height: 1.4;
+        }
+
+        .drawer-subtitle {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .drawer-close {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+            flex-shrink: 0;
+        }
+
+        .drawer-close:hover {
+            background: #ff4d4f;
+            transform: rotate(90deg);
+        }
+
+        .drawer-close:hover .close-icon {
+            color: #fff;
+        }
+
+        .close-icon {
+            font-size: 24px;
+            color: #666;
+            line-height: 1;
+            transition: color 0.25s ease;
+        }
+
+        .drawer-body {
+            flex: 1;
+            overflow: hidden;
+            padding: 0;
+            background: #f5f5f5;
+        }
+
+        .drawer-body .warning-layout {
+            max-height: calc(100vh - 100px);
+        }
+
+        .drawer-body .warning-sidebar {
+            background: #fff;
+            border-right: 1px solid #e8e8e8;
+            padding: 16px;
+        }
+
+        .drawer-body .warning-content {
+            background: #fff;
+            padding: 20px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #d9d9d9 #f5f5f5;
+        }
+
+        .drawer-body .warning-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .drawer-body .warning-content::-webkit-scrollbar-track {
+            background: #f5f5f5;
+            border-radius: 4px;
+        }
+
+        .drawer-body .warning-content::-webkit-scrollbar-thumb {
+            background: #d9d9d9;
+            border-radius: 4px;
+        }
+
+        .drawer-body .warning-content::-webkit-scrollbar-thumb:hover {
+            background: #bfbfbf;
+        }
+
+        /* 抽屉内容文字优化 */
+        .drawer-body .warning-section-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 16px;
+            padding-left: 12px;
+            border-left: 4px solid #ff7a45;
+            line-height: 1.5;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .drawer-body .data-table {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .drawer-body .data-table th,
+        .drawer-body .data-table td {
+            padding: 12px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 300px;
+        }
+
+        .drawer-body .status-tag {
+            white-space: nowrap;
+            font-size: 12px;
+            padding: 4px 10px;
+        }
+
+        /* 抽屉打开时禁止页面滚动 */
+        body.drawer-open {
+            overflow: hidden;
+            padding-right: 17px;
+        }
+
+        /* 响应式适配 */
+        @media screen and (max-width: 768px) {
+            .drawer-container {
+                width: 100%;
+                min-width: auto;
+                max-width: none;
+            }
+        }
+
+        @media screen and (min-width: 1400px) {
+            .drawer-container {
+                width: 60%;
+                max-width: 1000px;
+            }
         }
 
         .warning-sidebar {
@@ -2237,49 +2483,521 @@
             color: #52c41a;
         }
 
-        /* 流程导航标签 */
-        .supply-flow-tabs {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 20px;
-            padding: 4px;
-            background: #f5f5f5;
-            border-radius: 8px;
+        /* 概览子项 */
+        .supply-overview-item.has-subitems {
+            padding: 12px 16px 8px;
         }
 
-        .supply-flow-tab {
+        .supply-overview-subitem {
             display: flex;
             align-items: center;
             gap: 6px;
-            padding: 10px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s;
+            margin-top: 6px;
+            padding-top: 6px;
+            border-top: 1px dashed #e8e8e8;
+            font-size: 12px;
+        }
+
+        /* ==================== 供应链数据表格样式 ==================== */
+        .supply-data-table-section {
+            background: #fff;
+            border-radius: 8px;
+            border: 1px solid #e8e8e8;
+            overflow: hidden;
+        }
+
+        /* 工具栏 */
+        .supply-table-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background: #fafafa;
+            border-bottom: 1px solid #e8e8e8;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .dimension-switcher {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .dimension-label {
             font-size: 14px;
             color: #666;
-        }
-
-        .supply-flow-tab:hover {
-            background: #e8e8e8;
-        }
-
-        .supply-flow-tab.active {
-            background: #fff;
-            color: #ff7a45;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             font-weight: 500;
         }
 
-        .supply-flow-tab .tab-icon {
-            font-size: 16px;
+        .dimension-tabs {
+            display: flex;
+            gap: 4px;
+            background: #e8e8e8;
+            padding: 4px;
+            border-radius: 6px;
         }
 
-        .supply-flow-tab .tab-badge {
+        .dimension-tab {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .dimension-tab:hover {
+            color: #333;
+        }
+
+        .dimension-tab.active {
+            background: #fff;
+            color: #1890ff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: 500;
+        }
+
+        .dimension-tab .tab-icon {
+            font-size: 14px;
+        }
+
+        .current-dimension-badge {
+            padding: 4px 12px;
+            background: #e6f7ff;
+            color: #1890ff;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-left: 8px;
+        }
+
+        /* 筛选栏 */
+        .supply-table-filters {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            border-bottom: 1px solid #e8e8e8;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .filter-input,
+        .filter-select {
+            height: 32px;
+            padding: 0 12px;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+            font-size: 13px;
+            min-width: 180px;
+            transition: all 0.3s;
+        }
+
+        .filter-input:focus,
+        .filter-select:focus {
+            outline: none;
+            border-color: #1890ff;
+            box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+        }
+
+        .btn-text {
+            background: transparent;
+            border: none;
+            color: #1890ff;
+            cursor: pointer;
+            font-size: 13px;
+            padding: 6px 12px;
+        }
+
+        .btn-text:hover {
+            color: #40a9ff;
+        }
+
+        /* 表格容器 */
+        .supply-table-container {
+            max-height: 600px;
+            overflow: auto;
+            position: relative;
+        }
+
+        .supply-data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .supply-data-table thead {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: #fafafa;
+        }
+
+        .supply-data-table th {
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+            border-bottom: 1px solid #e8e8e8;
+            background: #fafafa;
+            white-space: nowrap;
+            user-select: none;
+        }
+
+        .supply-data-table th.sortable {
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .supply-data-table th.sortable:hover {
+            background: #f0f0f0;
+        }
+
+        .supply-data-table th.number {
+            text-align: right;
+        }
+
+        .supply-data-table th .sort-icon {
+            margin-left: 4px;
+            font-size: 11px;
+            opacity: 0.5;
+        }
+
+        .supply-data-table th.sort-asc .sort-icon {
+            opacity: 1;
+            color: #1890ff;
+        }
+
+        .supply-data-table th.sort-desc .sort-icon {
+            opacity: 1;
+            color: #1890ff;
+            transform: rotate(180deg);
+        }
+
+        .supply-data-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f0f0f0;
+            color: #333;
+        }
+
+        .supply-data-table td.number {
+            text-align: right;
+            font-family: 'SF Mono', Monaco, monospace;
+        }
+
+        .supply-data-table tbody tr:hover {
+            background: #fafafa;
+        }
+
+        .supply-data-table tbody tr {
+            transition: background 0.2s;
+        }
+
+        /* 维度标识 */
+        .dimension-tag {
+            display: inline-block;
             padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .dimension-tag.warehouse {
+            background: #e6f7ff;
+            color: #1890ff;
+        }
+
+        .dimension-tag.city {
+            background: #f6ffed;
+            color: #52c41a;
+        }
+
+        .dimension-tag.province {
+            background: #fff7e6;
+            color: #fa8c16;
+        }
+
+        /* 分页器 */
+        .supply-table-pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background: #fafafa;
+            border-top: 1px solid #e8e8e8;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .pagination-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .pagination-total {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .pagination-total strong {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .page-size-selector {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .page-size-select {
+            height: 28px;
+            padding: 0 8px;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .pagination-center {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .pagination-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* 响应式 */
+        @media (max-width: 1200px) {
+            .supply-table-toolbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .supply-table-pagination {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pagination-left,
+            .pagination-right {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        .supply-overview-subitem .subitem-label {
+            color: #999;
+        }
+
+        .supply-overview-subitem .subitem-value {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .supply-overview-subitem .subitem-value .unit {
+            font-size: 11px;
+            font-weight: normal;
+            color: #999;
+        }
+
+        /* 数据维度平铺展示模块 */
+        .supply-dimension-section {
+            background: #fff;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .dimension-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background: #fafafa;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .dimension-title {
+            font-size: 15px;
+            font-weight: 500;
+            color: #333;
+            margin: 0;
+        }
+
+        .dimension-tabs {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dimension-tab {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 12px;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .dimension-tab:hover {
+            border-color: #ff7a45;
+            color: #ff7a45;
+        }
+
+        .dimension-tab.active {
             background: #ff7a45;
+            border-color: #ff7a45;
             color: #fff;
+        }
+
+        .dimension-content {
+            padding: 16px 20px;
+        }
+
+        .dimension-table-wrapper {
+            overflow-x: auto;
+        }
+
+        .dimension-table {
+            width: 100%;
+            min-width: 600px;
+        }
+
+        .dimension-table th {
+            background: #f5f5f5;
+            font-weight: 500;
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .dimension-table td {
+            padding: 12px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .dimension-table .expandable-row {
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .dimension-table .expandable-row:hover {
+            background: #fafafa;
+        }
+
+        .dimension-table .expand-icon {
+            display: inline-block;
+            width: 16px;
+            margin-right: 4px;
+            transition: transform 0.2s;
+        }
+
+        .dimension-table .expandable-row.expanded .expand-icon {
+            transform: rotate(90deg);
+        }
+
+        .dimension-table .detail-row {
+            background: #fafafa;
+        }
+
+        .dimension-table .detail-row td {
+            padding: 0;
+            border-bottom: none;
+        }
+
+        .dimension-table .detail-content {
+            padding: 12px 20px;
+        }
+
+        .dimension-table .detail-subtitle {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #e8e8e8;
+        }
+
+        .dimension-table .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .dimension-table .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .dimension-table .detail-name {
+            width: 120px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .dimension-table .detail-value {
+            flex: 1;
+            color: #666;
+        }
+
+        .dimension-table .mini-badge {
+            display: inline-block;
+            padding: 2px 8px;
             border-radius: 10px;
             font-size: 11px;
+            margin-right: 4px;
+        }
+
+        .dimension-table .mini-badge.normal {
+            background: #f6ffed;
+            color: #52c41a;
+            border: 1px solid #b7eb8f;
+        }
+
+        .dimension-table .mini-badge.abnormal {
+            background: #fff2f0;
+            color: #ff4d4f;
+            border: 1px solid #ffccc7;
+        }
+
+        .dimension-table .warning-text {
+            color: #ff4d4f;
+            font-weight: 500;
+        }
+
+        /* 流程导航标签 - 已废弃，保留样式兼容性 */
+        .supply-flow-tabs {
+            display: none;
+        }
+
+        .supply-flow-tab {
+            display: none;
         }
 
         /* 模块样式 */
@@ -2721,6 +3439,8 @@
             border: 1px solid #ffd591;
             border-radius: 8px;
             margin-bottom: 16px;
+            gap: 16px;
+            flex-wrap: wrap;
         }
 
         .supply-product-info {
@@ -2758,10 +3478,19 @@
             gap: 16px;
             font-size: 13px;
             color: #666;
+            flex-wrap: wrap;
+            align-items: flex-start;
         }
 
         .supply-product-meta span {
             white-space: nowrap;
+        }
+
+        .supply-product-meta .supply-product-spec {
+            white-space: normal;
+            word-break: break-all;
+            line-height: 1.5;
+            max-width: 200px;
         }
 
         .supply-product-code {
@@ -2769,6 +3498,156 @@
             background: #f5f5f5;
             padding: 2px 8px;
             border-radius: 4px;
+        }
+
+        /* 单品库存信息 */
+        .supply-product-inventory {
+            display: flex;
+            gap: 24px;
+            padding: 0 20px;
+            border-left: 1px solid #e8e8e8;
+            border-right: 1px solid #e8e8e8;
+            margin: 0;
+            flex-shrink: 0;
+        }
+
+        .inventory-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .inventory-label {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .inventory-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .inventory-value .unit {
+            font-size: 12px;
+            font-weight: normal;
+            color: #999;
+        }
+
+        /* 单品头部响应式布局 */
+        @media (max-width: 992px) {
+            .supply-product-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .supply-product-inventory {
+                border-left: none;
+                border-right: none;
+                border-top: 1px solid #e8e8e8;
+                border-bottom: 1px solid #e8e8e8;
+                padding: 12px 0;
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .supply-product-status {
+                align-self: flex-end;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .supply-product-meta {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .supply-product-meta .supply-product-spec {
+                max-width: 100%;
+            }
+
+            .supply-product-inventory {
+                flex-wrap: wrap;
+                gap: 16px;
+            }
+        }
+
+        /* 仓库状态统计 */
+        .warehouse-status-summary {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 20px;
+            background: #fafafa;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #e8e8e8;
+        }
+
+        .warehouse-status-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: #333;
+            white-space: nowrap;
+        }
+
+        .warehouse-status-list {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .warehouse-status-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+        }
+
+        .warehouse-status-item .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .warehouse-status-item.normal .status-dot {
+            background: #52c41a;
+        }
+
+        .warehouse-status-item.shortage .status-dot {
+            background: #ff4d4f;
+        }
+
+        .warehouse-status-item.overstock .status-dot {
+            background: #faad14;
+        }
+
+        .warehouse-status-item .status-label {
+            color: #666;
+        }
+
+        .warehouse-status-item .status-count {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .warehouse-status-item.normal .status-count {
+            color: #52c41a;
+        }
+
+        .warehouse-status-item.shortage .status-count {
+            color: #ff4d4f;
+        }
+
+        .warehouse-status-item.overstock .status-count {
+            color: #faad14;
+        }
+
+        .warehouse-status-item .status-hint {
+            font-size: 11px;
+            color: #999;
         }
 
         /* 订单汇总 */
@@ -3393,6 +4272,149 @@
             white-space: nowrap;
         }
 
+        /* ==================== 分页器样式 ==================== */
+        .pagination-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            background: #fafafa;
+            border-top: 1px solid #e8e8e8;
+            border-radius: 0 0 8px 8px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .pagination-info {
+            font-size: 13px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pagination-info strong {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .pagination-divider {
+            color: #d9d9d9;
+        }
+
+        .pagination-controls {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .pagination-btn {
+            min-width: 32px;
+            height: 32px;
+            padding: 0 8px;
+            border: 1px solid #d9d9d9;
+            background: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .pagination-btn:hover:not(:disabled) {
+            border-color: #1890ff;
+            color: #1890ff;
+        }
+
+        .pagination-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: #f5f5f5;
+        }
+
+        .pagination-btn.active {
+            background: #1890ff;
+            border-color: #1890ff;
+            color: #fff;
+        }
+
+        .pagination-icon {
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        .pagination-pages {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .pagination-ellipsis {
+            padding: 0 4px;
+            color: #999;
+            font-size: 13px;
+        }
+
+        .pagination-jump {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .pagination-input {
+            width: 50px;
+            height: 32px;
+            padding: 0 8px;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .pagination-input:focus {
+            outline: none;
+            border-color: #1890ff;
+        }
+
+        .pagination-jump-btn {
+            min-width: 40px;
+            background: #1890ff;
+            border-color: #1890ff;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .pagination-jump-btn:hover {
+            background: #40a9ff;
+            border-color: #40a9ff;
+        }
+
+        /* 分页器隐藏状态（数据不足10条时） */
+        .pagination-container.hidden {
+            display: none;
+        }
+
+        /* 响应式分页器 */
+        @media (max-width: 768px) {
+            .pagination-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .pagination-controls {
+                justify-content: center;
+            }
+
+            .pagination-jump {
+                justify-content: center;
+            }
+        }
+
         /* 校验状态提示条 */
         .validation-notice-bar {
             background: #e6f7ff;
@@ -3522,8 +4544,6 @@
                     <label class="form-label">时间范围</label>
                     <div class="date-range">
                         <input type="datetime-local" class="date-input" value="2021-11-22T06:12:21">
-                        <span>至</span>
-                        <input type="datetime-local" class="date-input" value="2021-11-30T06:12:21">
                     </div>
                 </div>
             </div>
@@ -3553,6 +4573,7 @@
 
         <!-- 项目商品清单区域 -->
         <section class="product-section" id="product-section">
+             <h2 class="section-title">项目商品清单</h2>
             <div class="section-header">
                 <div class="section-actions">
                     <button class="btn btn-primary" onclick="openModal('add-product')">添加商品</button>
@@ -3651,6 +4672,7 @@
                             <td>脆香米</td>
                             <td class="table-actions">
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -3681,6 +4703,7 @@
                             <td>德芙</td>
                             <td class="table-actions">
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -3711,6 +4734,7 @@
                             <td>士力架</td>
                             <td class="table-actions">
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -3741,6 +4765,7 @@
                             <td>德芙</td>
                             <td class="table-actions">
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -3771,6 +4796,7 @@
                             <td>德芙</td>
                             <td class="table-actions">
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -3801,6 +4827,7 @@
                             <td>M&M's</td>
                             <td class="table-actions">
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -3831,6 +4858,7 @@
                             <td>彩虹糖</td>
                             <td class="table-actions">
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -3861,11 +4889,41 @@
                             <td>绿箭</td>
                             <td class="table-actions">
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                <!-- 分页器 -->
+                <div class="pagination-container" id="added-products-pagination">
+                    <div class="pagination-info">
+                        <span>共 <strong id="added-total-count">0</strong> 条记录</span>
+                        <span class="pagination-divider">|</span>
+                        <span>第 <strong id="added-current-page">1</strong> / <strong id="added-total-pages">1</strong> 页</span>
+                    </div>
+                    <div class="pagination-controls">
+                        <button class="pagination-btn" id="added-first-btn" onclick="goToPage('added', 1)" title="首页">
+                            <span class="pagination-icon">«</span>
+                        </button>
+                        <button class="pagination-btn" id="added-prev-btn" onclick="goToPage('added', 'prev')" title="上一页">
+                            <span class="pagination-icon">‹</span>
+                        </button>
+                        <div class="pagination-pages" id="added-page-numbers"></div>
+                        <button class="pagination-btn" id="added-next-btn" onclick="goToPage('added', 'next')" title="下一页">
+                            <span class="pagination-icon">›</span>
+                        </button>
+                        <button class="pagination-btn" id="added-last-btn" onclick="goToPage('added', 'last')" title="末页">
+                            <span class="pagination-icon">»</span>
+                        </button>
+                    </div>
+                    <div class="pagination-jump">
+                        <span>跳至</span>
+                        <input type="number" class="pagination-input" id="added-jump-input" min="1" placeholder="页码">
+                        <span>页</span>
+                        <button class="pagination-btn pagination-jump-btn" onclick="jumpToPage('added')">GO</button>
+                    </div>
+                </div>
             </div>
 
             <!-- 异常商品表格 -->
@@ -3928,7 +4986,7 @@
                             </td>
                             <td class="table-actions">
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
-                                <span class="action-link" onclick="openModal('warning-detail')">预警详情</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -3966,7 +5024,7 @@
                             </td>
                             <td class="table-actions">
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
-                                <span class="action-link" onclick="openModal('warning-detail')">预警详情</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -4004,7 +5062,7 @@
                             </td>
                             <td class="table-actions">
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
-                                <span class="action-link" onclick="openModal('warning-detail')">预警详情</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -4042,7 +5100,7 @@
                             </td>
                             <td class="table-actions">
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
-                                <span class="action-link" onclick="openModal('warning-detail')">预警详情</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -4080,7 +5138,7 @@
                             </td>
                             <td class="table-actions">
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
-                                <span class="action-link" onclick="openModal('warning-detail')">预警详情</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -4118,7 +5176,7 @@
                             </td>
                             <td class="table-actions">
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
-                                <span class="action-link" onclick="openModal('warning-detail')">预警详情</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -4156,12 +5214,41 @@
                             </td>
                             <td class="table-actions">
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
-                                <span class="action-link" onclick="openModal('warning-detail')">预警详情</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                <!-- 分页器 -->
+                <div class="pagination-container" id="abnormal-products-pagination">
+                    <div class="pagination-info">
+                        <span>共 <strong id="abnormal-total-count">0</strong> 条记录</span>
+                        <span class="pagination-divider">|</span>
+                        <span>第 <strong id="abnormal-current-page">1</strong> / <strong id="abnormal-total-pages">1</strong> 页</span>
+                    </div>
+                    <div class="pagination-controls">
+                        <button class="pagination-btn" id="abnormal-first-btn" onclick="goToPage('abnormal', 1)" title="首页">
+                            <span class="pagination-icon">«</span>
+                        </button>
+                        <button class="pagination-btn" id="abnormal-prev-btn" onclick="goToPage('abnormal', 'prev')" title="上一页">
+                            <span class="pagination-icon">‹</span>
+                        </button>
+                        <div class="pagination-pages" id="abnormal-page-numbers"></div>
+                        <button class="pagination-btn" id="abnormal-next-btn" onclick="goToPage('abnormal', 'next')" title="下一页">
+                            <span class="pagination-icon">›</span>
+                        </button>
+                        <button class="pagination-btn" id="abnormal-last-btn" onclick="goToPage('abnormal', 'last')" title="末页">
+                            <span class="pagination-icon">»</span>
+                        </button>
+                    </div>
+                    <div class="pagination-jump">
+                        <span>跳至</span>
+                        <input type="number" class="pagination-input" id="abnormal-jump-input" min="1" placeholder="页码">
+                        <span>页</span>
+                        <button class="pagination-btn pagination-jump-btn" onclick="jumpToPage('abnormal')">GO</button>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -4779,18 +5866,24 @@
         </div>
     </div>
 
-    <!-- ==================== 预警详情弹窗 ==================== -->
-    <div class="modal-overlay" id="modal-warning-detail">
-        <div class="modal-container warning-modal">
-            <div class="modal-header">
-                <div class="warning-header" style="margin: 0; flex: 1;">
-                    <h3 class="modal-title">预警详情分析面板</h3>
-                    <span class="warning-tag">S级核心商品</span>
-                    <span class="warning-code">编码：100893 | 德芙丝滑牛奶巧克力43g</span>
+    <!-- ==================== 详情抽屉 ==================== -->
+    <div class="drawer-overlay" id="drawer-warning-detail" onclick="closeWarningDrawer(event)">
+        <div class="drawer-container" onclick="event.stopPropagation()">
+            <div class="drawer-header">
+                <div class="drawer-header-content">
+                    <div class="drawer-title-section">
+                        <h3 class="drawer-title">详情分析面板</h3>
+                        <div class="drawer-subtitle">
+                            <span class="warning-tag">S级核心商品</span>
+                            <span class="warning-code">编码：100893 | 德芙丝滑牛奶巧克力43g</span>
+                        </div>
+                    </div>
+                    <button class="drawer-close" onclick="closeWarningDrawer()" aria-label="关闭抽屉">
+                        <span class="close-icon">&times;</span>
+                    </button>
                 </div>
-                <button class="modal-close" onclick="closeModal('warning-detail')">&times;</button>
             </div>
-            <div class="modal-body">
+            <div class="drawer-body">
                 <div class="warning-layout">
                     <!-- 左侧菜单 -->
                     <div class="warning-sidebar">
@@ -5123,8 +6216,42 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="supply-product-inventory">
+                                    <div class="inventory-item">
+                                        <span class="inventory-label">当前库存</span>
+                                        <span class="inventory-value" id="supply-current-stock">8,500 <span class="unit">件</span></span>
+                                    </div>
+                                    <div class="inventory-item">
+                                        <span class="inventory-label">周转天数</span>
+                                        <span class="inventory-value" id="supply-turnover-days">12.5 <span class="unit">天</span></span>
+                                    </div>
+                                </div>
                                 <div class="supply-product-status">
                                     <span class="status-tag normal" id="supply-product-status">供应正常</span>
+                                </div>
+                            </div>
+
+                            <!-- 仓库状态统计 -->
+                            <div class="warehouse-status-summary">
+                                <div class="warehouse-status-title">仓库状态分布</div>
+                                <div class="warehouse-status-list">
+                                    <div class="warehouse-status-item normal">
+                                        <span class="status-dot"></span>
+                                        <span class="status-label">正常仓</span>
+                                        <span class="status-count" id="warehouse-normal-count">3</span>
+                                    </div>
+                                    <div class="warehouse-status-item shortage">
+                                        <span class="status-dot"></span>
+                                        <span class="status-label">缺货仓</span>
+                                        <span class="status-count" id="warehouse-shortage-count">1</span>
+                                        <span class="status-hint">(周转&lt;7天)</span>
+                                    </div>
+                                    <div class="warehouse-status-item overstock">
+                                        <span class="status-dot"></span>
+                                        <span class="status-label">高库存仓</span>
+                                        <span class="status-count" id="warehouse-overstock-count">0</span>
+                                        <span class="status-hint">(周转&gt;30天)</span>
+                                    </div>
                                 </div>
                             </div>
 
@@ -5133,697 +6260,160 @@
                                 <div class="supply-overview-item">
                                     <div class="supply-overview-icon">🎯</div>
                                     <div class="supply-overview-info">
-                                        <div class="supply-overview-label">目标销量</div>
+                                        <div class="supply-overview-label">目标销量（协同后）</div>
                                         <div class="supply-overview-value" id="supply-target-qty">20,000 <span class="unit">件</span></div>
                                     </div>
                                 </div>
-                                <div class="supply-overview-item">
+                                <div class="supply-overview-item has-subitems">
                                     <div class="supply-overview-icon">📝</div>
                                     <div class="supply-overview-info">
                                         <div class="supply-overview-label">采购下单</div>
                                         <div class="supply-overview-value highlight" id="supply-order-qty">18,500 <span class="unit">件</span></div>
+                                        <div class="supply-overview-subitem">
+                                            <span class="subitem-label">初始库存</span>
+                                            <span class="subitem-value" id="supply-initial-stock">2,000 <span class="unit">件</span></span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="supply-overview-item">
+                                <div class="supply-overview-item has-subitems">
                                     <div class="supply-overview-icon">🏭</div>
                                     <div class="supply-overview-info">
                                         <div class="supply-overview-label">实际到仓</div>
                                         <div class="supply-overview-value" id="supply-warehouse-qty">15,200 <span class="unit">件</span></div>
+                                        <div class="supply-overview-subitem">
+                                            <span class="subitem-label">在途</span>
+                                            <span class="subitem-value" id="supply-in-transit">3,300 <span class="unit">件</span></span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="supply-overview-item">
+                                <div class="supply-overview-item has-subitems">
                                     <div class="supply-overview-icon">🏪</div>
                                     <div class="supply-overview-info">
-                                        <div class="supply-overview-label">门店配送</div>
+                                        <div class="supply-overview-label">仓库出库</div>
                                         <div class="supply-overview-value" id="supply-delivery-qty">14,800 <span class="unit">件</span></div>
+                                        <div class="supply-overview-subitem">
+                                            <span class="subitem-label">近7天均</span>
+                                            <span class="subitem-value" id="supply-delivery-avg">2,114 <span class="unit">件/天</span></span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="supply-overview-item">
+                                <div class="supply-overview-item has-subitems">
                                     <div class="supply-overview-icon">💰</div>
                                     <div class="supply-overview-info">
                                         <div class="supply-overview-label">门店销售</div>
                                         <div class="supply-overview-value success" id="supply-sales-qty">12,350 <span class="unit">件</span></div>
+                                        <div class="supply-overview-subitem">
+                                            <span class="subitem-label">近7天店均</span>
+                                            <span class="subitem-value" id="supply-sales-avg">79.2 <span class="unit">件/店</span></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- 流程导航标签 -->
-                            <div class="supply-flow-tabs">
-                                <div class="supply-flow-tab active" data-supply-tab="order" onclick="switchSupplyTab('order')">
-                                    <span class="tab-icon">📋</span>
-                                    <span class="tab-text">下单环节</span>
-                                </div>
-                                <div class="supply-flow-tab" data-supply-tab="warehouse" onclick="switchSupplyTab('warehouse')">
-                                    <span class="tab-icon">🏭</span>
-                                    <span class="tab-text">到仓环节</span>
-                                </div>
-                                <div class="supply-flow-tab" data-supply-tab="store" onclick="switchSupplyTab('store')">
-                                    <span class="tab-icon">🏪</span>
-                                    <span class="tab-text">配送到店</span>
-                                </div>
-                                <div class="supply-flow-tab" data-supply-tab="timeline" onclick="switchSupplyTab('timeline')">
-                                    <span class="tab-icon">📈</span>
-                                    <span class="tab-text">进度时间轴</span>
-                                </div>
-                            </div>
-
-                            <!-- 下单环节模块 - 单品维度 -->
-                            <div class="supply-module" id="supply-order-module">
-                                <div class="supply-module-header">
-                                    <h3 class="supply-module-title">📋 采购订单跟踪</h3>
-                                    <div class="supply-module-actions">
-                                        <div class="filter-group">
-                                            <input type="date" class="filter-input" id="order-filter-start">
-                                            <span class="filter-separator">至</span>
-                                            <input type="date" class="filter-input" id="order-filter-end">
-                                            <button class="btn btn-primary" onclick="filterOrderData()">筛选</button>
-                                        </div>
-                                        <button class="btn btn-default" onclick="exportOrderData()">
-                                            <span>📥</span> 导出Excel
+                            <!-- 数据列表模块 -->
+                            <div class="supply-data-table-section">
+                                <!-- 维度切换和工具栏 -->
+                                <div class="supply-table-toolbar">
+                                    <div class="dimension-switcher">
+                                        <span class="dimension-label">数据维度：</span>
+                                        <span class="current-dimension-badge" id="current-dimension-badge">仓维度视图</span>
+                                    </div>
+                                    <div class="table-actions">
+                                        <button class="btn btn-default" onclick="exportSupplyTableData()">
+                                            <span class="btn-icon">📥</span>
+                                            导出Excel
                                         </button>
                                     </div>
                                 </div>
-                                <div class="supply-table-wrapper">
-                                    <table class="data-table supply-order-table">
+
+                                <!-- 筛选栏 -->
+                                <div class="supply-table-filters">
+                                    <div class="filter-group">
+                                        <input type="text" class="filter-input" id="filter-name" placeholder="搜索仓名称..." oninput="applySupplyTableFilters()">
+                                    </div>
+                                    <button class="btn btn-text" onclick="resetSupplyTableFilters()">重置筛选</button>
+                                </div>
+
+                                <!-- 数据表格 -->
+                                <div class="supply-table-container">
+                                    <table class="supply-data-table" id="supply-data-table">
                                         <thead>
                                             <tr>
-                                                <th>订单编号</th>
-                                                <th>下单日期</th>
-                                                <th>供应商</th>
-                                                <th>目标量(件)</th>
-                                                <th>采购量(件)</th>
-                                                <th>满足状态</th>
-                                                <th>未满足原因</th>
-                                                <th>预计交付</th>
-                                                <th>操作</th>
+                                                <th class="sortable" data-field="name" onclick="sortSupplyTable('name')">
+                                                    <span>仓名称</span>
+                                                    <span class="sort-icon">↕️</span>
+                                                </th>
+                                                <th class="sortable" data-field="city" onclick="sortSupplyTable('city')">
+                                                    <span>所属城市</span>
+                                                    <span class="sort-icon">↕️</span>
+                                                </th>
+                                                <th class="sortable" data-field="province" onclick="sortSupplyTable('province')">
+                                                    <span>所属省份</span>
+                                                    <span class="sort-icon">↕️</span>
+                                                </th>
+                                                <th class="sortable number" data-field="currentStock" onclick="sortSupplyTable('currentStock')">
+                                                    <span>当前库存</span>
+                                                    <span class="sort-icon">↕️</span>
+                                                </th>
+                                                <th class="sortable number" data-field="orderQty" onclick="sortSupplyTable('orderQty')">
+                                                    <span>采购下单数</span>
+                                                    <span class="sort-icon">↕️</span>
+                                                </th>
+                                                <th class="sortable number" data-field="warehouseQty" onclick="sortSupplyTable('warehouseQty')">
+                                                    <span>实际到仓</span>
+                                                    <span class="sort-icon">↕️</span>
+                                                </th>
+                                                <th class="sortable number" data-field="inTransit" onclick="sortSupplyTable('inTransit')">
+                                                    <span>在途数量</span>
+                                                    <span class="sort-icon">↕️</span>
+                                                </th>
+                                                <th class="sortable number" data-field="delivery7d" onclick="sortSupplyTable('delivery7d')">
+                                                    <span>近7天出库件数</span>
+                                                    <span class="sort-icon">↕️</span>
+                                                </th>
+                                                <th class="sortable number" data-field="salesAvg7d" onclick="sortSupplyTable('salesAvg7d')">
+                                                    <span>近7天店均销售</span>
+                                                    <span class="sort-icon">↕️</span>
+                                                </th>
                                             </tr>
                                         </thead>
-                                        <tbody id="supply-order-tbody">
-                                            <tr>
-                                                <td>PO20260301001</td>
-                                                <td>2026-03-01</td>
-                                                <td>玛氏食品供应商A</td>
-                                                <td>10,000</td>
-                                                <td>10,000</td>
-                                                <td><span class="status-tag normal">满足</span></td>
-                                                <td>--</td>
-                                                <td>2026-03-10</td>
-                                                <td><span class="action-link" onclick="viewOrderDetail('PO20260301001')">详情</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>PO20260305002</td>
-                                                <td>2026-03-05</td>
-                                                <td>玛氏食品供应商A</td>
-                                                <td>5,000</td>
-                                                <td>4,500</td>
-                                                <td><span class="status-tag partial">部分满足</span></td>
-                                                <td>产能限制</td>
-                                                <td>2026-03-15</td>
-                                                <td><span class="action-link" onclick="viewOrderDetail('PO20260305002')">详情</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>PO20260308003</td>
-                                                <td>2026-03-08</td>
-                                                <td>玛氏食品供应商B</td>
-                                                <td>5,000</td>
-                                                <td>4,000</td>
-                                                <td><span class="status-tag partial">部分满足</span></td>
-                                                <td>原材料短缺</td>
-                                                <td>2026-03-18</td>
-                                                <td><span class="action-link" onclick="viewOrderDetail('PO20260308003')">详情</span></td>
-                                            </tr>
+                                        <tbody id="supply-data-tbody">
+                                            <!-- 数据由JavaScript动态生成 -->
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="supply-order-summary">
-                                    <div class="order-summary-item">
-                                        <span class="summary-label">累计下单：</span>
-                                        <span class="summary-value">3 笔</span>
-                                    </div>
-                                    <div class="order-summary-item">
-                                        <span class="summary-label">总目标量：</span>
-                                        <span class="summary-value">20,000 件</span>
-                                    </div>
-                                    <div class="order-summary-item">
-                                        <span class="summary-label">总采购量：</span>
-                                        <span class="summary-value highlight">18,500 件</span>
-                                    </div>
-                                    <div class="order-summary-item">
-                                        <span class="summary-label">缺口：</span>
-                                        <span class="summary-value warning">1,500 件</span>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <!-- 到仓环节模块 - 单品维度 -->
-                            <div class="supply-module" id="supply-warehouse-module" style="display: none;">
-                                <div class="supply-module-header">
-                                    <h3 class="supply-module-title">🏭 到仓进度跟踪</h3>
-                                    <div class="supply-module-actions">
-                                        <div class="filter-group">
-                                            <select class="filter-select" id="warehouse-filter">
-                                                <option value="">全部仓库</option>
-                                                <option value="shanghai">上海仓</option>
-                                                <option value="beijing">北京仓</option>
-                                                <option value="guangzhou">广州仓</option>
+                                <!-- 分页器 -->
+                                <div class="supply-table-pagination">
+                                    <div class="pagination-left">
+                                        <span class="pagination-total">共 <strong id="supply-total-count">0</strong> 条记录</span>
+                                        <div class="page-size-selector">
+                                            <span>每页显示</span>
+                                            <select class="page-size-select" id="supply-page-size" onchange="changeSupplyPageSize()">
+                                                <option value="10">10</option>
+                                                <option value="20" selected>20</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
                                             </select>
-                                            <button class="btn btn-primary" onclick="filterWarehouseData()">筛选</button>
-                                        </div>
-                                        <button class="btn btn-default" onclick="exportWarehouseData()">
-                                            <span>📥</span> 导出Excel
-                                        </button>
-                                    </div>
-                                </div>
-                                
-                                <!-- 单品生产进度 -->
-                                <div class="supply-submodule">
-                                    <h4 class="supply-submodule-title">生产进度</h4>
-                                    <div class="single-product-progress">
-                                        <div class="progress-summary">
-                                            <div class="progress-summary-item">
-                                                <span class="summary-label">预计生产总量：</span>
-                                                <span class="summary-value">18,500 件</span>
-                                            </div>
-                                            <div class="progress-summary-item">
-                                                <span class="summary-label">实际完成：</span>
-                                                <span class="summary-value highlight">15,200 件</span>
-                                            </div>
-                                            <div class="progress-summary-item">
-                                                <span class="summary-label">整体达成率：</span>
-                                                <span class="summary-value">
-                                                    <div class="progress-cell">
-                                                        <span class="progress-text">82.16%</span>
-                                                        <div class="mini-progress-bar">
-                                                            <div class="mini-progress-fill" style="width: 82.16%"></div>
-                                                        </div>
-                                                    </div>
-                                                </span>
-                                            </div>
+                                            <span>条</span>
                                         </div>
                                     </div>
-                                    <div class="supply-table-wrapper">
-                                        <table class="data-table supply-production-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>批次号</th>
-                                                    <th>供应商</th>
-                                                    <th>预计生产量(件)</th>
-                                                    <th>实际生产量(件)</th>
-                                                    <th>生产日期</th>
-                                                    <th>达成率</th>
-                                                    <th>状态</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>BATCH001</td>
-                                                    <td>玛氏食品供应商A</td>
-                                                    <td>10,000</td>
-                                                    <td>10,000</td>
-                                                    <td>2026-03-01 ~ 2026-03-05</td>
-                                                    <td>
-                                                        <div class="progress-cell">
-                                                            <span class="progress-text">100.00%</span>
-                                                            <div class="mini-progress-bar">
-                                                                <div class="mini-progress-fill complete" style="width: 100%"></div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td><span class="status-tag normal">已完成</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>BATCH002</td>
-                                                    <td>玛氏食品供应商A</td>
-                                                    <td>5,000</td>
-                                                    <td>3,200</td>
-                                                    <td>2026-03-06 ~ 2026-03-10</td>
-                                                    <td>
-                                                        <div class="progress-cell">
-                                                            <span class="progress-text">64.00%</span>
-                                                            <div class="mini-progress-bar">
-                                                                <div class="mini-progress-fill warning" style="width: 64%"></div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td><span class="status-tag partial">生产中</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>BATCH003</td>
-                                                    <td>玛氏食品供应商B</td>
-                                                    <td>3,500</td>
-                                                    <td>2,000</td>
-                                                    <td>2026-03-08 ~ 2026-03-12</td>
-                                                    <td>
-                                                        <div class="progress-cell">
-                                                            <span class="progress-text">57.14%</span>
-                                                            <div class="mini-progress-bar">
-                                                                <div class="mini-progress-fill warning" style="width: 57.14%"></div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td><span class="status-tag partial">生产中</span></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                    <div class="pagination-center">
+                                        <button class="pagination-btn" id="supply-first-btn" onclick="goToSupplyPage('first')" title="首页">«</button>
+                                        <button class="pagination-btn" id="supply-prev-btn" onclick="goToSupplyPage('prev')" title="上一页">‹</button>
+                                        <div class="pagination-pages" id="supply-page-numbers"></div>
+                                        <button class="pagination-btn" id="supply-next-btn" onclick="goToSupplyPage('next')" title="下一页">›</button>
+                                        <button class="pagination-btn" id="supply-last-btn" onclick="goToSupplyPage('last')" title="末页">»</button>
                                     </div>
-                                </div>
-
-                                <!-- 配送到仓子模块 - 单品维度 -->
-                                <div class="supply-submodule">
-                                    <h4 class="supply-submodule-title">仓库到货情况</h4>
-                                    <div class="supply-table-wrapper">
-                                        <table class="data-table supply-delivery-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>仓库名称</th>
-                                                    <th>订单批次</th>
-                                                    <th>预计到仓日期</th>
-                                                    <th>实际到仓日期</th>
-                                                    <th>到仓数量(件)</th>
-                                                    <th>到货状态</th>
-                                                    <th>备注</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>上海仓</td>
-                                                    <td>PO20260301001</td>
-                                                    <td>2026-03-10</td>
-                                                    <td>2026-03-10</td>
-                                                    <td>8,000</td>
-                                                    <td><span class="status-tag normal">已到货</span></td>
-                                                    <td>--</td>
-                                                </tr>
-                                                <tr class="delay-row">
-                                                    <td>上海仓</td>
-                                                    <td>PO20260305002</td>
-                                                    <td>2026-03-15</td>
-                                                    <td>--</td>
-                                                    <td>--</td>
-                                                    <td><span class="status-tag pending">运输中</span></td>
-                                                    <td>预计延期2天</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>北京仓</td>
-                                                    <td>PO20260301001</td>
-                                                    <td>2026-03-12</td>
-                                                    <td>--</td>
-                                                    <td>--</td>
-                                                    <td><span class="status-tag pending">待发货</span></td>
-                                                    <td>--</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>广州仓</td>
-                                                    <td>PO20260308003</td>
-                                                    <td>2026-03-18</td>
-                                                    <td>--</td>
-                                                    <td>--</td>
-                                                    <td><span class="status-tag pending">待生产</span></td>
-                                                    <td>原材料短缺</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="warehouse-summary">
-                                        <div class="warehouse-summary-item">
-                                            <span class="summary-label">已到货仓库：</span>
-                                            <span class="summary-value">1 个</span>
-                                        </div>
-                                        <div class="warehouse-summary-item">
-                                            <span class="summary-label">运输中：</span>
-                                            <span class="summary-value">1 个</span>
-                                        </div>
-                                        <div class="warehouse-summary-item">
-                                            <span class="summary-label">待发货：</span>
-                                            <span class="summary-value">1 个</span>
-                                        </div>
-                                        <div class="warehouse-summary-item">
-                                            <span class="summary-label">待生产：</span>
-                                            <span class="summary-value">1 个</span>
-                                        </div>
+                                    <div class="pagination-right">
+                                        <span>跳至</span>
+                                        <input type="number" class="pagination-input" id="supply-jump-input" min="1" placeholder="页码">
+                                        <span>页</span>
+                                        <button class="pagination-btn pagination-jump-btn" onclick="jumpToSupplyPage()">GO</button>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- 配送到店模块 - 单品维度 -->
-                            <div class="supply-module" id="supply-store-module" style="display: none;">
-                                <div class="supply-module-header">
-                                    <h3 class="supply-module-title">🏪 门店配送状态</h3>
-                                    <div class="supply-module-actions">
-                                        <div class="filter-group">
-                                            <select class="filter-select" id="store-region-filter">
-                                                <option value="">全部区域</option>
-                                                <option value="east">华东区</option>
-                                                <option value="north">华北区</option>
-                                                <option value="south">华南区</option>
-                                            </select>
-                                            <input type="text" class="filter-input" id="store-filter-name" placeholder="门店名称">
-                                            <button class="btn btn-primary" onclick="filterStoreData()">筛选</button>
-                                        </div>
-                                        <button class="btn btn-default" onclick="exportStoreData()">
-                                            <span>📥</span> 导出Excel
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <!-- 单品门店配送概览 -->
-                                <div class="store-status-overview">
-                                    <div class="store-status-chart" id="store-status-chart">
-                                        <div class="chart-placeholder">🥧 该商品门店状态分布</div>
-                                    </div>
-                                    <div class="store-status-legend">
-                                        <div class="status-legend-item">
-                                            <span class="legend-dot sold"></span>
-                                            <span class="legend-label">已售罄</span>
-                                            <span class="legend-value">89店 (57.05%)</span>
-                                        </div>
-                                        <div class="status-legend-item">
-                                            <span class="legend-dot in-store"></span>
-                                            <span class="legend-label">销售中</span>
-                                            <span class="legend-value">52店 (33.33%)</span>
-                                        </div>
-                                        <div class="status-legend-item">
-                                            <span class="legend-dot not-arrived"></span>
-                                            <span class="legend-label">未到店</span>
-                                            <span class="legend-value">15店 (9.62%)</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- 单品配送统计 -->
-                                <div class="single-store-summary">
-                                    <div class="store-summary-item">
-                                        <span class="summary-label">总配送门店：</span>
-                                        <span class="summary-value">156 家</span>
-                                    </div>
-                                    <div class="store-summary-item">
-                                        <span class="summary-label">总配送量：</span>
-                                        <span class="summary-value">14,800 件</span>
-                                    </div>
-                                    <div class="store-summary-item">
-                                        <span class="summary-label">总销售量：</span>
-                                        <span class="summary-value highlight">12,350 件</span>
-                                    </div>
-                                    <div class="store-summary-item">
-                                        <span class="summary-label">平均销售率：</span>
-                                        <span class="summary-value success">83.45%</span>
-                                    </div>
-                                </div>
-
-                                <div class="supply-table-wrapper">
-                                    <table class="data-table supply-store-table">
-                                        <thead>
-                                            <tr>
-                                                <th>门店编码</th>
-                                                <th>门店名称</th>
-                                                <th>所属区域</th>
-                                                <th>配送量(件)</th>
-                                                <th>销售量(件)</th>
-                                                <th>库存(件)</th>
-                                                <th>销售率</th>
-                                                <th>状态</th>
-                                                <th>操作</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>ST001</td>
-                                                <td>上海南京东路店</td>
-                                                <td>华东区-上海</td>
-                                                <td>100</td>
-                                                <td>100</td>
-                                                <td>0</td>
-                                                <td>100.00%</td>
-                                                <td><span class="status-tag normal">已售罄</span></td>
-                                                <td><span class="action-link" onclick="viewStoreDetail('ST001')">详情</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>ST002</td>
-                                                <td>上海陆家嘴店</td>
-                                                <td>华东区-上海</td>
-                                                <td>95</td>
-                                                <td>95</td>
-                                                <td>0</td>
-                                                <td>100.00%</td>
-                                                <td><span class="status-tag normal">已售罄</span></td>
-                                                <td><span class="action-link" onclick="viewStoreDetail('ST002')">详情</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>ST003</td>
-                                                <td>北京王府井店</td>
-                                                <td>华北区-北京</td>
-                                                <td>120</td>
-                                                <td>85</td>
-                                                <td>35</td>
-                                                <td>70.83%</td>
-                                                <td><span class="status-tag partial">销售中</span></td>
-                                                <td><span class="action-link" onclick="viewStoreDetail('ST003')">详情</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>ST004</td>
-                                                <td>北京西单店</td>
-                                                <td>华北区-北京</td>
-                                                <td>110</td>
-                                                <td>62</td>
-                                                <td>48</td>
-                                                <td>56.36%</td>
-                                                <td><span class="status-tag partial">销售中</span></td>
-                                                <td><span class="action-link" onclick="viewStoreDetail('ST004')">详情</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>ST005</td>
-                                                <td>广州天河城店</td>
-                                                <td>华南区-广州</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                                <td>--</td>
-                                                <td><span class="status-tag pending">未到店</span></td>
-                                                <td><span class="action-link" onclick="viewStoreDetail('ST005')">详情</span></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="supply-pagination">
-                                    <span class="pagination-info">共 156 条记录</span>
-                                    <div class="pagination-controls">
-                                        <button class="page-btn" disabled>上一页</button>
-                                        <button class="page-btn active">1</button>
-                                        <button class="page-btn">2</button>
-                                        <button class="page-btn">3</button>
-                                        <button class="page-btn">4</button>
-                                        <button class="page-btn">下一页</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- 进度时间轴模块 - 单品维度 -->
-                            <div class="supply-module" id="supply-timeline-module" style="display: none;">
-                                <div class="supply-module-header">
-                                    <h3 class="supply-module-title">📈 单品供应链进度时间轴</h3>
-                                    <div class="supply-module-actions">
-                                        <button class="btn btn-default" onclick="exportTimelineData()">
-                                            <span>📥</span> 导出Excel
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <!-- 单品完整供应链时间轴 -->
-                                <div class="supply-timeline-container">
-                                    <div class="timeline-header">
-                                        <div class="timeline-product-info">
-                                            <span class="timeline-product-name">德芙丝滑牛奶巧克力43g</span>
-                                            <span class="timeline-product-code">编码：100893</span>
-                                        </div>
-                                        <div class="timeline-status-badge">
-                                            <span class="status-tag normal">供应链执行中</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- 时间轴 -->
-                                    <div class="supply-timeline">
-                                        <!-- 节点1: 采购下单 -->
-                                        <div class="timeline-node completed">
-                                            <div class="timeline-node-marker">
-                                                <div class="node-icon">📝</div>
-                                                <div class="node-line"></div>
-                                            </div>
-                                            <div class="timeline-node-content">
-                                                <div class="node-header">
-                                                    <h4 class="node-title">采购下单</h4>
-                                                    <span class="node-date">2026-03-01</span>
-                                                    <span class="node-status completed">已完成</span>
-                                                </div>
-                                                <div class="node-details">
-                                                    <div class="detail-item">
-                                                        <span class="detail-label">订单编号：</span>
-                                                        <span class="detail-value">PO20260301001</span>
-                                                    </div>
-                                                    <div class="detail-item">
-                                                        <span class="detail-label">供应商：</span>
-                                                        <span class="detail-value">玛氏食品供应商A</span>
-                                                    </div>
-                                                    <div class="detail-item">
-                                                        <span class="detail-label">下单数量：</span>
-                                                        <span class="detail-value highlight">10,000 件</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- 节点2: 生产完成 -->
-                                        <div class="timeline-node completed">
-                                            <div class="timeline-node-marker">
-                                                <div class="node-icon">🏭</div>
-                                                <div class="node-line"></div>
-                                            </div>
-                                            <div class="timeline-node-content">
-                                                <div class="node-header">
-                                                    <h4 class="node-title">生产完成</h4>
-                                                    <span class="node-date">2026-03-05</span>
-                                                    <span class="node-status completed">已完成</span>
-                                                </div>
-                                                <div class="node-details">
-                                                    <div class="detail-item">
-                                                        <span class="detail-label">批次号：</span>
-                                                        <span class="detail-value">BATCH001</span>
-                                                    </div>
-                                                    <div class="detail-item">
-                                                        <span class="detail-label">实际产量：</span>
-                                                        <span class="detail-value">10,000 件</span>
-                                                    </div>
-                                                    <div class="detail-item">
-                                                        <span class="detail-label">达成率：</span>
-                                                        <span class="detail-value success">100%</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- 节点3: 到仓入库 -->
-                                        <div class="timeline-node completed">
-                                            <div class="timeline-node-marker">
-                                                <div class="node-icon">📦</div>
-                                                <div class="node-line"></div>
-                                            </div>
-                                            <div class="timeline-node-content">
-                                                <div class="node-header">
-                                                    <h4 class="node-title">到仓入库</h4>
-                                                    <span class="node-date">2026-03-10</span>
-                                                    <span class="node-status completed">已完成</span>
-                                                </div>
-                                                <div class="node-details">
-                                                    <div class="detail-item">
-                                                        <span class="detail-label">入库仓库：</span>
-                                                        <span class="detail-value">上海仓</span>
-                                                    </div>
-                                                    <div class="detail-item">
-                                                        <span class="detail-label">入库数量：</span>
-                                                        <span class="detail-value">8,000 件</span>
-                                                    </div>
-                                                    <div class="detail-item">
-                                                        <span class="detail-label">入库状态：</span>
-                                                        <span class="detail-value">正常</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- 节点4: 配送到店 -->
-                                        <div class="timeline-node current">
-                                            <div class="timeline-node-marker">
-                                                <div class="node-icon">🚚</div>
-                                                <div class="node-line"></div>
-                                            </div>
-                                            <div class="timeline-node-content">
-                                                <div class="node-header">
-                                                    <h4 class="node-title">配送到店</h4>
-                                                    <span class="node-date">2026-03-12 ~ 进行中</span>
-                                                    <span class="node-status current">进行中</span>
-                                                </div>
-                                                <div class="node-details">
-                                                    <div class="detail-item">
-                                                        <span class="detail-label">已配送门店：</span>
-                                                        <span class="detail-value">89 / 156 家</span>
-                                                    </div>
-                                                    <div class="detail-item">
-                                                        <span class="detail-label">已配送数量：</span>
-                                                        <span class="detail-value">7,200 件</span>
-                                                    </div>
-                                                    <div class="detail-item">
-                                                        <span class="detail-label">配送进度：</span>
-                                                        <span class="detail-value">
-                                                            <div class="mini-progress-bar">
-                                                                <div class="mini-progress-fill" style="width: 57%"></div>
-                                                            </div>
-                                                            57%
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- 节点5: 门店销售 -->
-                                        <div class="timeline-node pending">
-                                            <div class="timeline-node-marker">
-                                                <div class="node-icon">💰</div>
-                                            </div>
-                                            <div class="timeline-node-content">
-                                                <div class="node-header">
-                                                    <h4 class="node-title">门店销售</h4>
-                                                    <span class="node-date">预计完成：2026-03-31</span>
-                                                    <span class="node-status pending">进行中</span>
-                                                </div>
-                                                <div class="node-details">
-                                                    <div class="detail-item">
-                                                        <span class="detail-label">已销售数量：</span>
-                                                        <span class="detail-value highlight">6,150 件</span>
-                                                    </div>
-                                                    <div class="detail-item">
-                                                        <span class="detail-label">销售率：</span>
-                                                        <span class="detail-value">85.42%</span>
-                                                    </div>
-                                                    <div class="detail-item">
-                                                        <span class="detail-label">已售罄门店：</span>
-                                                        <span class="detail-value">45 家</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- 单品关键指标汇总 -->
-                                <div class="timeline-metrics-summary">
-                                    <h4 class="summary-title">单品供应链关键指标</h4>
-                                    <div class="timeline-metrics">
-                                        <div class="timeline-metric-item">
-                                            <div class="metric-label">目标销量</div>
-                                            <div class="metric-value">20,000 <span class="unit">件</span></div>
-                                        </div>
-                                        <div class="timeline-metric-item">
-                                            <div class="metric-label">累计采购</div>
-                                            <div class="metric-value">18,500 <span class="unit">件</span></div>
-                                        </div>
-                                        <div class="timeline-metric-item">
-                                            <div class="metric-label">实际到仓</div>
-                                            <div class="metric-value">15,200 <span class="unit">件</span></div>
-                                        </div>
-                                        <div class="timeline-metric-item">
-                                            <div class="metric-label">已配送</div>
-                                            <div class="metric-value">14,800 <span class="unit">件</span></div>
-                                        </div>
-                                        <div class="timeline-metric-item">
-                                            <div class="metric-label">已销售</div>
-                                            <div class="metric-value highlight">12,350 <span class="unit">件</span></div>
-                                        </div>
-                                        <div class="timeline-metric-item">
-                                            <div class="metric-label">整体销售率</div>
-                                            <div class="metric-value success">83.45%</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -5934,7 +6524,23 @@
         });
 
         // ==================== 弹窗控制 ====================
-        function openModal(modalId) {
+        function openModal(modalId, productId) {
+            // 详情使用抽屉，不使用弹窗
+            if (modalId === 'warning-detail') {
+                // 从点击的元素中获取商品ID
+                const clickedElement = event?.target;
+                if (clickedElement) {
+                    const row = clickedElement.closest('tr[data-product-id]');
+                    if (row) {
+                        const pid = row.getAttribute('data-product-id');
+                        openWarningDrawer(pid);
+                        return;
+                    }
+                }
+                // 如果无法获取商品ID，使用传入的或默认值
+                openWarningDrawer(productId || '100893');
+                return;
+            }
             document.getElementById('modal-' + modalId).classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -5955,12 +6561,350 @@
 
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
+                // 先关闭抽屉
+                const drawer = document.getElementById('drawer-warning-detail');
+                if (drawer && drawer.classList.contains('active')) {
+                    closeWarningDrawer();
+                    return;
+                }
+                // 再关闭弹窗
                 document.querySelectorAll('.modal-overlay.active').forEach(modal => {
                     modal.classList.remove('active');
                 });
                 document.body.style.overflow = '';
             }
         });
+
+        // ==================== 表格分页功能 ====================
+        const paginationConfig = {
+            added: {
+                pageSize: 10,
+                currentPage: 1,
+                totalItems: 0,
+                totalPages: 1,
+                tbodyId: 'added-products-tbody',
+                paginationId: 'added-products-pagination'
+            },
+            abnormal: {
+                pageSize: 10,
+                currentPage: 1,
+                totalItems: 0,
+                totalPages: 1,
+                tbodyId: 'abnormal-products-tbody',
+                paginationId: 'abnormal-products-pagination'
+            }
+        };
+
+        // 存储原始表格数据
+        let tableDataCache = {
+            added: [],
+            abnormal: []
+        };
+
+        // 初始化分页
+        function initPagination(type) {
+            const config = paginationConfig[type];
+            const tbody = document.getElementById(config.tbodyId);
+            if (!tbody) return;
+
+            // 缓存原始数据
+            const rows = Array.from(tbody.querySelectorAll('tr[data-product-id]'));
+            tableDataCache[type] = rows.map(row => ({
+                element: row.cloneNode(true),
+                productId: row.getAttribute('data-product-id')
+            }));
+
+            config.totalItems = tableDataCache[type].length;
+            config.totalPages = Math.ceil(config.totalItems / config.pageSize);
+
+            // 如果数据不足10条，隐藏分页器
+            const paginationContainer = document.getElementById(config.paginationId);
+            if (config.totalItems <= config.pageSize) {
+                if (paginationContainer) paginationContainer.classList.add('hidden');
+                return;
+            } else {
+                if (paginationContainer) paginationContainer.classList.remove('hidden');
+            }
+
+            renderPage(type, 1);
+        }
+
+        // 渲染指定页
+        function renderPage(type, page) {
+            const config = paginationConfig[type];
+            const tbody = document.getElementById(config.tbodyId);
+            if (!tbody) return;
+
+            // 确保页码在有效范围内
+            if (page < 1) page = 1;
+            if (page > config.totalPages) page = config.totalPages;
+
+            config.currentPage = page;
+
+            // 计算当前页的数据范围
+            const startIndex = (page - 1) * config.pageSize;
+            const endIndex = Math.min(startIndex + config.pageSize, config.totalItems);
+
+            // 清空表格
+            tbody.innerHTML = '';
+
+            // 渲染当前页数据
+            for (let i = startIndex; i < endIndex; i++) {
+                if (tableDataCache[type][i]) {
+                    tbody.appendChild(tableDataCache[type][i].element.cloneNode(true));
+                }
+            }
+
+            // 更新分页器UI
+            updatePaginationUI(type);
+        }
+
+        // 更新分页器UI
+        function updatePaginationUI(type) {
+            const config = paginationConfig[type];
+
+            // 更新信息文本
+            const totalCountEl = document.getElementById(`${type}-total-count`);
+            const currentPageEl = document.getElementById(`${type}-current-page`);
+            const totalPagesEl = document.getElementById(`${type}-total-pages`);
+
+            if (totalCountEl) totalCountEl.textContent = config.totalItems;
+            if (currentPageEl) currentPageEl.textContent = config.currentPage;
+            if (totalPagesEl) totalPagesEl.textContent = config.totalPages;
+
+            // 更新按钮状态
+            const firstBtn = document.getElementById(`${type}-first-btn`);
+            const prevBtn = document.getElementById(`${type}-prev-btn`);
+            const nextBtn = document.getElementById(`${type}-next-btn`);
+            const lastBtn = document.getElementById(`${type}-last-btn`);
+
+            if (firstBtn) firstBtn.disabled = config.currentPage === 1;
+            if (prevBtn) prevBtn.disabled = config.currentPage === 1;
+            if (nextBtn) nextBtn.disabled = config.currentPage === config.totalPages;
+            if (lastBtn) lastBtn.disabled = config.currentPage === config.totalPages;
+
+            // 渲染页码按钮
+            renderPageNumbers(type);
+        }
+
+        // 渲染页码按钮
+        function renderPageNumbers(type) {
+            const config = paginationConfig[type];
+            const pageNumbersContainer = document.getElementById(`${type}-page-numbers`);
+            if (!pageNumbersContainer) return;
+
+            let html = '';
+            const maxVisiblePages = 5;
+            let startPage = Math.max(1, config.currentPage - Math.floor(maxVisiblePages / 2));
+            let endPage = Math.min(config.totalPages, startPage + maxVisiblePages - 1);
+
+            if (endPage - startPage < maxVisiblePages - 1) {
+                startPage = Math.max(1, endPage - maxVisiblePages + 1);
+            }
+
+            // 第一页按钮（如果不在可见范围内）
+            if (startPage > 1) {
+                html += `<button class="pagination-btn" onclick="goToPage('${type}', 1)">1</button>`;
+                if (startPage > 2) {
+                    html += `<span class="pagination-ellipsis">...</span>`;
+                }
+            }
+
+            // 中间页码
+            for (let i = startPage; i <= endPage; i++) {
+                const activeClass = i === config.currentPage ? 'active' : '';
+                html += `<button class="pagination-btn ${activeClass}" onclick="goToPage('${type}', ${i})">${i}</button>`;
+            }
+
+            // 最后一页按钮（如果不在可见范围内）
+            if (endPage < config.totalPages) {
+                if (endPage < config.totalPages - 1) {
+                    html += `<span class="pagination-ellipsis">...</span>`;
+                }
+                html += `<button class="pagination-btn" onclick="goToPage('${type}', ${config.totalPages})">${config.totalPages}</button>`;
+            }
+
+            pageNumbersContainer.innerHTML = html;
+        }
+
+        // 跳转到指定页
+        function goToPage(type, target) {
+            const config = paginationConfig[type];
+            let page = config.currentPage;
+
+            if (target === 'prev') {
+                page = config.currentPage - 1;
+            } else if (target === 'next') {
+                page = config.currentPage + 1;
+            } else if (target === 'last') {
+                page = config.totalPages;
+            } else if (typeof target === 'number') {
+                page = target;
+            }
+
+            renderPage(type, page);
+        }
+
+        // 跳转到输入的页码
+        function jumpToPage(type) {
+            const input = document.getElementById(`${type}-jump-input`);
+            if (!input) return;
+
+            const page = parseInt(input.value);
+            if (page && page >= 1 && page <= paginationConfig[type].totalPages) {
+                renderPage(type, page);
+                input.value = '';
+            } else {
+                showNotification('请输入有效的页码', 'warning');
+            }
+        }
+
+        // 监听Enter键跳转
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化分页
+            initPagination('added');
+            initPagination('abnormal');
+
+            // 绑定回车键跳转
+            ['added', 'abnormal'].forEach(type => {
+                const input = document.getElementById(`${type}-jump-input`);
+                if (input) {
+                    input.addEventListener('keypress', function(e) {
+                        if (e.key === 'Enter') {
+                            jumpToPage(type);
+                        }
+                    });
+                }
+            });
+        });
+
+        // ==================== 详情抽屉控制 ====================
+        // 当前查看的商品数据
+        let currentWarningProduct = null;
+
+        function openWarningDrawer(productId) {
+            const drawer = document.getElementById('drawer-warning-detail');
+            if (drawer) {
+                // 获取商品信息
+                const productInfo = getProductInfo(productId);
+                currentWarningProduct = productInfo;
+
+                // 更新抽屉标题和副标题
+                updateDrawerHeader(productInfo);
+
+                // 计算并更新菜单角标
+                updateWarningMenuBadges(productInfo);
+
+                drawer.classList.add('active');
+                document.body.classList.add('drawer-open');
+            }
+        }
+
+        // 获取商品信息
+        function getProductInfo(productId) {
+            // 从已添加商品表格或异常商品表格中查找商品信息
+            const addedRow = document.querySelector(`#added-products-tbody tr[data-product-id="${productId}"]`);
+            const abnormalRow = document.querySelector(`#abnormal-products-tbody tr[data-product-id="${productId}"]`);
+            const row = addedRow || abnormalRow;
+
+            if (row) {
+                const statusTag = row.querySelector('.status-tag');
+                const validationBadge = row.querySelector('.validation-badge');
+                const productCode = row.querySelector('td:nth-child(5)')?.textContent || productId;
+                const productName = row.querySelector('td:nth-child(6)')?.textContent || '';
+                const productLevel = row.querySelector('td:nth-child(8)')?.textContent || '';
+
+                return {
+                    id: productId,
+                    code: productCode,
+                    name: productName,
+                    level: productLevel,
+                    status: statusTag?.textContent?.trim() || '',
+                    statusClass: statusTag?.classList?.contains('abnormal') ? 'abnormal' :
+                                statusTag?.classList?.contains('normal') ? 'normal' : 'unknown',
+                    validationStatus: validationBadge?.textContent?.trim() || ''
+                };
+            }
+
+            // 默认返回
+            return {
+                id: productId,
+                code: productId,
+                name: '未知商品',
+                level: '',
+                status: '未知',
+                statusClass: 'unknown',
+                validationStatus: ''
+            };
+        }
+
+        // 更新抽屉头部信息
+        function updateDrawerHeader(productInfo) {
+            const titleEl = document.querySelector('.drawer-title');
+            const tagEl = document.querySelector('.warning-tag');
+            const codeEl = document.querySelector('.warning-code');
+
+            if (titleEl) titleEl.textContent = '详情分析面板';
+            if (tagEl) {
+                tagEl.textContent = productInfo.level ? `${productInfo.level}核心商品` : '核心商品';
+            }
+            if (codeEl) {
+                codeEl.textContent = `编码：${productInfo.code} | ${productInfo.name}`;
+            }
+        }
+
+        // 更新预警菜单角标
+        function updateWarningMenuBadges(productInfo) {
+            // 区域覆盖分析角标：异常时显示异常省份数量，正常时不显示
+            const coverageBadge = document.querySelector('.warning-menu-item[data-warning-tab="coverage"] .warning-menu-badge');
+            if (coverageBadge) {
+                if (productInfo.statusClass === 'abnormal') {
+                    // 计算异常省份数量（从区域覆盖表格中获取）
+                    const abnormalCount = calculateAbnormalProvinces();
+                    coverageBadge.textContent = abnormalCount;
+                    coverageBadge.style.display = 'inline-flex';
+                } else {
+                    coverageBadge.style.display = 'none';
+                }
+            }
+
+            // 其他菜单角标可以根据需要类似处理
+            // 关联计划详情角标
+            const planBadge = document.querySelector('.warning-menu-item[data-warning-tab="plan"] .warning-menu-badge');
+            if (planBadge) {
+                // 根据实际计划数量显示，这里简化处理
+                planBadge.style.display = 'none'; // 默认不显示
+            }
+
+            // 供应链备货进度角标
+            const supplyBadge = document.querySelector('.warning-menu-item[data-warning-tab="supply"] .warning-menu-badge');
+            if (supplyBadge) {
+                supplyBadge.style.display = 'none'; // 默认不显示
+            }
+        }
+
+        // 计算异常省份数量
+        function calculateAbnormalProvinces() {
+            // 从区域覆盖表格中统计状态为"异常"的省份数量
+            const coverageTable = document.getElementById('warning-coverage-content');
+            if (coverageTable) {
+                const abnormalRows = coverageTable.querySelectorAll('.province-row .status-tag.abnormal');
+                return abnormalRows.length;
+            }
+            return 0;
+        }
+
+        function closeWarningDrawer(event) {
+            // 如果传入了事件，检查是否点击的是遮罩层
+            if (event && event.target !== event.currentTarget) {
+                return;
+            }
+            const drawer = document.getElementById('drawer-warning-detail');
+            if (drawer) {
+                drawer.classList.remove('active');
+                document.body.classList.remove('drawer-open');
+            }
+        }
 
         // ==================== 添加商品 - 双面板选择器 ====================
         let selectedProducts = [];
@@ -6041,16 +6985,16 @@
             clearSelected();
         }
 
-        // ==================== 预警详情 Tab 切换 ====================
+        // ==================== 详情 Tab 切换 ====================
         function switchWarningTab(tab) {
             document.querySelectorAll('.warning-menu-item').forEach(item => item.classList.remove('active'));
             document.querySelector(`.warning-menu-item[data-warning-tab="${tab}"]`).classList.add('active');
-            
+
             // 隐藏所有内容
             document.getElementById('warning-plan-content').style.display = 'none';
             document.getElementById('warning-coverage-content').style.display = 'none';
             document.getElementById('warning-supply-content').style.display = 'none';
-            
+
             // 显示对应内容
             if (tab === 'plan') {
                 document.getElementById('warning-plan-content').style.display = 'block';
@@ -6058,6 +7002,12 @@
                 document.getElementById('warning-coverage-content').style.display = 'block';
             } else if (tab === 'supply') {
                 document.getElementById('warning-supply-content').style.display = 'block';
+            }
+
+            // 切换Tab时刷新角标（确保数据同步）
+            if (currentWarningProduct) {
+                const updatedProductInfo = getProductInfo(currentWarningProduct.id);
+                updateWarningMenuBadges(updatedProductInfo);
             }
         }
 
@@ -6084,6 +7034,421 @@
                 document.getElementById('supply-timeline-module').style.display = 'block';
             }
         }
+
+        // ==================== 供应链数据表格模块 ====================
+        let supplyTableState = {
+            currentDimension: 'warehouse', // warehouse, city, province
+            currentPage: 1,
+            pageSize: 20,
+            totalItems: 0,
+            totalPages: 1,
+            sortField: null,
+            sortOrder: null, // 'asc' or 'desc'
+            filters: {
+                name: '',
+                city: '',
+                province: ''
+            },
+            filteredData: [],
+            rawData: []
+        };
+
+        // 模拟仓维度数据
+        const warehouseRawData = [
+            { id: 'WH001', name: '北京朝阳仓', city: '北京市', province: '北京市', currentStock: 8500, orderQty: 12000, warehouseQty: 9800, inTransit: 2200, delivery7d: 1850, salesAvg7d: 264.3 },
+            { id: 'WH002', name: '北京通州仓', city: '北京市', province: '北京市', currentStock: 6200, orderQty: 8000, warehouseQty: 7200, inTransit: 800, delivery7d: 1200, salesAvg7d: 171.4 },
+            { id: 'WH003', name: '上海浦东仓', city: '上海市', province: '上海市', currentStock: 9800, orderQty: 15000, warehouseQty: 11200, inTransit: 3800, delivery7d: 2100, salesAvg7d: 300.0 },
+            { id: 'WH004', name: '上海青浦仓', city: '上海市', province: '上海市', currentStock: 7500, orderQty: 10000, warehouseQty: 8200, inTransit: 1800, delivery7d: 1650, salesAvg7d: 235.7 },
+            { id: 'WH005', name: '广州白云仓', city: '广州市', province: '广东省', currentStock: 11200, orderQty: 18000, warehouseQty: 13500, inTransit: 4500, delivery7d: 2450, salesAvg7d: 350.0 },
+            { id: 'WH006', name: '广州番禺仓', city: '广州市', province: '广东省', currentStock: 6800, orderQty: 9000, warehouseQty: 7500, inTransit: 1500, delivery7d: 1400, salesAvg7d: 200.0 },
+            { id: 'WH007', name: '深圳宝安仓', city: '深圳市', province: '广东省', currentStock: 9200, orderQty: 14000, warehouseQty: 10800, inTransit: 3200, delivery7d: 1950, salesAvg7d: 278.6 },
+            { id: 'WH008', name: '深圳龙岗仓', city: '深圳市', province: '广东省', currentStock: 5800, orderQty: 7500, warehouseQty: 6200, inTransit: 1300, delivery7d: 1150, salesAvg7d: 164.3 },
+            { id: 'WH009', name: '杭州萧山仓', city: '杭州市', province: '浙江省', currentStock: 7200, orderQty: 11000, warehouseQty: 8500, inTransit: 2500, delivery7d: 1650, salesAvg7d: 235.7 },
+            { id: 'WH010', name: '杭州余杭仓', city: '杭州市', province: '浙江省', currentStock: 4800, orderQty: 6500, warehouseQty: 5200, inTransit: 1300, delivery7d: 950, salesAvg7d: 135.7 },
+            { id: 'WH011', name: '宁波北仑仓', city: '宁波市', province: '浙江省', currentStock: 5500, orderQty: 8000, warehouseQty: 6800, inTransit: 1200, delivery7d: 1100, salesAvg7d: 157.1 },
+            { id: 'WH012', name: '南京江宁仓', city: '南京市', province: '江苏省', currentStock: 6800, orderQty: 10000, warehouseQty: 7800, inTransit: 2200, delivery7d: 1400, salesAvg7d: 200.0 },
+            { id: 'WH013', name: '苏州工业园区仓', city: '苏州市', province: '江苏省', currentStock: 8200, orderQty: 12000, warehouseQty: 9500, inTransit: 2500, delivery7d: 1750, salesAvg7d: 250.0 },
+            { id: 'WH014', name: '武汉光谷仓', city: '武汉市', province: '湖北省', currentStock: 4500, orderQty: 7000, warehouseQty: 5200, inTransit: 1800, delivery7d: 850, salesAvg7d: 121.4 },
+            { id: 'WH015', name: '成都高新仓', city: '成都市', province: '四川省', currentStock: 6200, orderQty: 9500, warehouseQty: 7200, inTransit: 2300, delivery7d: 1250, salesAvg7d: 178.6 },
+            { id: 'WH016', name: '西安雁塔仓', city: '西安市', province: '陕西省', currentStock: 3800, orderQty: 5500, warehouseQty: 4200, inTransit: 1300, delivery7d: 750, salesAvg7d: 107.1 },
+            { id: 'WH017', name: '重庆渝北仓', city: '重庆市', province: '重庆市', currentStock: 7200, orderQty: 11000, warehouseQty: 8500, inTransit: 2500, delivery7d: 1550, salesAvg7d: 221.4 },
+            { id: 'WH018', name: '天津滨海仓', city: '天津市', province: '天津市', currentStock: 5200, orderQty: 7500, warehouseQty: 6000, inTransit: 1500, delivery7d: 1050, salesAvg7d: 150.0 },
+            { id: 'WH019', name: '青岛黄岛仓', city: '青岛市', province: '山东省', currentStock: 4800, orderQty: 7000, warehouseQty: 5500, inTransit: 1500, delivery7d: 900, salesAvg7d: 128.6 },
+            { id: 'WH020', name: '厦门集美仓', city: '厦门市', province: '福建省', currentStock: 4200, orderQty: 6000, warehouseQty: 4800, inTransit: 1200, delivery7d: 800, salesAvg7d: 114.3 },
+            { id: 'WH021', name: '长沙岳麓仓', city: '长沙市', province: '湖南省', currentStock: 5500, orderQty: 8500, warehouseQty: 6500, inTransit: 2000, delivery7d: 1100, salesAvg7d: 157.1 },
+            { id: 'WH022', name: '郑州金水仓', city: '郑州市', province: '河南省', currentStock: 4800, orderQty: 7200, warehouseQty: 5500, inTransit: 1700, delivery7d: 950, salesAvg7d: 135.7 },
+            { id: 'WH023', name: '沈阳浑南仓', city: '沈阳市', province: '辽宁省', currentStock: 3500, orderQty: 5200, warehouseQty: 4000, inTransit: 1200, delivery7d: 700, salesAvg7d: 100.0 },
+            { id: 'WH024', name: '大连甘井子仓', city: '大连市', province: '辽宁省', currentStock: 3200, orderQty: 4800, warehouseQty: 3600, inTransit: 1200, delivery7d: 600, salesAvg7d: 85.7 }
+        ];
+
+        // 聚合数据到城市维度
+        function aggregateToCity(data) {
+            const cityMap = new Map();
+            data.forEach(item => {
+                const key = item.city;
+                if (!cityMap.has(key)) {
+                    cityMap.set(key, {
+                        id: 'CITY_' + key,
+                        name: key,
+                        city: key,
+                        province: item.province,
+                        currentStock: 0,
+                        orderQty: 0,
+                        warehouseQty: 0,
+                        inTransit: 0,
+                        delivery7d: 0,
+                        salesAvg7d: 0,
+                        warehouseCount: 0
+                    });
+                }
+                const city = cityMap.get(key);
+                city.currentStock += item.currentStock;
+                city.orderQty += item.orderQty;
+                city.warehouseQty += item.warehouseQty;
+                city.inTransit += item.inTransit;
+                city.delivery7d += item.delivery7d;
+                city.salesAvg7d += item.salesAvg7d;
+                city.warehouseCount++;
+            });
+            return Array.from(cityMap.values());
+        }
+
+        // 聚合数据到省份维度
+        function aggregateToProvince(data) {
+            const provinceMap = new Map();
+            data.forEach(item => {
+                const key = item.province;
+                if (!provinceMap.has(key)) {
+                    provinceMap.set(key, {
+                        id: 'PROV_' + key,
+                        name: key,
+                        city: '-',
+                        province: key,
+                        currentStock: 0,
+                        orderQty: 0,
+                        warehouseQty: 0,
+                        inTransit: 0,
+                        delivery7d: 0,
+                        salesAvg7d: 0,
+                        warehouseCount: 0
+                    });
+                }
+                const province = provinceMap.get(key);
+                province.currentStock += item.currentStock;
+                province.orderQty += item.orderQty;
+                province.warehouseQty += item.warehouseQty;
+                province.inTransit += item.inTransit;
+                province.delivery7d += item.delivery7d;
+                province.salesAvg7d += item.salesAvg7d;
+                province.warehouseCount++;
+            });
+            return Array.from(provinceMap.values());
+        }
+
+        // 获取当前维度的数据
+        function getCurrentDimensionData() {
+            switch (supplyTableState.currentDimension) {
+                case 'city':
+                    return aggregateToCity(warehouseRawData);
+                case 'province':
+                    return aggregateToProvince(warehouseRawData);
+                default:
+                    return warehouseRawData;
+            }
+        }
+
+        // 切换数据维度
+        function switchDataDimension(dimension) {
+            supplyTableState.currentDimension = dimension;
+            supplyTableState.currentPage = 1;
+            supplyTableState.sortField = null;
+            supplyTableState.sortOrder = null;
+
+            // 更新维度标签
+            document.querySelectorAll('.dimension-tab').forEach(tab => {
+                tab.classList.toggle('active', tab.dataset.dimension === dimension);
+            });
+
+            // 更新维度徽章
+            const dimensionNames = {
+                warehouse: '仓维度视图',
+                city: '城市维度视图',
+                province: '省份维度视图'
+            };
+            document.getElementById('current-dimension-badge').textContent = dimensionNames[dimension];
+
+            // 重新加载数据
+            loadSupplyTableData();
+
+            // 添加切换动画
+            const tableContainer = document.querySelector('.supply-table-container');
+            tableContainer.style.opacity = '0.5';
+            setTimeout(() => {
+                tableContainer.style.opacity = '1';
+            }, 200);
+        }
+
+        // 应用筛选
+        function applySupplyTableFilters() {
+            supplyTableState.filters.name = document.getElementById('filter-name').value.toLowerCase();
+            supplyTableState.filters.city = document.getElementById('filter-city').value;
+            supplyTableState.filters.province = document.getElementById('filter-province').value;
+            supplyTableState.currentPage = 1;
+            loadSupplyTableData();
+        }
+
+        // 重置筛选
+        function resetSupplyTableFilters() {
+            document.getElementById('filter-name').value = '';
+            document.getElementById('filter-city').value = '';
+            document.getElementById('filter-province').value = '';
+            supplyTableState.filters = { name: '', city: '', province: '' };
+            supplyTableState.currentPage = 1;
+            loadSupplyTableData();
+        }
+
+        // 排序表格
+        function sortSupplyTable(field) {
+            if (supplyTableState.sortField === field) {
+                supplyTableState.sortOrder = supplyTableState.sortOrder === 'asc' ? 'desc' : 'asc';
+            } else {
+                supplyTableState.sortField = field;
+                supplyTableState.sortOrder = 'asc';
+            }
+
+            // 更新排序图标
+            document.querySelectorAll('.supply-data-table th').forEach(th => {
+                th.classList.remove('sort-asc', 'sort-desc');
+                if (th.dataset.field === field) {
+                    th.classList.add(supplyTableState.sortOrder === 'asc' ? 'sort-asc' : 'sort-desc');
+                }
+            });
+
+            loadSupplyTableData();
+        }
+
+        // 加载表格数据
+        function loadSupplyTableData() {
+            let data = getCurrentDimensionData();
+
+            // 应用筛选
+            data = data.filter(item => {
+                const matchName = !supplyTableState.filters.name ||
+                    item.name.toLowerCase().includes(supplyTableState.filters.name) ||
+                    item.city.toLowerCase().includes(supplyTableState.filters.name) ||
+                    item.province.toLowerCase().includes(supplyTableState.filters.name);
+                const matchCity = !supplyTableState.filters.city || item.city === supplyTableState.filters.city;
+                const matchProvince = !supplyTableState.filters.province || item.province === supplyTableState.filters.province;
+                return matchName && matchCity && matchProvince;
+            });
+
+            // 应用排序
+            if (supplyTableState.sortField && supplyTableState.sortOrder) {
+                data.sort((a, b) => {
+                    let valA = a[supplyTableState.sortField];
+                    let valB = b[supplyTableState.sortField];
+                    if (typeof valA === 'string') {
+                        valA = valA.toLowerCase();
+                        valB = valB.toLowerCase();
+                    }
+                    if (valA < valB) return supplyTableState.sortOrder === 'asc' ? -1 : 1;
+                    if (valA > valB) return supplyTableState.sortOrder === 'asc' ? 1 : -1;
+                    return 0;
+                });
+            }
+
+            supplyTableState.filteredData = data;
+            supplyTableState.totalItems = data.length;
+            supplyTableState.totalPages = Math.ceil(data.length / supplyTableState.pageSize);
+
+            // 确保当前页在有效范围内
+            if (supplyTableState.currentPage > supplyTableState.totalPages) {
+                supplyTableState.currentPage = Math.max(1, supplyTableState.totalPages);
+            }
+
+            renderSupplyTable();
+            updateSupplyPagination();
+        }
+
+        // 渲染表格
+        function renderSupplyTable() {
+            const tbody = document.getElementById('supply-data-tbody');
+            if (!tbody) return;
+
+            const startIndex = (supplyTableState.currentPage - 1) * supplyTableState.pageSize;
+            const endIndex = Math.min(startIndex + supplyTableState.pageSize, supplyTableState.totalItems);
+            const pageData = supplyTableState.filteredData.slice(startIndex, endIndex);
+
+            const dimensionTagClass = supplyTableState.currentDimension;
+            const dimensionTagText = {
+                warehouse: '仓',
+                city: '市',
+                province: '省'
+            }[supplyTableState.currentDimension];
+
+            tbody.innerHTML = pageData.map(item => `
+                <tr>
+                    <td>
+                        <span class="dimension-tag ${dimensionTagClass}">${dimensionTagText}</span>
+                        ${item.name}
+                    </td>
+                    <td>${item.city}</td>
+                    <td>${item.province}</td>
+                    <td class="number">${item.currentStock.toLocaleString()}</td>
+                    <td class="number">${item.orderQty.toLocaleString()}</td>
+                    <td class="number">${item.warehouseQty.toLocaleString()}</td>
+                    <td class="number">${item.inTransit.toLocaleString()}</td>
+                    <td class="number">${item.delivery7d.toLocaleString()}</td>
+                    <td class="number">${item.salesAvg7d.toFixed(1)}</td>
+                </tr>
+            `).join('');
+
+            // 更新总计
+            document.getElementById('supply-total-count').textContent = supplyTableState.totalItems;
+        }
+
+        // 更新分页器
+        function updateSupplyPagination() {
+            const { currentPage, totalPages, totalItems } = supplyTableState;
+
+            // 更新按钮状态
+            document.getElementById('supply-first-btn').disabled = currentPage === 1;
+            document.getElementById('supply-prev-btn').disabled = currentPage === 1;
+            document.getElementById('supply-next-btn').disabled = currentPage === totalPages || totalPages === 0;
+            document.getElementById('supply-last-btn').disabled = currentPage === totalPages || totalPages === 0;
+
+            // 渲染页码
+            const pageNumbersContainer = document.getElementById('supply-page-numbers');
+            let html = '';
+            const maxVisiblePages = 5;
+            let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+            let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+            if (endPage - startPage < maxVisiblePages - 1) {
+                startPage = Math.max(1, endPage - maxVisiblePages + 1);
+            }
+
+            if (startPage > 1) {
+                html += `<button class="pagination-btn" onclick="goToSupplyPage(1)">1</button>`;
+                if (startPage > 2) html += `<span class="pagination-ellipsis">...</span>`;
+            }
+
+            for (let i = startPage; i <= endPage; i++) {
+                const activeClass = i === currentPage ? 'active' : '';
+                html += `<button class="pagination-btn ${activeClass}" onclick="goToSupplyPage(${i})">${i}</button>`;
+            }
+
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) html += `<span class="pagination-ellipsis">...</span>`;
+                html += `<button class="pagination-btn" onclick="goToSupplyPage(${totalPages})">${totalPages}</button>`;
+            }
+
+            pageNumbersContainer.innerHTML = html;
+        }
+
+        // 跳转到指定页
+        function goToSupplyPage(target) {
+            let page = supplyTableState.currentPage;
+
+            if (target === 'first') page = 1;
+            else if (target === 'prev') page = page - 1;
+            else if (target === 'next') page = page + 1;
+            else if (target === 'last') page = supplyTableState.totalPages;
+            else page = target;
+
+            if (page >= 1 && page <= supplyTableState.totalPages) {
+                supplyTableState.currentPage = page;
+                renderSupplyTable();
+                updateSupplyPagination();
+            }
+        }
+
+        // 跳转到输入的页码
+        function jumpToSupplyPage() {
+            const input = document.getElementById('supply-jump-input');
+            const page = parseInt(input.value);
+            if (page && page >= 1 && page <= supplyTableState.totalPages) {
+                goToSupplyPage(page);
+                input.value = '';
+            } else {
+                showNotification('请输入有效的页码', 'warning');
+            }
+        }
+
+        // 改变每页显示数量
+        function changeSupplyPageSize() {
+            const select = document.getElementById('supply-page-size');
+            supplyTableState.pageSize = parseInt(select.value);
+            supplyTableState.currentPage = 1;
+            loadSupplyTableData();
+        }
+
+        // 导出数据
+        function exportSupplyTableData() {
+            const data = supplyTableState.filteredData;
+            if (data.length === 0) {
+                showNotification('没有数据可导出', 'warning');
+                return;
+            }
+
+            // 构建CSV内容
+            const headers = ['仓名称', '所属城市', '所属省份', '当前库存', '采购下单数', '实际到仓', '在途数量', '近7天出库件数', '近7天店均销售'];
+            const rows = data.map(item => [
+                item.name,
+                item.city,
+                item.province,
+                item.currentStock,
+                item.orderQty,
+                item.warehouseQty,
+                item.inTransit,
+                item.delivery7d,
+                item.salesAvg7d.toFixed(1)
+            ]);
+
+            const csvContent = [headers.join(','), ...rows.map(row => row.join(','))].join('\n');
+
+            // 下载文件
+            const blob = new Blob(['\ufeff' + csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `供应链数据_${supplyTableState.currentDimension}_${new Date().toISOString().slice(0, 10)}.csv`;
+            link.click();
+
+            showNotification('数据导出成功', 'success');
+        }
+
+        // 初始化筛选选项
+        function initSupplyTableFilters() {
+            const cities = [...new Set(warehouseRawData.map(item => item.city))].sort();
+            const provinces = [...new Set(warehouseRawData.map(item => item.province))].sort();
+
+            const citySelect = document.getElementById('filter-city');
+            const provinceSelect = document.getElementById('filter-province');
+
+            if (citySelect) {
+                citySelect.innerHTML = '<option value="">全部城市</option>' +
+                    cities.map(city => `<option value="${city}">${city}</option>`).join('');
+            }
+
+            if (provinceSelect) {
+                provinceSelect.innerHTML = '<option value="">全部省份</option>' +
+                    provinces.map(province => `<option value="${province}">${province}</option>`).join('');
+            }
+        }
+
+        // 监听Enter键跳转
+        document.addEventListener('DOMContentLoaded', function() {
+            const jumpInput = document.getElementById('supply-jump-input');
+            if (jumpInput) {
+                jumpInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') jumpToSupplyPage();
+                });
+            }
+
+            // 初始化数据表格
+            initSupplyTableFilters();
+            loadSupplyTableData();
+        });
 
         // ==================== 单品供应链数据 ====================
         let currentProductData = {
@@ -6202,6 +7567,53 @@
 
         function exportStoreData() {
             alert('导出配送到店数据为Excel');
+        }
+
+        // ==================== 数据维度平铺展示模块 ====================
+        function switchDimensionTab(dimension) {
+            // 切换标签样式
+            document.querySelectorAll('.dimension-tab').forEach(item => item.classList.remove('active'));
+            document.querySelector(`.dimension-tab[data-dimension="${dimension}"]`).classList.add('active');
+            
+            // 隐藏所有维度内容
+            document.getElementById('dimension-warehouse').style.display = 'none';
+            document.getElementById('dimension-city').style.display = 'none';
+            document.getElementById('dimension-province').style.display = 'none';
+            
+            // 显示对应维度内容
+            document.getElementById(`dimension-${dimension}`).style.display = 'block';
+        }
+
+        function toggleCityDetail(city) {
+            const detailRow = document.getElementById(`city-detail-${city}`);
+            const icon = document.getElementById(`city-icon-${city}`);
+            const row = detailRow.previousElementSibling;
+            
+            if (detailRow.style.display === 'none') {
+                detailRow.style.display = 'table-row';
+                icon.textContent = '▼';
+                row.classList.add('expanded');
+            } else {
+                detailRow.style.display = 'none';
+                icon.textContent = '▶';
+                row.classList.remove('expanded');
+            }
+        }
+
+        function toggleProvinceWarehouseDetail(province) {
+            const detailRow = document.getElementById(`province-detail-${province}`);
+            const icon = document.getElementById(`province-icon-${province}`);
+            const row = detailRow.previousElementSibling;
+            
+            if (detailRow.style.display === 'none') {
+                detailRow.style.display = 'table-row';
+                icon.textContent = '▼';
+                row.classList.add('expanded');
+            } else {
+                detailRow.style.display = 'none';
+                icon.textContent = '▶';
+                row.classList.remove('expanded');
+            }
         }
 
         // ==================== 数据聚合钻取 ====================
@@ -6876,18 +8288,24 @@
             // 模拟校验过程
             setTimeout(() => {
                 const validatedAt = Date.now();
-                
+
                 // 更新校验状态
                 productValidationStatus.set(productId, {
                     status: 'validated',
                     validatedAt: validatedAt,
                     result: status.result
                 });
-                
+
                 // 更新两个表格的UI
                 updateProductValidationUI(productId, validatedAt);
                 checkPendingValidation();
-                
+
+                // 如果当前正在查看该商品的详情抽屉，更新角标
+                if (currentWarningProduct && currentWarningProduct.id === productId) {
+                    const updatedProductInfo = getProductInfo(productId);
+                    updateWarningMenuBadges(updatedProductInfo);
+                }
+
                 // 显示成功提示
                 showNotification(`商品 ${productId} 校验完成`, 'success');
             }, 1500);
