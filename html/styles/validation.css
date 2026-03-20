@@ -1,0 +1,213 @@
+/**
+ * 商品校验功能样式
+ */
+
+/* ==================== 校验进度条样式 ==================== */
+.validation-progress-container {
+    background: #f6ffed;
+    border: 1px solid #b7eb8f;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+}
+
+.validation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.validation-status {
+    font-size: 14px;
+    font-weight: 500;
+    color: #52c41a;
+}
+
+.validation-time {
+    font-size: 13px;
+    color: #999;
+}
+
+.validation-progress-bar {
+    height: 8px;
+    background: #e8e8e8;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.validation-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #52c41a 0%, #73d13d 100%);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.validation-stats {
+    display: flex;
+    gap: 24px;
+    font-size: 13px;
+    color: #666;
+}
+
+.validation-stats strong {
+    color: #333;
+}
+
+.validation-stats .abnormal-count {
+    color: #ff4d4f;
+}
+
+/* ==================== 校验结果通知 ==================== */
+.validation-result-toast {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    padding: 16px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 2000;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.toast-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #52c41a;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.toast-message {
+    font-size: 14px;
+    color: #333;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #999;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 8px;
+}
+
+.toast-close:hover {
+    color: #666;
+}
+
+/* ==================== 商品校验状态样式 ==================== */
+.validation-status-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+}
+
+.validation-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.validation-badge:hover {
+    opacity: 0.8;
+}
+
+/* 已校验 */
+.validation-badge.validated {
+    background: #f6ffed;
+    color: #52c41a;
+    border: 1px solid #b7eb8f;
+}
+
+/* 待校验 */
+.validation-badge.pending {
+    background: #e6f7ff;
+    color: #1890ff;
+    border: 1px solid #91d5ff;
+}
+
+/* 校验中 */
+.validation-badge.validating {
+    background: #f0f5ff;
+    color: #2f54eb;
+    border: 1px solid #adc6ff;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+.validation-time {
+    font-size: 11px;
+    color: #999;
+    white-space: nowrap;
+}
+
+/* ==================== 校验状态提示条 ==================== */
+.validation-notice-bar {
+    background: #e6f7ff;
+    border: 1px solid #91d5ff;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.validation-notice-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #666;
+}
+
+.validation-notice-icon {
+    color: #1890ff;
+    font-size: 16px;
+}
+
+.validation-notice-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* 全量校验按钮 */
+.validate-icon {
+    margin-right: 4px;
+}

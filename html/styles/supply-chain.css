@@ -1,0 +1,311 @@
+/**
+ * 供应链备货进度模块样式
+ */
+
+/* ==================== 供应链数据表格样式 ==================== */
+.supply-data-table-section {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e8e8e8;
+    overflow: hidden;
+}
+
+/* 工具栏 */
+.supply-table-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: #fafafa;
+    border-bottom: 1px solid #e8e8e8;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.dimension-switcher {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.dimension-label {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+
+.dimension-tabs {
+    display: flex;
+    gap: 4px;
+    background: #e8e8e8;
+    padding: 4px;
+    border-radius: 6px;
+}
+
+.dimension-tab {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.dimension-tab:hover {
+    color: #333;
+}
+
+.dimension-tab.active {
+    background: #fff;
+    color: #1890ff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: 500;
+}
+
+.dimension-tab .tab-icon {
+    font-size: 14px;
+}
+
+.current-dimension-badge {
+    padding: 4px 12px;
+    background: #e6f7ff;
+    color: #1890ff;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: 8px;
+}
+
+/* 筛选栏 */
+.supply-table-filters {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    border-bottom: 1px solid #e8e8e8;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+}
+
+.filter-input,
+.filter-select {
+    height: 32px;
+    padding: 0 12px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    font-size: 13px;
+    min-width: 180px;
+    transition: all 0.3s;
+}
+
+.filter-input:focus,
+.filter-select:focus {
+    outline: none;
+    border-color: #1890ff;
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.btn-text {
+    background: transparent;
+    border: none;
+    color: #1890ff;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 6px 12px;
+}
+
+.btn-text:hover {
+    color: #40a9ff;
+}
+
+/* 表格容器 */
+.supply-table-container {
+    max-height: 600px;
+    overflow: auto;
+    position: relative;
+}
+
+.supply-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.supply-data-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #fafafa;
+}
+
+.supply-data-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 1px solid #e8e8e8;
+    background: #fafafa;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.supply-data-table th.sortable {
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.supply-data-table th.sortable:hover {
+    background: #f0f0f0;
+}
+
+.supply-data-table th.number {
+    text-align: right;
+}
+
+.supply-data-table th .sort-icon {
+    margin-left: 4px;
+    font-size: 11px;
+    opacity: 0.5;
+}
+
+.supply-data-table th.sort-asc .sort-icon {
+    opacity: 1;
+    color: #1890ff;
+}
+
+.supply-data-table th.sort-desc .sort-icon {
+    opacity: 1;
+    color: #1890ff;
+    transform: rotate(180deg);
+}
+
+.supply-data-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    color: #333;
+}
+
+.supply-data-table td.number {
+    text-align: right;
+    font-family: 'SF Mono', Monaco, monospace;
+}
+
+.supply-data-table tbody tr:hover {
+    background: #fafafa;
+}
+
+.supply-data-table tbody tr {
+    transition: background 0.2s;
+}
+
+/* 维度标识 */
+.dimension-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.dimension-tag.warehouse {
+    background: #e6f7ff;
+    color: #1890ff;
+}
+
+.dimension-tag.city {
+    background: #f6ffed;
+    color: #52c41a;
+}
+
+.dimension-tag.province {
+    background: #fff7e6;
+    color: #fa8c16;
+}
+
+/* 分页器 */
+.supply-table-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: #fafafa;
+    border-top: 1px solid #e8e8e8;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.pagination-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.pagination-total {
+    font-size: 13px;
+    color: #666;
+}
+
+.pagination-total strong {
+    color: #333;
+    font-weight: 600;
+}
+
+.page-size-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #666;
+}
+
+.page-size-select {
+    height: 28px;
+    padding: 0 8px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.pagination-center {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pagination-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #666;
+}
+
+/* 响应式 */
+@media (max-width: 1200px) {
+    .supply-table-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .supply-table-pagination {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pagination-left,
+    .pagination-right {
+        width: 100%;
+        justify-content: center;
+    }
+}

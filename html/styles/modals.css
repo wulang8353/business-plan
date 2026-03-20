@@ -1,0 +1,428 @@
+/**
+ * 弹窗相关样式
+ */
+
+/* ==================== 添加商品弹窗 - 双面板选择器 ==================== */
+.dual-panel {
+    display: flex;
+    gap: 24px;
+    height: 400px;
+}
+
+.panel {
+    flex: 1;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-header {
+    padding: 12px 16px;
+    border-bottom: 1px solid #e8e8e8;
+    background: #fafafa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel-title {
+    font-weight: 500;
+}
+
+.panel-count {
+    color: #ff7a45;
+}
+
+.panel-search {
+    padding: 12px 16px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.panel-search-input {
+    width: 100%;
+    height: 32px;
+    padding: 0 12px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+}
+
+.panel-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 0;
+}
+
+.panel-item {
+    padding: 12px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.panel-item:hover {
+    background: #f5f5f5;
+}
+
+.panel-item.selected {
+    background: #fff7e6;
+}
+
+.panel-item-checkbox {
+    margin-top: 2px;
+}
+
+.panel-item-info {
+    flex: 1;
+}
+
+.panel-item-name {
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.panel-item-meta {
+    font-size: 12px;
+    color: #999;
+}
+
+.panel-item-remove {
+    color: #999;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.panel-item-remove:hover {
+    color: #ff4d4f;
+}
+
+.panel-clear {
+    color: #ff7a45;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.panel-clear:hover {
+    text-decoration: underline;
+}
+
+/* ==================== 编辑商品弹窗 - 4列表单 ==================== */
+.edit-product-modal {
+    max-width: 900px;
+}
+
+.edit-form {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.modal-form-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.modal-form-item.full-width {
+    grid-column: span 4;
+}
+
+.modal-form-label {
+    color: #666;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.modal-form-label.required::before {
+    content: '*';
+    color: #ff4d4f;
+    margin-right: 4px;
+}
+
+.modal-form-input,
+.modal-form-select {
+    height: 32px;
+    padding: 0 12px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+}
+
+.modal-form-input:focus,
+.modal-form-select:focus {
+    outline: none;
+    border-color: #ff7a45;
+    box-shadow: 0 0 0 2px rgba(255, 122, 69, 0.2);
+}
+
+.modal-form-text {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    color: #333;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ==================== 商品范围选择器 ==================== */
+.scope-selector {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.scope-select {
+    width: 200px;
+    flex-shrink: 0;
+}
+
+.scope-hint {
+    color: #999;
+    font-size: 13px;
+}
+
+.scope-panel-container {
+    margin-top: 8px;
+}
+
+.scope-dual-panel {
+    height: 320px;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    padding: 12px;
+    background: #fafafa;
+}
+
+.scope-dual-panel .panel {
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid #e8e8e8;
+}
+
+.scope-dual-panel .panel-header {
+    padding: 10px 12px;
+    background: #fafafa;
+    border-bottom: 1px solid #e8e8e8;
+    border-radius: 4px 4px 0 0;
+}
+
+.scope-dual-panel .panel-list {
+    height: 200px;
+}
+
+.panel-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    padding: 0 8px;
+}
+
+.panel-action-btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #d9d9d9;
+    background: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #666;
+    transition: all 0.3s;
+}
+
+.panel-action-btn:hover {
+    border-color: #ff7a45;
+    color: #ff7a45;
+}
+
+/* ==================== 导入商品弹窗 ==================== */
+.import-warning {
+    background: #fff7e6;
+    border: 1px solid #ffd591;
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ff7a45;
+}
+
+.upload-area {
+    border: 2px dashed #d9d9d9;
+    border-radius: 4px;
+    padding: 48px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.upload-area:hover {
+    border-color: #ff7a45;
+    background: #fff7e6;
+}
+
+.upload-icon {
+    font-size: 48px;
+    color: #bfbfbf;
+    margin-bottom: 16px;
+}
+
+.upload-text {
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.upload-hint {
+    color: #999;
+    font-size: 13px;
+}
+
+.upload-link {
+    color: #ff7a45;
+    cursor: pointer;
+}
+
+.upload-link:hover {
+    text-decoration: underline;
+}
+
+.template-download {
+    text-align: center;
+    margin-top: 24px;
+}
+
+.import-instructions {
+    margin-top: 24px;
+    padding: 16px;
+    background: #fafafa;
+    border-radius: 4px;
+}
+
+.import-instructions-title {
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.import-instructions-list {
+    color: #666;
+    font-size: 13px;
+    line-height: 2;
+    padding-left: 16px;
+}
+
+/* ==================== 批量编辑弹窗 ==================== */
+.batch-edit-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.batch-edit-table th,
+.batch-edit-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.batch-edit-table th {
+    background: #fafafa;
+    font-weight: 500;
+    color: #666;
+    font-size: 13px;
+}
+
+.batch-edit-input {
+    width: 100%;
+    height: 28px;
+    padding: 0 8px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.batch-edit-input:focus {
+    outline: none;
+    border-color: #ff7a45;
+}
+
+.batch-edit-unit {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.batch-edit-unit .batch-edit-input {
+    flex: 1;
+}
+
+.batch-edit-select {
+    width: 100%;
+    height: 28px;
+    padding: 0 8px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    font-size: 13px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.batch-edit-select:focus {
+    outline: none;
+    border-color: #ff7a45;
+}
+
+.batch-edit-modal {
+    max-width: 1400px;
+}
+
+.batch-edit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.batch-edit-count {
+    color: #666;
+    font-size: 14px;
+}
+
+.batch-edit-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.batch-edit-table-wrapper {
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+.batch-edit-table {
+    min-width: 1300px;
+    white-space: nowrap;
+}
+
+.batch-edit-table th,
+.batch-edit-table td {
+    white-space: nowrap;
+}
+
+.scope-select {
+    min-width: 120px;
+}
+
+/* 批量编辑只读单元格 */
+.batch-edit-table .readonly-cell {
+    color: #999;
+    background: #fafafa;
+    padding: 6px 8px;
+    border-radius: 4px;
+}

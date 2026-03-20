@@ -1,0 +1,146 @@
+/**
+ * 分页功能样式
+ */
+
+/* ==================== 分页器样式 ==================== */
+.pagination-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: #fafafa;
+    border-top: 1px solid #e8e8e8;
+    border-radius: 0 0 8px 8px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.pagination-info {
+    font-size: 13px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pagination-info strong {
+    color: #333;
+    font-weight: 600;
+}
+
+.pagination-divider {
+    color: #d9d9d9;
+}
+
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pagination-btn {
+    min-width: 32px;
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid #d9d9d9;
+    background: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    border-color: #1890ff;
+    color: #1890ff;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #f5f5f5;
+}
+
+.pagination-btn.active {
+    background: #1890ff;
+    border-color: #1890ff;
+    color: #fff;
+}
+
+.pagination-icon {
+    font-size: 14px;
+    line-height: 1;
+}
+
+.pagination-pages {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pagination-ellipsis {
+    padding: 0 4px;
+    color: #999;
+    font-size: 13px;
+}
+
+.pagination-jump {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #666;
+}
+
+.pagination-input {
+    width: 50px;
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.pagination-input:focus {
+    outline: none;
+    border-color: #1890ff;
+}
+
+.pagination-jump-btn {
+    min-width: 40px;
+    background: #1890ff;
+    border-color: #1890ff;
+    color: #fff;
+    font-weight: 500;
+}
+
+.pagination-jump-btn:hover {
+    background: #40a9ff;
+    border-color: #40a9ff;
+}
+
+/* 分页器隐藏状态（数据不足10条时） */
+.pagination-container.hidden {
+    display: none;
+}
+
+/* 响应式分页器 */
+@media (max-width: 768px) {
+    .pagination-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .pagination-controls {
+        justify-content: center;
+    }
+
+    .pagination-jump {
+        justify-content: center;
+    }
+}

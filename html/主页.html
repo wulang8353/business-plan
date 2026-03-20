@@ -865,6 +865,838 @@
             color: #ff7a45;
         }
 
+        /* ==================== 商品活动列表模块样式 ==================== */
+        .product-activity-section {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .activity-section-header {
+            margin-bottom: 16px;
+        }
+
+        .activity-section-title {
+            font-size: 15px;
+            font-weight: 500;
+            color: #333;
+            margin: 0;
+        }
+
+        /* Tab导航栏样式 */
+        .activity-tabs {
+            display: flex;
+            gap: 0;
+            border-bottom: 1px solid #e8e8e8;
+            margin-bottom: 16px;
+        }
+
+        .activity-tab {
+            padding: 10px 20px;
+            font-size: 14px;
+            color: #666;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px;
+        }
+
+        .activity-tab:hover {
+            color: #ff7a45;
+        }
+
+        .activity-tab.active {
+            color: #ff7a45;
+            border-bottom-color: #ff7a45;
+            font-weight: 500;
+        }
+
+        /* 活动表格样式 */
+        .activity-table-wrapper {
+            max-height: 320px;
+            overflow-y: auto;
+            border: 1px solid #e8e8e8;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .activity-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .activity-table thead {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .activity-table th {
+            background: #fafafa;
+            font-weight: 500;
+            color: #666;
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #e8e8e8;
+            white-space: nowrap;
+        }
+
+        .activity-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f0f0f0;
+            color: #333;
+            white-space: nowrap;
+        }
+
+        .activity-table tbody tr:hover {
+            background: #fafafa;
+        }
+
+        .activity-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* "更多"链接样式 */
+        .activity-more {
+            color: #ff7a45;
+            cursor: pointer;
+        }
+
+        .activity-more:hover {
+            text-decoration: underline;
+        }
+
+        /* 查看活动链接样式 */
+        .activity-view-link {
+            color: #ff7a45;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .activity-view-link:hover {
+            text-decoration: underline;
+        }
+
+        /* 分页组件样式 */
+        .activity-pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+
+        .pagination-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .pagination-size-select {
+            height: 32px;
+            padding: 0 8px;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+            font-size: 13px;
+            color: #333;
+            background: #fff;
+            cursor: pointer;
+        }
+
+        .pagination-size-select:focus {
+            outline: none;
+            border-color: #ff7a45;
+        }
+
+        .pagination-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pagination-btn {
+            min-width: 32px;
+            height: 32px;
+            padding: 0 8px;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+            background: #fff;
+            color: #666;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pagination-btn:hover {
+            border-color: #ff7a45;
+            color: #ff7a45;
+        }
+
+        .pagination-btn.active {
+            background: #ff7a45;
+            border-color: #ff7a45;
+            color: #fff;
+        }
+
+        .pagination-ellipsis {
+            color: #999;
+            padding: 0 4px;
+        }
+
+        .pagination-jump {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #666;
+            margin-left: 8px;
+        }
+
+        .pagination-jump-input {
+            width: 48px;
+            height: 32px;
+            padding: 0 8px;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .pagination-jump-input:focus {
+            outline: none;
+            border-color: #ff7a45;
+        }
+
+        /* ==================== 范围变更冲突处理样式 ==================== */
+        /* 冲突警告提示框 */
+        .conflict-warning-box {
+            background: linear-gradient(135deg, #fff7e6 0%, #fff1f0 100%);
+            border: 1px solid #ffd591;
+            border-radius: 8px;
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .conflict-warning-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .conflict-warning-icon {
+            font-size: 20px;
+        }
+
+        .conflict-warning-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #ff7a45;
+        }
+
+        .conflict-warning-desc {
+            font-size: 13px;
+            color: #666;
+            padding-left: 30px;
+        }
+
+        .conflict-warning-desc strong {
+            color: #ff4d4f;
+            font-weight: 600;
+        }
+
+        .conflict-warning-actions {
+            padding-left: 30px;
+            margin-top: 4px;
+        }
+
+        .btn-sm {
+            height: 28px;
+            padding: 0 12px;
+            font-size: 13px;
+        }
+
+        /* 冲突详情弹窗 */
+        .conflict-detail-modal {
+            max-width: 700px;
+            max-height: 80vh;
+        }
+
+        .conflict-detail-modal .modal-body {
+            max-height: calc(80vh - 140px);
+            overflow-y: auto;
+        }
+
+        /* 变更信息框 */
+        .conflict-info-box {
+            background: #f6ffed;
+            border: 1px solid #b7eb8f;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+        }
+
+        .conflict-info-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #52c41a;
+            margin-bottom: 12px;
+        }
+
+        .conflict-info-content {
+            font-size: 13px;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .conflict-info-content p {
+            margin: 0;
+        }
+
+        .conflict-range-old {
+            color: #999;
+            text-decoration: line-through;
+            background: #f5f5f5;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .conflict-range-new {
+            color: #52c41a;
+            font-weight: 600;
+            background: #f6ffed;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* 冲突列表头部 */
+        .conflict-list-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .conflict-list-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .conflict-list-hint {
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* 冲突列表容器 */
+        .conflict-list-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* 冲突项 */
+        .conflict-item {
+            background: #fafafa;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            padding: 16px;
+            transition: all 0.3s;
+        }
+
+        .conflict-item:hover {
+            border-color: #d9d9d9;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .conflict-item.removed {
+            opacity: 0.6;
+            background: #f5f5f5;
+        }
+
+        .conflict-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .conflict-item-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .conflict-item-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .conflict-item-id {
+            font-size: 12px;
+            color: #999;
+            font-family: 'SF Mono', Monaco, monospace;
+        }
+
+        .conflict-item-status {
+            display: flex;
+            align-items: center;
+        }
+
+        .conflict-status-badge {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .conflict-status-badge.pending {
+            background: #fff7e6;
+            color: #ff7a45;
+            border: 1px solid #ffd591;
+        }
+
+        .conflict-status-badge.skipped {
+            background: #f5f5f5;
+            color: #999;
+            border: 1px solid #d9d9d9;
+        }
+
+        .conflict-action-btn {
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            background: #ff7a45;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .conflict-action-btn:hover {
+            background: #ff9c6e;
+        }
+
+        .conflict-item-body {
+            margin-bottom: 12px;
+        }
+
+        .conflict-item-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .conflict-item-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .conflict-item-label {
+            font-size: 12px;
+            color: #999;
+            min-width: 70px;
+        }
+
+        .conflict-item-value {
+            font-size: 13px;
+            color: #333;
+        }
+
+        .conflict-item-actions {
+            display: flex;
+            justify-content: flex-end;
+            padding-top: 12px;
+            border-top: 1px dashed #e8e8e8;
+        }
+
+        /* 弹窗底部 */
+        .conflict-modal-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .conflict-footer-hint-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            background: #e6f7ff;
+            border: 1px solid #91d5ff;
+            border-radius: 6px;
+            padding: 10px 12px;
+        }
+
+        .conflict-footer-icon {
+            font-size: 16px;
+        }
+
+        .conflict-footer-hint-text {
+            font-size: 13px;
+            color: #1890ff;
+        }
+
+        .conflict-footer-hint {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .conflict-footer-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        /* 进度弹窗 */
+        .progress-modal {
+            max-width: 500px;
+        }
+
+        .progress-container {
+            padding: 20px 0;
+        }
+
+        .progress-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .progress-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px 0;
+            position: relative;
+        }
+
+        .progress-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 48px;
+            width: 2px;
+            height: calc(100% - 32px);
+            background: #e8e8e8;
+        }
+
+        .progress-step.active:not(:last-child)::after {
+            background: linear-gradient(to bottom, #ff7a45, #e8e8e8);
+        }
+
+        .progress-step-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #f5f5f5;
+            border: 2px solid #e8e8e8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 600;
+            color: #999;
+            flex-shrink: 0;
+            z-index: 1;
+        }
+
+        .progress-step.active .progress-step-icon {
+            background: #fff7e6;
+            border-color: #ff7a45;
+            color: #ff7a45;
+        }
+
+        .progress-step-content {
+            flex: 1;
+            padding-top: 4px;
+        }
+
+        .progress-step-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .progress-step.active .progress-step-title {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .progress-step-status {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .progress-step.active .progress-step-status {
+            color: #ff7a45;
+        }
+
+        .progress-detail {
+            margin-top: 20px;
+            padding: 16px;
+            background: #fafafa;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .progress-detail-text {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* 结果弹窗 */
+        .result-modal {
+            max-width: 420px;
+        }
+
+        .result-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 24px 24px;
+            text-align: center;
+        }
+
+        .result-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .result-icon.success {
+            background: #f6ffed;
+            color: #52c41a;
+        }
+
+        .result-icon.error {
+            background: #fff1f0;
+            color: #ff4d4f;
+        }
+
+        .result-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .result-desc {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .result-desc p {
+            margin: 0;
+        }
+
+        .result-detail {
+            background: #fafafa;
+            border-radius: 8px;
+            padding: 16px 20px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .result-detail-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .result-detail-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .result-detail-label {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .result-detail-value {
+            font-size: 13px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .result-footer {
+            justify-content: center;
+            padding: 16px 24px 24px;
+        }
+
+        /* 执行结果弹窗新样式 */
+        .result-full-body {
+            max-height: 60vh;
+            overflow-y: auto;
+            padding: 20px 24px;
+        }
+
+        .result-section {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .result-section:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .result-section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+            padding-left: 12px;
+            border-left: 3px solid #ff7a45;
+        }
+
+        .result-section-title.result-section-delete {
+            border-left-color: #ff4d4f;
+        }
+
+        .result-section-title.result-section-create {
+            border-left-color: #52c41a;
+        }
+
+        .result-section-content {
+            padding-left: 15px;
+        }
+
+        .result-info-row {
+            display: flex;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .result-info-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .result-info-label {
+            color: #999;
+            min-width: 80px;
+        }
+
+        .result-info-value {
+            color: #333;
+            flex: 1;
+        }
+
+        .range-old {
+            color: #999;
+            text-decoration: line-through;
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .range-arrow {
+            color: #999;
+            margin: 0 8px;
+        }
+
+        .range-new {
+            color: #52c41a;
+            font-weight: 500;
+            background: #f6ffed;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .result-activity-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .result-activity-item {
+            background: #fafafa;
+            border: 1px solid #e8e8e8;
+            border-radius: 6px;
+            padding: 12px;
+        }
+
+        .result-activity-item.deleted {
+            background: #fff1f0;
+            border-color: #ffccc7;
+        }
+
+        .result-activity-item.created {
+            background: #f6ffed;
+            border-color: #b7eb8f;
+        }
+
+        .result-activity-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .result-activity-id {
+            font-size: 11px;
+            color: #999;
+            font-family: 'SF Mono', Monaco, monospace;
+            margin-bottom: 4px;
+        }
+
+        .result-activity-scope {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .result-activity-desc {
+            font-size: 12px;
+            color: #ff4d4f;
+            margin-top: 6px;
+            padding-top: 6px;
+            border-top: 1px dashed #e8e8e8;
+        }
+
+        .result-activity-item.created .result-activity-desc {
+            color: #52c41a;
+        }
+
+        /* 商品范围文本显示 */
+        .product-scope-text {
+            display: inline-block;
+            max-width: 150px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        .product-scope-text:hover {
+            overflow: visible;
+            white-space: normal;
+            word-break: break-all;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            padding: 4px 8px;
+            border-radius: 4px;
+            position: relative;
+            z-index: 10;
+        }
+
         /* ==================== 导入商品弹窗 ==================== */
         .import-warning {
             background: #fff7e6;
@@ -1001,6 +1833,29 @@
             border-color: #ff7a45;
         }
 
+        /* 商品主图样式 */
+        .product-image-cell {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4px;
+        }
+
+        .product-thumb {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid #e8e8e8;
+            background: #f5f5f5;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .product-thumb:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
         .batch-edit-modal {
             max-width: 1400px;
         }
@@ -1039,6 +1894,12 @@
 
         .scope-select {
             min-width: 120px;
+        }
+
+        /* 目标销售额列宽度 */
+        .data-table th:nth-child(14),
+        .data-table td:nth-child(14) {
+            min-width: 130px;
         }
 
         /* 批量编辑只读单元格 */
@@ -1384,6 +2245,21 @@
         .plan-card-meta {
             font-size: 13px;
             color: #666;
+            margin-bottom: 8px;
+        }
+
+        .plan-card-timestamp {
+            font-size: 12px;
+            color: #8c8c8c;
+        }
+
+        .plan-card.ended {
+            background: #f5f5f5;
+            border-color: #d9d9d9;
+        }
+
+        .plan-card.ended .plan-card-title {
+            color: #8c8c8c;
         }
 
         .timeline-item {
@@ -2024,6 +2900,37 @@
             font-weight: 500;
         }
 
+        /* 版本号标签样式 */
+        .version-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+            font-size: 13px;
+            font-weight: 500;
+            color: #666;
+            padding: 4px 10px;
+            background: #f5f5f5;
+            border-radius: 4px;
+            border: 1px solid #e8e8e8;
+        }
+
+        .version-tag.current {
+            background: linear-gradient(135deg, #fff7e6 0%, #fff1f0 100%);
+            border-color: #ffd591;
+            color: #ff7a45;
+        }
+
+        .version-tag.current::after {
+            content: '当前';
+            font-size: 11px;
+            padding: 1px 6px;
+            background: #ff7a45;
+            color: #fff;
+            border-radius: 10px;
+            font-weight: 400;
+        }
+
         /* ==================== 预警详情弹窗优化样式 ==================== */
         .timeline {
             position: relative;
@@ -2170,6 +3077,43 @@
             gap: 4px;
         }
 
+        .coverage-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .coverage-update-time {
+            font-size: 12px;
+            color: #999;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .update-time-label {
+            color: #999;
+        }
+
+        .update-time-value {
+            color: #666;
+            font-family: 'SF Mono', Monaco, monospace;
+        }
+
+        @media (max-width: 768px) {
+            .coverage-header {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .coverage-update-time {
+                font-size: 11px;
+            }
+        }
+
         .coverage-table th {
             background: #fafafa;
             font-weight: 500;
@@ -2179,7 +3123,7 @@
             padding: 12px 16px;
         }
 
-        /* ==================== 供应链备货进度样式 ==================== */
+        /* ==================== 供应链过程进度样式 ==================== */
         .supply-stats-header {
             display: flex;
             gap: 24px;
@@ -2417,62 +3361,104 @@
             color: #ff4d4f;
         }
 
-        /* ==================== 供应链备货进度新样式 ==================== */
+        /* ==================== 供应链过程进度新样式 ==================== */
+        .supply-overview-wrapper {
+            margin-bottom: 20px;
+        }
+
         .supply-overview-header {
             display: flex;
-            gap: 16px;
-            margin-bottom: 20px;
-            padding: 20px;
+            gap: 12px;
+            padding: 16px;
             background: linear-gradient(135deg, #f6ffed 0%, #fff 50%, #e6f7ff 100%);
             border-radius: 12px;
             border: 1px solid #d9d9d9;
             flex-wrap: wrap;
+            align-items: stretch;
+        }
+
+        .supply-overview-header.target-row {
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #fff7e6 0%, #fff 50%, #fff1f0 100%);
+            border-color: #ffd591;
+        }
+
+        .supply-overview-header.process-row {
+            margin-bottom: 0;
+        }
+
+        .supply-overview-item.target-item {
+            flex: 1;
+            max-width: none;
+            min-width: 200px;
+            background: linear-gradient(135deg, #fff 0%, #fff7e6 100%);
+            border: 1px solid #ffd591;
+        }
+
+        .supply-overview-item.target-item .supply-overview-value {
+            font-size: 24px;
+            color: #ff7a45;
         }
 
         .supply-overview-item {
             display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 12px 14px;
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
             flex: 1;
-            min-width: 160px;
+            min-width: 140px;
+            max-width: 200px;
         }
 
         .supply-overview-icon {
-            font-size: 24px;
-            width: 40px;
-            height: 40px;
+            font-size: 22px;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: #f5f5f5;
             border-radius: 8px;
+            flex-shrink: 0;
         }
 
         .supply-overview-info {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 2px;
+            min-width: 0;
+            flex: 1;
         }
 
         .supply-overview-label {
             font-size: 12px;
             color: #666;
+            line-height: 1.4;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .supply-overview-value {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
             color: #333;
+            line-height: 1.3;
+            white-space: nowrap;
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
         }
 
         .supply-overview-value .unit {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: normal;
             color: #999;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .supply-overview-value.highlight {
@@ -2485,17 +3471,18 @@
 
         /* 概览子项 */
         .supply-overview-item.has-subitems {
-            padding: 12px 16px 8px;
+            padding: 12px 14px 8px;
         }
 
         .supply-overview-subitem {
             display: flex;
             align-items: center;
-            gap: 6px;
-            margin-top: 6px;
-            padding-top: 6px;
+            gap: 4px;
+            margin-top: 4px;
+            padding-top: 4px;
             border-top: 1px dashed #e8e8e8;
-            font-size: 12px;
+            font-size: 11px;
+            white-space: nowrap;
         }
 
         /* ==================== 供应链数据表格样式 ==================== */
@@ -2808,17 +3795,89 @@
 
         .supply-overview-subitem .subitem-label {
             color: #999;
+            flex-shrink: 0;
         }
 
         .supply-overview-subitem .subitem-value {
             color: #666;
             font-weight: 500;
+            display: flex;
+            align-items: baseline;
+            gap: 2px;
+            white-space: nowrap;
+            min-width: 0;
         }
 
         .supply-overview-subitem .subitem-value .unit {
-            font-size: 11px;
+            font-size: 10px;
             font-weight: normal;
             color: #999;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 1400px) {
+            .supply-overview-item {
+                min-width: 130px;
+                padding: 10px 12px;
+            }
+            .supply-overview-value {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .supply-overview-header {
+                gap: 10px;
+                padding: 14px;
+            }
+            .supply-overview-item {
+                min-width: 120px;
+                max-width: none;
+            }
+            .supply-overview-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 20px;
+            }
+            .supply-overview-value {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .supply-overview-header.process-row .supply-overview-item {
+                min-width: calc(50% - 6px);
+                flex: 0 0 calc(50% - 6px);
+            }
+            .supply-overview-item.target-item {
+                min-width: 180px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .supply-overview-header.process-row .supply-overview-item {
+                min-width: calc(50% - 6px);
+                flex: 0 0 calc(50% - 6px);
+            }
+            .supply-overview-header {
+                padding: 12px;
+                gap: 10px;
+            }
+            .supply-overview-item.target-item .supply-overview-value {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .supply-overview-header.process-row .supply-overview-item {
+                min-width: 100%;
+                flex: 0 0 100%;
+            }
+            .supply-overview-item.target-item {
+                min-width: 100%;
+            }
         }
 
         /* 数据维度平铺展示模块 */
@@ -4272,6 +5331,45 @@
             white-space: nowrap;
         }
 
+        /* ==================== 关联资源标签样式 ==================== */
+        .resource-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            max-width: 120px;
+        }
+
+        .resource-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        /* 促销标签 - 红色系 */
+        .resource-tag.promotion {
+            background: #fff1f0;
+            color: #f5222d;
+            border: 1px solid #ffa39e;
+        }
+
+        /* 陈列标签 - 蓝色系 */
+        .resource-tag.display {
+            background: #e6f7ff;
+            color: #1890ff;
+            border: 1px solid #91d5ff;
+        }
+
+        /* 点位标签 - 绿色系 */
+        .resource-tag.point {
+            background: #f6ffed;
+            color: #52c41a;
+            border: 1px solid #b7eb8f;
+        }
+
         /* ==================== 分页器样式 ==================== */
         .pagination-container {
             display: flex;
@@ -4610,7 +5708,6 @@
                 </div>
                 <div class="validation-stats" id="validation-stats">
                     <span>已校验：<strong id="validated-count">0</strong> / <strong id="total-count">56</strong> 件</span>
-                    <span>发现异常：<strong id="abnormal-found-count" class="abnormal-count">0</strong> 件</span>
                 </div>
             </div>
 
@@ -4628,18 +5725,18 @@
                         <tr>
                             <th><input type="checkbox" class="checkbox" id="select-all-added"></th>
                             <th>状态</th>
-                            <th>校验状态</th>
+                            <th>校验结果</th>
                             <th>商品编码</th>
                             <th>商品名称</th>
                             <th>商品类型</th>
                             <th>商品分层</th>
                             <th>规格</th>
                             <th>商品范围</th>
-                            <th>促销活动</th>
+                            <th>关联资源</th>
                             <th>目标销量</th>
                             <th>目标销量协同值</th>
                             <th>建议档案零售价</th>
-                            <th>目标销售额</th>
+                            <th>目标销售额(万元)</th>
                             <th>商品品牌</th>
                             <th>操作</th>
                         </tr>
@@ -4662,7 +5759,12 @@
                             <td>S级</td>
                             <td>24g*24条*10盒</td>
                             <td>继承项目范围</td>
-                            <td>促销</td>
+                            <td>
+                                <div class="resource-tags">
+                                    <span class="resource-tag promotion">促销</span>
+                                    <span class="resource-tag display">陈列</span>
+                                </div>
+                            </td>
                             <td>20,000</td>
                             <td>
                                 <span class="collab-value" onclick="openModal('collab-history')">18,500</span>
@@ -4671,8 +5773,9 @@
                             <td>¥20,000</td>
                             <td>脆香米</td>
                             <td class="table-actions">
+                                <span class="action-link" onclick="openModal('view-product')">查看</span>
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
-                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">追踪</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -4693,7 +5796,11 @@
                             <td>S级</td>
                             <td>43g*12条*10盒</td>
                             <td>继承项目范围</td>
-                            <td>--</td>
+                            <td>
+                                <div class="resource-tags">
+                                    <span class="resource-tag promotion">促销</span>
+                                </div>
+                            </td>
                             <td>20,000</td>
                             <td>
                                 <span class="collab-value" onclick="openModal('collab-history')">19,200</span>
@@ -4702,8 +5809,9 @@
                             <td>¥20,000</td>
                             <td>德芙</td>
                             <td class="table-actions">
+                                <span class="action-link" onclick="openModal('view-product')">查看</span>
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
-                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">追踪</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -4723,8 +5831,12 @@
                             <td>糖巧</td>
                             <td>A级</td>
                             <td>51g*24条*8中盒</td>
-                            <td>自定义选择</td>
-                            <td>--</td>
+                            <td><span class="product-scope-text" data-scope="湖南省、上海市、北京市、广州市、深圳市、杭州市、南京市">湖南省、上海市、北京市、广州市、深圳市、杭州市、南京市</span></td>
+                            <td>
+                                <div class="resource-tags">
+                                    <span class="resource-tag point">点位</span>
+                                </div>
+                            </td>
                             <td>20,000</td>
                             <td>
                                 <span class="collab-value" onclick="openModal('collab-history')">20,000</span>
@@ -4733,8 +5845,9 @@
                             <td>¥20,000</td>
                             <td>士力架</td>
                             <td class="table-actions">
+                                <span class="action-link" onclick="openModal('view-product')">查看</span>
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
-                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">追踪</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -4755,7 +5868,13 @@
                             <td>A级</td>
                             <td>43g*12条*10盒</td>
                             <td>继承项目范围</td>
-                            <td>促销</td>
+                            <td>
+                                <div class="resource-tags">
+                                    <span class="resource-tag promotion">促销</span>
+                                    <span class="resource-tag display">陈列</span>
+                                    <span class="resource-tag point">点位</span>
+                                </div>
+                            </td>
                             <td>20,000</td>
                             <td>
                                 <span class="collab-value" onclick="openModal('collab-history')">17,800</span>
@@ -4764,8 +5883,9 @@
                             <td>¥20,000</td>
                             <td>德芙</td>
                             <td class="table-actions">
+                                <span class="action-link" onclick="openModal('view-product')">查看</span>
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
-                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">追踪</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -4786,7 +5906,11 @@
                             <td>A级</td>
                             <td>43g*12条*10盒</td>
                             <td>继承项目范围</td>
-                            <td>促销</td>
+                            <td>
+                                <div class="resource-tags">
+                                    <span class="resource-tag display">陈列</span>
+                                </div>
+                            </td>
                             <td>20,000</td>
                             <td>
                                 <span class="collab-value" onclick="openModal('collab-history')">19,500</span>
@@ -4795,8 +5919,9 @@
                             <td>¥20,000</td>
                             <td>德芙</td>
                             <td class="table-actions">
+                                <span class="action-link" onclick="openModal('view-product')">查看</span>
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
-                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">追踪</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -4817,7 +5942,12 @@
                             <td>S级</td>
                             <td>40g*12袋*10盒</td>
                             <td>自定义选择</td>
-                            <td>满减</td>
+                            <td>
+                                <div class="resource-tags">
+                                    <span class="resource-tag promotion">促销</span>
+                                    <span class="resource-tag point">点位</span>
+                                </div>
+                            </td>
                             <td>15,000</td>
                             <td>
                                 <span class="collab-value" onclick="openModal('collab-history')">14,200</span>
@@ -4826,8 +5956,9 @@
                             <td>¥12,750</td>
                             <td>M&M's</td>
                             <td class="table-actions">
+                                <span class="action-link" onclick="openModal('view-product')">查看</span>
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
-                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">追踪</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -4848,7 +5979,11 @@
                             <td>A级</td>
                             <td>45g*20袋*8盒</td>
                             <td>继承项目范围</td>
-                            <td>--</td>
+                            <td>
+                                <div class="resource-tags">
+                                    <span class="resource-tag point">点位</span>
+                                </div>
+                            </td>
                             <td>18,000</td>
                             <td>
                                 <span class="collab-value" onclick="openModal('collab-history')">16,800</span>
@@ -4857,8 +5992,9 @@
                             <td>¥10,800</td>
                             <td>彩虹糖</td>
                             <td class="table-actions">
+                                <span class="action-link" onclick="openModal('view-product')">查看</span>
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
-                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">追踪</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -4879,7 +6015,12 @@
                             <td>B级</td>
                             <td>35粒*12盒*6中盒</td>
                             <td>继承项目范围</td>
-                            <td>买赠</td>
+                            <td>
+                                <div class="resource-tags">
+                                    <span class="resource-tag promotion">促销</span>
+                                    <span class="resource-tag display">陈列</span>
+                                </div>
+                            </td>
                             <td>12,000</td>
                             <td>
                                 <span class="collab-value" onclick="openModal('collab-history')">11,500</span>
@@ -4888,8 +6029,9 @@
                             <td>¥14,400</td>
                             <td>绿箭</td>
                             <td class="table-actions">
+                                <span class="action-link" onclick="openModal('view-product')">查看</span>
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
-                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">追踪</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -4933,7 +6075,7 @@
                         <tr>
                             <th><input type="checkbox" class="checkbox" id="select-all-abnormal"></th>
                             <th>状态</th>
-                            <th>校验状态</th>
+                            <th>校验结果</th>
                             <th>异常原因</th>
                             <th>商品编码</th>
                             <th>商品名称</th>
@@ -4941,11 +6083,11 @@
                             <th>商品分层</th>
                             <th>规格</th>
                             <th>商品范围</th>
-                            <th>促销活动</th>
+                            <th>关联资源</th>
                             <th>目标销量</th>
                             <th>目标销量协同值</th>
                             <th>建议档案零售价</th>
-                            <th>目标销售额</th>
+                            <th>目标销售额(万元)</th>
                             <th>商品品牌</th>
                             <th>是否预警</th>
                             <th>操作</th>
@@ -4970,7 +6112,12 @@
                             <td>A级</td>
                             <td>43g*12条*10盒</td>
                             <td>继承项目范围</td>
-                            <td>促销</td>
+                            <td>
+                                <div class="resource-tags">
+                                    <span class="resource-tag promotion">促销</span>
+                                    <span class="resource-tag display">陈列</span>
+                                </div>
+                            </td>
                             <td>20,000</td>
                             <td>
                                 <span class="collab-value" onclick="openModal('collab-history')">17,800</span>
@@ -4985,8 +6132,9 @@
                                 </label>
                             </td>
                             <td class="table-actions">
+                                <span class="action-link" onclick="openModal('view-product')">查看</span>
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
-                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">追踪</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -5008,7 +6156,11 @@
                             <td>A级</td>
                             <td>43g*12条*10盒</td>
                             <td>继承项目范围</td>
-                            <td>促销</td>
+                            <td>
+                                <div class="resource-tags">
+                                    <span class="resource-tag display">陈列</span>
+                                </div>
+                            </td>
                             <td>20,000</td>
                             <td>
                                 <span class="collab-value" onclick="openModal('collab-history')">19,500</span>
@@ -5023,8 +6175,9 @@
                                 </label>
                             </td>
                             <td class="table-actions">
+                                <span class="action-link" onclick="openModal('view-product')">查看</span>
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
-                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">追踪</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -5046,7 +6199,12 @@
                             <td>S级</td>
                             <td>24g*24条*10盒</td>
                             <td>继承项目范围</td>
-                            <td>促销</td>
+                            <td>
+                                <div class="resource-tags">
+                                    <span class="resource-tag promotion">促销</span>
+                                    <span class="resource-tag point">点位</span>
+                                </div>
+                            </td>
                             <td>20,000</td>
                             <td>
                                 <span class="collab-value" onclick="openModal('collab-history')">18,500</span>
@@ -5061,8 +6219,9 @@
                                 </label>
                             </td>
                             <td class="table-actions">
+                                <span class="action-link" onclick="openModal('view-product')">查看</span>
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
-                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">追踪</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -5084,7 +6243,11 @@
                             <td>A级</td>
                             <td>40粒*6瓶*12盒</td>
                             <td>自定义选择</td>
-                            <td>--</td>
+                            <td>
+                                <div class="resource-tags">
+                                    <span class="resource-tag point">点位</span>
+                                </div>
+                            </td>
                             <td>25,000</td>
                             <td>
                                 <span class="collab-value" onclick="openModal('collab-history')">23,200</span>
@@ -5099,8 +6262,9 @@
                                 </label>
                             </td>
                             <td class="table-actions">
+                                <span class="action-link" onclick="openModal('view-product')">查看</span>
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
-                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">追踪</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -5122,7 +6286,13 @@
                             <td>A级</td>
                             <td>28片*9盒*8中盒</td>
                             <td>继承项目范围</td>
-                            <td>促销</td>
+                            <td>
+                                <div class="resource-tags">
+                                    <span class="resource-tag promotion">促销</span>
+                                    <span class="resource-tag display">陈列</span>
+                                    <span class="resource-tag point">点位</span>
+                                </div>
+                            </td>
                             <td>22,000</td>
                             <td>
                                 <span class="collab-value" onclick="openModal('collab-history')">20,800</span>
@@ -5137,8 +6307,9 @@
                                 </label>
                             </td>
                             <td class="table-actions">
+                                <span class="action-link" onclick="openModal('view-product')">查看</span>
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
-                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">追踪</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -5160,7 +6331,11 @@
                             <td>S级</td>
                             <td>43g*12条*10盒</td>
                             <td>继承项目范围</td>
-                            <td>满减</td>
+                            <td>
+                                <div class="resource-tags">
+                                    <span class="resource-tag display">陈列</span>
+                                </div>
+                            </td>
                             <td>30,000</td>
                             <td>
                                 <span class="collab-value" onclick="openModal('collab-history')">28,500</span>
@@ -5175,8 +6350,9 @@
                                 </label>
                             </td>
                             <td class="table-actions">
+                                <span class="action-link" onclick="openModal('view-product')">查看</span>
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
-                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">追踪</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -5198,7 +6374,11 @@
                             <td>B级</td>
                             <td>108支*1桶</td>
                             <td>自定义选择</td>
-                            <td>--</td>
+                            <td>
+                                <div class="resource-tags">
+                                    <span class="resource-tag promotion">促销</span>
+                                </div>
+                            </td>
                             <td>8,000</td>
                             <td>
                                 <span class="collab-value" onclick="openModal('collab-history')">7,200</span>
@@ -5213,8 +6393,9 @@
                                 </label>
                             </td>
                             <td class="table-actions">
+                                <span class="action-link" onclick="openModal('view-product')">查看</span>
                                 <span class="action-link" onclick="openModal('edit-product')">编辑</span>
-                                <span class="action-link" onclick="openModal('warning-detail')">详情</span>
+                                <span class="action-link" onclick="openModal('warning-detail')">追踪</span>
                                 <span class="action-link danger">删除</span>
                             </td>
                         </tr>
@@ -5481,7 +6662,6 @@
                                 <option value="inherit">继承项目范围</option>
                                 <option value="custom">自定义选择</option>
                             </select>
-                            <span class="scope-hint">当前已选 20 个区域</span>
                         </div>
                     </div>
                     <div class="modal-form-item full-width scope-panel-container" id="scope-panel" style="display: none;">
@@ -5575,22 +6755,32 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal-form-item">
-                        <label class="modal-form-label">促销活动</label>
-                        <select class="modal-form-select">
-                            <option value="">请选择</option>
-                            <option value="促销">促销</option>
-                            <option value="满减">满减</option>
-                            <option value="买赠">买赠</option>
-                        </select>
+
+                    <!-- 冲突检测提示组件 -->
+                    <div class="modal-form-item full-width" id="conflict-warning-container" style="display: none;">
+                        <div class="conflict-warning-box">
+                            <div class="conflict-warning-header">
+                                <span class="conflict-warning-icon">⚠️</span>
+                                <span class="conflict-warning-title">当前选择的区域范围存在冲突</span>
+                            </div>
+                            <div class="conflict-warning-desc">
+                                检测到 <strong id="conflict-count">3</strong> 个活动与当前选择范围存在问题，需要处理后才能保存
+                            </div>
+                            <div class="conflict-warning-actions">
+                                <button class="btn btn-primary btn-sm" onclick="openConflictDetailModal()">
+                                    查看冲突详情
+                                </button>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="modal-form-item">
                         <label class="modal-form-label required">建议档案零售价</label>
-                        <input type="text" class="modal-form-input" value="10.00">
+                        <input type="text" class="modal-form-input" disabled value="10.00">
                     </div>
                     <div class="modal-form-item">
                         <label class="modal-form-label required">目标销量</label>
-                        <input type="text" class="modal-form-input" value="20,000">
+                        <input type="text" class="modal-form-input"  disabled value="20,000">
                     </div>
                     <div class="modal-form-item">
                         <label class="modal-form-label">目标销量协同值</label>
@@ -5599,12 +6789,131 @@
                         </div>
                     </div>
                     <div class="modal-form-item">
-                        <label class="modal-form-label required">目标销售额</label>
-                        <input type="text" class="modal-form-input" value="200,000">
+                        <label class="modal-form-label required">目标销售额(万元)</label>
+                        <input type="text" class="modal-form-input" value="20">
                     </div>
                     <div class="modal-form-item">
                         <label class="modal-form-label">预提货单</label>
                         <input type="text" class="modal-form-input" value="SS1234">
+                    </div>
+                </div>
+
+                <!-- ==================== 商品活动列表模块 ==================== -->
+                <div class="product-activity-section">
+                    <div class="activity-section-header">
+                        <h4 class="activity-section-title">商品活动</h4>
+                    </div>
+                    <!-- Tab导航栏 -->
+                    <div class="activity-tabs">
+                        <div class="activity-tab active" data-activity-tab="promotion" onclick="switchActivityTab(this, 'promotion')">促销资源</div>
+                        <div class="activity-tab" data-activity-tab="display" onclick="switchActivityTab(this, 'display')">陈列资源</div>
+                        <div class="activity-tab" data-activity-tab="position" onclick="switchActivityTab(this, 'position')">点位资源</div>
+                        <div class="activity-tab" data-activity-tab="other" onclick="switchActivityTab(this, 'other')">其他资源</div>
+                    </div>
+                    <!-- 活动列表表格 -->
+                    <div class="activity-table-wrapper">
+                        <table class="activity-table">
+                            <thead>
+                                <tr>
+                                    <th>促销活动名称</th>
+                                    <th>促销活动ID</th>
+                                    <th>促销活动范围</th>
+                                    <th>促销类型</th>
+                                    <th>促销机制</th>
+                                    <th>品牌</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="activity-table-body">
+                                <tr>
+                                    <td>活动0000001</td>
+                                    <td>12345677</td>
+                                    <td>湖南省/长沙市、北京、<span class="activity-more">更多(67)</span></td>
+                                    <td>满减</td>
+                                    <td>满50减10</td>
+                                    <td>赵一鸣</td>
+                                    <td><a href="#" class="activity-view-link">查看活动</a></td>
+                                </tr>
+                                <tr>
+                                    <td>活动0000001</td>
+                                    <td>12345677</td>
+                                    <td>湖南、湖北、上海、北京</td>
+                                    <td>满减</td>
+                                    <td>满50减10</td>
+                                    <td>零食很忙</td>
+                                    <td><a href="#" class="activity-view-link">查看活动</a></td>
+                                </tr>
+                                <tr>
+                                    <td>活动0000001</td>
+                                    <td>12345677</td>
+                                    <td>湖南、湖北、上海、北京</td>
+                                    <td>满减</td>
+                                    <td>满50减10</td>
+                                    <td>赵一鸣</td>
+                                    <td><a href="#" class="activity-view-link">查看活动</a></td>
+                                </tr>
+                                <tr>
+                                    <td>活动0000001</td>
+                                    <td>12345677</td>
+                                    <td>湖南、湖北、上海、北京</td>
+                                    <td>满减</td>
+                                    <td>满50减10</td>
+                                    <td>赵一鸣</td>
+                                    <td><a href="#" class="activity-view-link">查看活动</a></td>
+                                </tr>
+                                <tr>
+                                    <td>活动0000001</td>
+                                    <td>12345677</td>
+                                    <td>湖南、湖北、上海、北京</td>
+                                    <td>满减</td>
+                                    <td>满50减10</td>
+                                    <td>赵一鸣</td>
+                                    <td><a href="#" class="activity-view-link">查看活动</a></td>
+                                </tr>
+                                <tr>
+                                    <td>活动0000001</td>
+                                    <td>12345677</td>
+                                    <td>湖南、湖北、上海、北京</td>
+                                    <td>满减</td>
+                                    <td>满50减10</td>
+                                    <td>赵一鸣</td>
+                                    <td><a href="#" class="activity-view-link">查看活动</a></td>
+                                </tr>
+                                <tr>
+                                    <td>活动0000001</td>
+                                    <td>12345677</td>
+                                    <td>湖南、湖北、上海、北京</td>
+                                    <td>满减</td>
+                                    <td>满50减10</td>
+                                    <td>赵一鸣</td>
+                                    <td><a href="#" class="activity-view-link">查看活动</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- 分页组件 -->
+                    <div class="activity-pagination">
+                        <div class="pagination-left">
+                            <select class="pagination-size-select">
+                                <option value="10">10条/页</option>
+                                <option value="20">20条/页</option>
+                                <option value="50">50条/页</option>
+                            </select>
+                        </div>
+                        <div class="pagination-right">
+                            <button class="pagination-btn" onclick="changeActivityPage('prev')">&lt;</button>
+                            <button class="pagination-btn active">1</button>
+                            <button class="pagination-btn">2</button>
+                            <button class="pagination-btn">3</button>
+                            <button class="pagination-btn">4</button>
+                            <button class="pagination-btn">5</button>
+                            <span class="pagination-ellipsis">...</span>
+                            <button class="pagination-btn">10</button>
+                            <button class="pagination-btn" onclick="changeActivityPage('next')">&gt;</button>
+                            <span class="pagination-jump">
+                                跳至 <input type="text" class="pagination-jump-input" value="1"> 页
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -5673,6 +6982,7 @@
                         <thead>
                             <tr>
                                 <th><input type="checkbox" class="checkbox" id="select-all-batch"></th>
+                                <th>商品主图</th>
                                 <th>商品编码</th>
                                 <th>商品名称</th>
                                 <th>商品类型</th>
@@ -5680,11 +6990,11 @@
                                 <th>商品分层</th>
                                 <th>规格</th>
                                 <th>商品范围</th>
-                                <th>促销活动</th>
+                                <th>关联资源</th>
                                 <th>建议档案零售价</th>
                                 <th>目标销量</th>
                                 <th>目标销量协同值</th>
-                                <th>目标销售额</th>
+                                <th>目标销售额(万元)</th>
                                 <th>预提货单</th>
                                 <th>操作</th>
                             </tr>
@@ -5692,6 +7002,11 @@
                         <tbody>
                             <tr>
                                 <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-image-cell">
+                                        <img src="https://via.placeholder.com/60x60/f0f0f0/666?text=商品" alt="商品主图" class="product-thumb">
+                                    </div>
+                                </td>
                                 <td class="readonly-cell">HKK123446</td>
                                 <td class="readonly-cell">卫龙辣条辣条辣条辣条辣条</td>
                                 <td class="readonly-cell">散称商品</td>
@@ -5706,14 +7021,18 @@
                                         <option value="custom">自定义选择</option>
                                     </select>
                                 </td>
-                                <td class="readonly-cell">促销</td>
+                                <td class="readonly-cell">
+                                    <div class="resource-tags">
+                                        <span class="resource-tag promotion">促销</span>
+                                    </div>
+                                </td>
                                 <td class="readonly-cell">10.00元</td>
                                 <td class="readonly-cell">20,000</td>
                                 <td class="readonly-cell">
                                     <span class="collab-value" onclick="openModal('collab-history')">18,500</span>
                                 </td>
                                 <td>
-                                    <input type="text" class="batch-edit-input" value="200,000">
+                                    <input type="text" class="batch-edit-input" value="20">
                                 </td>
                                 <td>
                                     <input type="text" class="batch-edit-input" value="SS1234">
@@ -5722,6 +7041,11 @@
                             </tr>
                             <tr>
                                 <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-image-cell">
+                                        <img src="https://via.placeholder.com/60x60/f5f5dc/8B4513?text=德芙" alt="商品主图" class="product-thumb">
+                                    </div>
+                                </td>
                                 <td class="readonly-cell">HKK123447</td>
                                 <td class="readonly-cell">德芙丝滑牛奶巧克力43g</td>
                                 <td class="readonly-cell">糖巧</td>
@@ -5736,14 +7060,18 @@
                                         <option value="custom" selected>自定义选择</option>
                                     </select>
                                 </td>
-                                <td class="readonly-cell">满减</td>
+                                <td class="readonly-cell">
+                                    <div class="resource-tags">
+                                        <span class="resource-tag display">陈列</span>
+                                    </div>
+                                </td>
                                 <td class="readonly-cell">10.00元</td>
                                 <td class="readonly-cell">15,000</td>
                                 <td class="readonly-cell">
                                     <span class="collab-value" onclick="openModal('collab-history')">14,200</span>
                                 </td>
                                 <td>
-                                    <input type="text" class="batch-edit-input" value="150,000">
+                                    <input type="text" class="batch-edit-input" value="15">
                                 </td>
                                 <td>
                                     <input type="text" class="batch-edit-input" value="SS1235">
@@ -5752,6 +7080,11 @@
                             </tr>
                             <tr>
                                 <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-image-cell">
+                                        <img src="https://via.placeholder.com/60x60/D2691E/FFF?text=士力架" alt="商品主图" class="product-thumb">
+                                    </div>
+                                </td>
                                 <td class="readonly-cell">HKK123448</td>
                                 <td class="readonly-cell">士力架花生夹心巧克力51g</td>
                                 <td class="readonly-cell">糖巧</td>
@@ -5766,14 +7099,18 @@
                                         <option value="custom">自定义选择</option>
                                     </select>
                                 </td>
-                                <td class="readonly-cell">--</td>
+                                <td class="readonly-cell">
+                                    <div class="resource-tags">
+                                        <span class="resource-tag point">点位</span>
+                                    </div>
+                                </td>
                                 <td class="readonly-cell">8.50元</td>
                                 <td class="readonly-cell">25,000</td>
                                 <td class="readonly-cell">
                                     <span class="collab-value" onclick="openModal('collab-history')">23,800</span>
                                 </td>
                                 <td>
-                                    <input type="text" class="batch-edit-input" value="212,500">
+                                    <input type="text" class="batch-edit-input" value="21.25">
                                 </td>
                                 <td>
                                     <input type="text" class="batch-edit-input" value="SS1236">
@@ -5782,6 +7119,11 @@
                             </tr>
                             <tr>
                                 <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-image-cell">
+                                        <img src="https://via.placeholder.com/60x60/FFD700/8B4513?text=脆香米" alt="商品主图" class="product-thumb">
+                                    </div>
+                                </td>
                                 <td class="readonly-cell">HKK123449</td>
                                 <td class="readonly-cell">脆香米牛奶巧克力24g</td>
                                 <td class="readonly-cell">糖巧</td>
@@ -5796,14 +7138,19 @@
                                         <option value="custom">自定义选择</option>
                                     </select>
                                 </td>
-                                <td class="readonly-cell">促销</td>
+                                <td class="readonly-cell">
+                                    <div class="resource-tags">
+                                        <span class="resource-tag promotion">促销</span>
+                                        <span class="resource-tag display">陈列</span>
+                                    </div>
+                                </td>
                                 <td class="readonly-cell">12.00元</td>
                                 <td class="readonly-cell">18,000</td>
                                 <td class="readonly-cell">
                                     <span class="collab-value" onclick="openModal('collab-history')">16,500</span>
                                 </td>
                                 <td>
-                                    <input type="text" class="batch-edit-input" value="216,000">
+                                    <input type="text" class="batch-edit-input" value="21.6">
                                 </td>
                                 <td>
                                     <input type="text" class="batch-edit-input" value="SS1237">
@@ -5812,6 +7159,11 @@
                             </tr>
                             <tr>
                                 <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-image-cell">
+                                        <img src="https://via.placeholder.com/60x60/8B4513/FFD700?text=MMS" alt="商品主图" class="product-thumb">
+                                    </div>
+                                </td>
                                 <td class="readonly-cell">HKK123450</td>
                                 <td class="readonly-cell">M&M's牛奶巧克力豆40g</td>
                                 <td class="readonly-cell">糖巧</td>
@@ -5826,14 +7178,19 @@
                                         <option value="custom" selected>自定义选择</option>
                                     </select>
                                 </td>
-                                <td class="readonly-cell">买赠</td>
+                                <td class="readonly-cell">
+                                    <div class="resource-tags">
+                                        <span class="resource-tag promotion">促销</span>
+                                        <span class="resource-tag point">点位</span>
+                                    </div>
+                                </td>
                                 <td class="readonly-cell">9.00元</td>
                                 <td class="readonly-cell">12,000</td>
                                 <td class="readonly-cell">
                                     <span class="collab-value" onclick="openModal('collab-history')">11,200</span>
                                 </td>
                                 <td>
-                                    <input type="text" class="batch-edit-input" value="108,000">
+                                    <input type="text" class="batch-edit-input" value="10.8">
                                 </td>
                                 <td>
                                     <input type="text" class="batch-edit-input" value="SS1238">
@@ -5872,7 +7229,7 @@
             <div class="drawer-header">
                 <div class="drawer-header-content">
                     <div class="drawer-title-section">
-                        <h3 class="drawer-title">详情分析面板</h3>
+                        <h3 class="drawer-title">追踪面板</h3>
                         <div class="drawer-subtitle">
                             <span class="warning-tag">S级核心商品</span>
                             <span class="warning-code">编码：100893 | 德芙丝滑牛奶巧克力43g</span>
@@ -5888,7 +7245,7 @@
                     <!-- 左侧菜单 -->
                     <div class="warning-sidebar">
                         <div class="warning-menu-item active" data-warning-tab="plan" onclick="switchWarningTab('plan')">
-                            <span>关联计划详情</span>
+                            <span>关联商品计划</span>
                             <span class="warning-menu-badge">2</span>
                         </div>
                         <div class="warning-menu-item" data-warning-tab="coverage" onclick="switchWarningTab('coverage')">
@@ -5896,7 +7253,7 @@
                             <span class="warning-menu-badge">2</span>
                         </div>
                         <div class="warning-menu-item" data-warning-tab="supply" onclick="switchWarningTab('supply')">
-                            <span>供应链备货进度</span>
+                            <span>供应链过程进度</span>
                             <span class="warning-menu-badge">3</span>
                         </div>
                     </div>
@@ -5905,24 +7262,33 @@
                     <div class="warning-content">
                         <!-- 关联计划详情 -->
                         <div id="warning-plan-content">
-                            <div class="warning-section-title">进行中计划列表 (横向滚动切换)</div>
+                            <div class="warning-section-title">商品计划列表</div>
                             <div class="plan-cards">
+                                <!-- 进行中计划 -->
                                 <div class="plan-card active">
-                                    <div class="plan-card-title">计划 A：夏季零食节</div>
+                                    <div class="plan-card-title">2026年3月零食商品计划</div>
                                     <div class="plan-card-meta">ID: P202601 | 阶段：锁定</div>
-                                    <span class="plan-card-status inactive">已作废</span>
+                                    <div class="plan-card-timestamp">开始时间：2026-03-01</div>
                                 </div>
                                 <div class="plan-card">
-                                    <div class="plan-card-title">计划 B：华南特促方案</div>
+                                    <div class="plan-card-title">2026年3月水饮商品计划</div>
                                     <div class="plan-card-meta">ID: P202602 | 阶段：提报</div>
+                                    <div class="plan-card-timestamp">开始时间：2026-03-05</div>
+                                </div>
+                                <!-- 已结束计划 -->
+                                <div class="plan-card ended">
+                                    <div class="plan-card-title">2026年2月零食商品计划</div>
+                                    <div class="plan-card-meta">ID: P202604 | 阶段：已结束</div>
+                                    <div class="plan-card-timestamp">开始时间：2026-02-01 | 结束时间：2026-02-29</div>
+                                </div>
+                                <div class="plan-card ended">
+                                    <div class="plan-card-title">2026年2月水饮商品计划</div>
+                                    <div class="plan-card-meta">ID: P202605 | 阶段：已结束</div>
+                                    <div class="plan-card-timestamp">开始时间：2026-02-01 | 结束时间：2026-02-29</div>
                                 </div>
                             </div>
 
                             <div class="plan-tracking-section">
-                                <div class="plan-tracking-header">
-                                    <span class="plan-tracking-title">选定计划追踪：</span>
-                                    <span class="plan-tracking-id">P202601</span>
-                                </div>
                                 
                                 <!-- 商品计划进度 - 1:1还原设计图 -->
                                 <div class="plan-progress-vertical">
@@ -5960,7 +7326,6 @@
                                         <div class="stage-content">
                                             <div class="stage-section-title">
                                                 上新审批&陈列任务
-                                                <span class="view-detail-link">查看详情</span>
                                             </div>
                                             <div class="task-list">
                                                 <div class="task-item">
@@ -6009,7 +7374,6 @@
                                         <div class="stage-content">
                                             <div class="stage-section-title">
                                                 供应链订货
-                                                <span class="view-detail-link">查看订货进度</span>
                                             </div>
                                             <div class="task-list">
                                                 <div class="task-item">
@@ -6049,10 +7413,15 @@
                         <!-- 区域覆盖分析 -->
                         <div id="warning-coverage-content" style="display: none;">
                             <div class="coverage-stats">
-                                <div class="coverage-title">全国总 UA 比例</div>
+                                <div class="coverage-header">
+                                    <div class="coverage-title">全国总 UA 比例</div>
+                                    <div class="coverage-update-time">
+                                        <span class="update-time-label">数据更新时间：</span>
+                                        <span class="update-time-value" id="coverage-update-time">2026-03-18 14:30:25</span>
+                                    </div>
+                                </div>
                                 <div class="coverage-value">
                                     <span>76.8%</span>
-                                    <span style="font-size: 20px;">↓</span>
                                 </div>
                                 <div class="coverage-target">
                                     <span>⚠️</span>
@@ -6201,7 +7570,7 @@
                             </table>
                         </div>
 
-                        <!-- 供应链备货进度 -->
+                        <!-- 供应链过程进度 -->
                         <div id="warning-supply-content" style="display: none;">
                             <!-- 单品信息头部 -->
                             <div class="supply-product-header">
@@ -6225,9 +7594,6 @@
                                         <span class="inventory-label">周转天数</span>
                                         <span class="inventory-value" id="supply-turnover-days">12.5 <span class="unit">天</span></span>
                                     </div>
-                                </div>
-                                <div class="supply-product-status">
-                                    <span class="status-tag normal" id="supply-product-status">供应正常</span>
                                 </div>
                             </div>
 
@@ -6256,55 +7622,61 @@
                             </div>
 
                             <!-- 核心指标概览 - 单品维度 -->
-                            <div class="supply-overview-header">
-                                <div class="supply-overview-item">
-                                    <div class="supply-overview-icon">🎯</div>
-                                    <div class="supply-overview-info">
-                                        <div class="supply-overview-label">目标销量（协同后）</div>
-                                        <div class="supply-overview-value" id="supply-target-qty">20,000 <span class="unit">件</span></div>
-                                    </div>
-                                </div>
-                                <div class="supply-overview-item has-subitems">
-                                    <div class="supply-overview-icon">📝</div>
-                                    <div class="supply-overview-info">
-                                        <div class="supply-overview-label">采购下单</div>
-                                        <div class="supply-overview-value highlight" id="supply-order-qty">18,500 <span class="unit">件</span></div>
-                                        <div class="supply-overview-subitem">
-                                            <span class="subitem-label">初始库存</span>
-                                            <span class="subitem-value" id="supply-initial-stock">2,000 <span class="unit">件</span></span>
+                            <div class="supply-overview-wrapper">
+                                <!-- 第一行：目标销量（独立数据） -->
+                                <div class="supply-overview-header target-row">
+                                    <div class="supply-overview-item target-item">
+                                        <div class="supply-overview-icon">🎯</div>
+                                        <div class="supply-overview-info">
+                                            <div class="supply-overview-label">目标销量（协同值）</div>
+                                            <div class="supply-overview-value" id="supply-target-qty">20,000 <span class="unit">件</span></div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="supply-overview-item has-subitems">
-                                    <div class="supply-overview-icon">🏭</div>
-                                    <div class="supply-overview-info">
-                                        <div class="supply-overview-label">实际到仓</div>
-                                        <div class="supply-overview-value" id="supply-warehouse-qty">15,200 <span class="unit">件</span></div>
-                                        <div class="supply-overview-subitem">
-                                            <span class="subitem-label">在途</span>
-                                            <span class="subitem-value" id="supply-in-transit">3,300 <span class="unit">件</span></span>
+                                <!-- 第二行：供应链流程数据组 -->
+                                <div class="supply-overview-header process-row">
+                                    <div class="supply-overview-item has-subitems">
+                                        <div class="supply-overview-icon">📝</div>
+                                        <div class="supply-overview-info">
+                                            <div class="supply-overview-label">采购下单</div>
+                                            <div class="supply-overview-value highlight" id="supply-order-qty">18,500 <span class="unit">件</span></div>
+                                            <div class="supply-overview-subitem">
+                                                <span class="subitem-label">初始库存</span>
+                                                <span class="subitem-value" id="supply-initial-stock">2,000 <span class="unit">件</span></span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="supply-overview-item has-subitems">
-                                    <div class="supply-overview-icon">🏪</div>
-                                    <div class="supply-overview-info">
-                                        <div class="supply-overview-label">仓库出库</div>
-                                        <div class="supply-overview-value" id="supply-delivery-qty">14,800 <span class="unit">件</span></div>
-                                        <div class="supply-overview-subitem">
-                                            <span class="subitem-label">近7天均</span>
-                                            <span class="subitem-value" id="supply-delivery-avg">2,114 <span class="unit">件/天</span></span>
+                                    <div class="supply-overview-item has-subitems">
+                                        <div class="supply-overview-icon">🏭</div>
+                                        <div class="supply-overview-info">
+                                            <div class="supply-overview-label">实际到仓</div>
+                                            <div class="supply-overview-value" id="supply-warehouse-qty">15,200 <span class="unit">件</span></div>
+                                            <div class="supply-overview-subitem">
+                                                <span class="subitem-label">在途</span>
+                                                <span class="subitem-value" id="supply-in-transit">3,300 <span class="unit">件</span></span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="supply-overview-item has-subitems">
-                                    <div class="supply-overview-icon">💰</div>
-                                    <div class="supply-overview-info">
-                                        <div class="supply-overview-label">门店销售</div>
-                                        <div class="supply-overview-value success" id="supply-sales-qty">12,350 <span class="unit">件</span></div>
-                                        <div class="supply-overview-subitem">
-                                            <span class="subitem-label">近7天店均</span>
-                                            <span class="subitem-value" id="supply-sales-avg">79.2 <span class="unit">件/店</span></span>
+                                    <div class="supply-overview-item has-subitems">
+                                        <div class="supply-overview-icon">🏪</div>
+                                        <div class="supply-overview-info">
+                                            <div class="supply-overview-label">仓库出库</div>
+                                            <div class="supply-overview-value" id="supply-delivery-qty">14,800 <span class="unit">件</span></div>
+                                            <div class="supply-overview-subitem">
+                                                <span class="subitem-label">近7天均</span>
+                                                <span class="subitem-value" id="supply-delivery-avg">2,114 <span class="unit">件/天</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="supply-overview-item has-subitems">
+                                        <div class="supply-overview-icon">💰</div>
+                                        <div class="supply-overview-info">
+                                            <div class="supply-overview-label">门店销售</div>
+                                            <div class="supply-overview-value success" id="supply-sales-qty">12,350 <span class="unit">件</span></div>
+                                            <div class="supply-overview-subitem">
+                                                <span class="subitem-label">近7天店均</span>
+                                                <span class="subitem-value" id="supply-sales-avg">79.2 <span class="unit">件/店</span></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -6312,11 +7684,11 @@
 
                             <!-- 数据列表模块 -->
                             <div class="supply-data-table-section">
-                                <!-- 维度切换和工具栏 -->
+                                <!-- 工具栏 -->
                                 <div class="supply-table-toolbar">
                                     <div class="dimension-switcher">
                                         <span class="dimension-label">数据维度：</span>
-                                        <span class="current-dimension-badge" id="current-dimension-badge">仓维度视图</span>
+                                        <span class="current-dimension-badge fixed">仓维度视图</span>
                                     </div>
                                     <div class="table-actions">
                                         <button class="btn btn-default" onclick="exportSupplyTableData()">
@@ -6341,14 +7713,6 @@
                                             <tr>
                                                 <th class="sortable" data-field="name" onclick="sortSupplyTable('name')">
                                                     <span>仓名称</span>
-                                                    <span class="sort-icon">↕️</span>
-                                                </th>
-                                                <th class="sortable" data-field="city" onclick="sortSupplyTable('city')">
-                                                    <span>所属城市</span>
-                                                    <span class="sort-icon">↕️</span>
-                                                </th>
-                                                <th class="sortable" data-field="province" onclick="sortSupplyTable('province')">
-                                                    <span>所属省份</span>
                                                     <span class="sort-icon">↕️</span>
                                                 </th>
                                                 <th class="sortable number" data-field="currentStock" onclick="sortSupplyTable('currentStock')">
@@ -6438,34 +7802,34 @@
                     <table class="data-table collab-history-table">
                         <thead>
                             <tr>
-                                <th>序号</th>
+                                <th>版本号</th>
                                 <th>数值</th>
                                 <th>更新时间</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>1</td>
+                                <td><span class="version-tag current">V5</span></td>
                                 <td class="collab-value-cell">18,500</td>
                                 <td>2026-03-15 14:30:25</td>
                             </tr>
                             <tr>
-                                <td>2</td>
+                                <td><span class="version-tag">V4</span></td>
                                 <td class="collab-value-cell">19,200</td>
                                 <td>2026-03-10 09:15:18</td>
                             </tr>
                             <tr>
-                                <td>3</td>
+                                <td><span class="version-tag">V3</span></td>
                                 <td class="collab-value-cell">20,000</td>
                                 <td>2026-03-05 16:45:33</td>
                             </tr>
                             <tr>
-                                <td>4</td>
+                                <td><span class="version-tag">V2</span></td>
                                 <td class="collab-value-cell">18,800</td>
                                 <td>2026-02-28 11:20:47</td>
                             </tr>
                             <tr>
-                                <td>5</td>
+                                <td><span class="version-tag">V1</span></td>
                                 <td class="collab-value-cell">17,500</td>
                                 <td>2026-02-20 08:30:12</td>
                             </tr>
@@ -6475,6 +7839,253 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-default" onclick="closeModal('collab-history')">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== 范围变更冲突详情弹窗 ==================== -->
+    <div class="modal-overlay" id="modal-conflict-detail">
+        <div class="modal-container conflict-detail-modal">
+            <div class="modal-header">
+                <h3 class="modal-title">范围变更冲突处理</h3>
+                <button class="modal-close" onclick="closeModal('conflict-detail')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="conflict-info-box">
+                    <div class="conflict-info-title">变更说明</div>
+                    <div class="conflict-info-content">
+                        <p>商品编码：<strong>100701</strong> &nbsp;|&nbsp; 商品名称：<strong>脆香米牛奶巧克力24g</strong></p>
+                        <p>原范围：<span class="conflict-range-old">长沙市、常德市</span> &nbsp;→&nbsp; 新范围：<span class="conflict-range-new">常德市</span></p>
+                    </div>
+                </div>
+                <div class="conflict-list-header">
+                    <span class="conflict-list-title">冲突活动列表（<span id="conflict-modal-count">3</span>个）</span>
+                    <span class="conflict-list-hint">以下活动包含该商品，需要处理冲突</span>
+                </div>
+                <div class="conflict-list-wrapper">
+                    <div class="conflict-item" data-activity-id="act001">
+                        <div class="conflict-item-header">
+                            <div class="conflict-item-info">
+                                <span class="conflict-item-name">玛氏满赠活动</span>
+                                <span class="conflict-item-id">ID: cx123456</span>
+                            </div>
+                            <div class="conflict-item-status">
+                                <button class="conflict-action-btn" onclick="handleConflictActivity('act001', '玛氏满赠活动')">去处理</button>
+                            </div>
+                        </div>
+                        <div class="conflict-item-body">
+                            <div class="conflict-item-row">
+                                <span class="conflict-item-label">活动范围：</span>
+                                <span class="conflict-item-value">长沙市门店A、门店B、门店C</span>
+                            </div>
+                            <div class="conflict-item-row">
+                                <span class="conflict-item-label">促销类型：</span>
+                                <span class="conflict-item-value">满赠</span>
+                                <span class="conflict-item-label" style="margin-left: 24px;">促销机制：</span>
+                                <span class="conflict-item-value">满18元送红包1个</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="conflict-item" data-activity-id="act002">
+                        <div class="conflict-item-header">
+                            <div class="conflict-item-info">
+                                <span class="conflict-item-name">MD-S级大单品夏威夷果</span>
+                                <span class="conflict-item-id">ID: cx123457</span>
+                            </div>
+                            <div class="conflict-item-status">
+                                <button class="conflict-action-btn" onclick="handleConflictActivity('act002', 'MD-S级大单品夏威夷果')">去处理</button>
+                            </div>
+                        </div>
+                        <div class="conflict-item-body">
+                            <div class="conflict-item-row">
+                                <span class="conflict-item-label">活动范围：</span>
+                                <span class="conflict-item-value">全国门店</span>
+                            </div>
+                            <div class="conflict-item-row">
+                                <span class="conflict-item-label">促销类型：</span>
+                                <span class="conflict-item-value">满减</span>
+                                <span class="conflict-item-label" style="margin-left: 24px;">促销机制：</span>
+                                <span class="conflict-item-value">满50减10</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="conflict-item" data-activity-id="act003">
+                        <div class="conflict-item-header">
+                            <div class="conflict-item-info">
+                                <span class="conflict-item-name">春节促销活动</span>
+                                <span class="conflict-item-id">ID: cx123458</span>
+                            </div>
+                            <div class="conflict-item-status">
+                                <button class="conflict-action-btn" onclick="handleConflictActivity('act003', '春节促销活动')">去处理</button>
+                            </div>
+                        </div>
+                        <div class="conflict-item-body">
+                            <div class="conflict-item-row">
+                                <span class="conflict-item-label">活动范围：</span>
+                                <span class="conflict-item-value">长沙市、株洲市</span>
+                            </div>
+                            <div class="conflict-item-row">
+                                <span class="conflict-item-label">促销类型：</span>
+                                <span class="conflict-item-value">折扣</span>
+                                <span class="conflict-item-label" style="margin-left: 24px;">促销机制：</span>
+                                <span class="conflict-item-value">8折优惠</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer conflict-modal-footer">
+                <div class="conflict-footer-hint-box">
+                    <span class="conflict-footer-icon">💡</span>
+                    <span class="conflict-footer-hint-text">建议：你可以将商品从这些活动中删除</span>
+                </div>
+                <button class="btn btn-default" onclick="closeModal('conflict-detail')">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== 执行进度弹窗 ==================== -->
+    <div class="modal-overlay" id="modal-progress">
+        <div class="modal-container progress-modal">
+            <div class="modal-header">
+                <h3 class="modal-title">正在处理范围变更</h3>
+            </div>
+            <div class="modal-body">
+                <div class="progress-container">
+                    <div class="progress-steps">
+                        <div class="progress-step active" id="step-1">
+                            <div class="progress-step-icon">1</div>
+                            <div class="progress-step-content">
+                                <div class="progress-step-title">检测冲突活动</div>
+                                <div class="progress-step-status">已完成</div>
+                            </div>
+                        </div>
+                        <div class="progress-step active" id="step-2">
+                            <div class="progress-step-icon">2</div>
+                            <div class="progress-step-content">
+                                <div class="progress-step-title">从活动中删除商品</div>
+                                <div class="progress-step-status">进行中...</div>
+                            </div>
+                        </div>
+                        <div class="progress-step" id="step-3">
+                            <div class="progress-step-icon">3</div>
+                            <div class="progress-step-content">
+                                <div class="progress-step-title">创建新活动</div>
+                                <div class="progress-step-status">等待中</div>
+                            </div>
+                        </div>
+                        <div class="progress-step" id="step-4">
+                            <div class="progress-step-icon">4</div>
+                            <div class="progress-step-content">
+                                <div class="progress-step-title">完成</div>
+                                <div class="progress-step-status">等待中</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="progress-detail">
+                        <div class="progress-detail-text" id="progress-detail-text">正在从"玛氏满赠活动"中删除商品...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== 执行结果弹窗 ==================== -->
+    <div class="modal-overlay" id="modal-result">
+        <div class="modal-container result-modal">
+            <div class="modal-header">
+                <h3 class="modal-title">范围变更处理结果</h3>
+                <button class="modal-close" onclick="closeModal('result'); closeModal('conflict-detail'); closeModal('edit-product');">&times;</button>
+            </div>
+            <div class="modal-body result-full-body">
+                <!-- 商品信息 -->
+                <div class="result-section">
+                    <div class="result-section-title">商品信息</div>
+                    <div class="result-section-content">
+                        <div class="result-info-row">
+                            <span class="result-info-label">商品编码：</span>
+                            <span class="result-info-value">100701</span>
+                        </div>
+                        <div class="result-info-row">
+                            <span class="result-info-label">商品名称：</span>
+                            <span class="result-info-value">脆香米牛奶巧克力24g</span>
+                        </div>
+                        <div class="result-info-row">
+                            <span class="result-info-label">范围变更：</span>
+                            <span class="result-info-value">
+                                <span class="range-old">长沙市、常德市</span>
+                                <span class="range-arrow">→</span>
+                                <span class="range-new">常德市</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 冲突活动信息 -->
+                <div class="result-section">
+                    <div class="result-section-title">冲突活动（3个）</div>
+                    <div class="result-section-content">
+                        <div class="result-activity-list">
+                            <div class="result-activity-item">
+                                <div class="result-activity-name">玛氏满赠活动</div>
+                                <div class="result-activity-id">ID: cx123456</div>
+                                <div class="result-activity-scope">范围：长沙市门店A、门店B、门店C</div>
+                            </div>
+                            <div class="result-activity-item">
+                                <div class="result-activity-name">MD-S级大单品夏威夷果</div>
+                                <div class="result-activity-id">ID: cx123457</div>
+                                <div class="result-activity-scope">范围：全国门店</div>
+                            </div>
+                            <div class="result-activity-item">
+                                <div class="result-activity-name">春节促销活动</div>
+                                <div class="result-activity-id">ID: cx123458</div>
+                                <div class="result-activity-scope">范围：长沙市、株洲市</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 删除的活动 -->
+                <div class="result-section">
+                    <div class="result-section-title result-section-delete">已删除商品的活动（3个）</div>
+                    <div class="result-section-content">
+                        <div class="result-activity-list">
+                            <div class="result-activity-item deleted">
+                                <div class="result-activity-name">玛氏满赠活动</div>
+                                <div class="result-activity-id">ID: cx123456</div>
+                                <div class="result-activity-desc">已从该活动中删除商品</div>
+                            </div>
+                            <div class="result-activity-item deleted">
+                                <div class="result-activity-name">MD-S级大单品夏威夷果</div>
+                                <div class="result-activity-id">ID: cx123457</div>
+                                <div class="result-activity-desc">已从该活动中删除商品</div>
+                            </div>
+                            <div class="result-activity-item deleted">
+                                <div class="result-activity-name">春节促销活动</div>
+                                <div class="result-activity-id">ID: cx123458</div>
+                                <div class="result-activity-desc">已从该活动中删除商品</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 创建的活动 -->
+                <div class="result-section">
+                    <div class="result-section-title result-section-create">新创建的活动（1个）</div>
+                    <div class="result-section-content">
+                        <div class="result-activity-list">
+                            <div class="result-activity-item created">
+                                <div class="result-activity-name">玛氏满赠活动</div>
+                                <div class="result-activity-id">ID: cx123456_new</div>
+                                <div class="result-activity-scope">范围：常德市</div>
+                                <div class="result-activity-desc">继承原活动配置，仅包含新范围</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closeModal('result'); closeModal('conflict-detail'); closeModal('edit-product');">确定</button>
             </div>
         </div>
     </div>
@@ -6844,7 +8455,7 @@
             const tagEl = document.querySelector('.warning-tag');
             const codeEl = document.querySelector('.warning-code');
 
-            if (titleEl) titleEl.textContent = '详情分析面板';
+            if (titleEl) titleEl.textContent = '追踪面板';
             if (tagEl) {
                 tagEl.textContent = productInfo.level ? `${productInfo.level}核心商品` : '核心商品';
             }
@@ -6876,11 +8487,14 @@
                 planBadge.style.display = 'none'; // 默认不显示
             }
 
-            // 供应链备货进度角标
+            // 供应链过程进度角标
             const supplyBadge = document.querySelector('.warning-menu-item[data-warning-tab="supply"] .warning-menu-badge');
             if (supplyBadge) {
                 supplyBadge.style.display = 'none'; // 默认不显示
             }
+
+            // 更新区域覆盖分析内容
+            updateCoverageContent(productInfo);
         }
 
         // 计算异常省份数量
@@ -6892,6 +8506,84 @@
                 return abnormalRows.length;
             }
             return 0;
+        }
+
+        // 根据商品状态更新区域覆盖分析内容
+        function updateCoverageContent(productInfo) {
+            const coverageContent = document.getElementById('warning-coverage-content');
+            if (!coverageContent) return;
+
+            const coverageValue = coverageContent.querySelector('.coverage-value span:first-child');
+            const coverageTarget = coverageContent.querySelector('.coverage-target');
+
+            if (productInfo.statusClass === 'normal') {
+                // 商品状态正常：全国总UA比例满足业务目标
+                if (coverageValue) {
+                    coverageValue.textContent = '85.6%';
+                    coverageValue.style.color = '#52c41a';
+                }
+                if (coverageTarget) {
+                    coverageTarget.innerHTML = '<span style="color: #52c41a;">✓</span><span style="color: #52c41a;">满足业务目标 (≥80%)</span>';
+                }
+
+                // 更新所有省份状态为正常
+                coverageContent.querySelectorAll('.province-row').forEach(row => {
+                    const uaCell = row.querySelector('td:nth-child(2)');
+                    const statusCell = row.querySelector('td:nth-child(3) .status-tag');
+                    if (uaCell) {
+                        uaCell.style.color = '#52c41a';
+                        uaCell.style.fontWeight = '500';
+                    }
+                    if (statusCell) {
+                        statusCell.className = 'status-tag normal';
+                        statusCell.textContent = '正常';
+                    }
+                });
+
+                // 更新所有城市详情状态为正常
+                coverageContent.querySelectorAll('.city-detail-row').forEach(row => {
+                    row.querySelectorAll('td:nth-child(2)').forEach(cell => {
+                        cell.style.color = '#52c41a';
+                    });
+                    row.querySelectorAll('.status-tag').forEach(tag => {
+                        tag.className = 'status-tag normal';
+                        tag.textContent = '正常';
+                    });
+                });
+            } else {
+                // 商品状态异常：恢复原始异常数据展示
+                if (coverageValue) {
+                    coverageValue.textContent = '76.8%';
+                    coverageValue.style.color = '#ff7a45';
+                }
+                if (coverageTarget) {
+                    coverageTarget.innerHTML = '<span>⚠️</span><span>低于业务目标 (80%)</span>';
+                }
+
+                // 恢复省份异常状态
+                const provinceData = [
+                    { id: 'hunan', ua: '92.5%', status: 'normal', color: '#52c41a' },
+                    { id: 'guangdong', ua: '88.3%', status: 'normal', color: '#52c41a' },
+                    { id: 'hubei', ua: '65.2%', status: 'abnormal', color: '#ff4d4f' },
+                    { id: 'jiangxi', ua: '58.7%', status: 'abnormal', color: '#ff4d4f' }
+                ];
+
+                provinceData.forEach(data => {
+                    const row = coverageContent.querySelector(`.province-row[onclick*="${data.id}"]`);
+                    if (row) {
+                        const uaCell = row.querySelector('td:nth-child(2)');
+                        const statusCell = row.querySelector('td:nth-child(3) .status-tag');
+                        if (uaCell) {
+                            uaCell.textContent = data.ua;
+                            uaCell.style.color = data.color;
+                        }
+                        if (statusCell) {
+                            statusCell.className = `status-tag ${data.status}`;
+                            statusCell.textContent = data.status === 'normal' ? '正常' : '异常';
+                        }
+                    }
+                });
+            }
         }
 
         function closeWarningDrawer(event) {
@@ -7011,7 +8703,7 @@
             }
         }
 
-        // ==================== 供应链备货进度模块切换 ====================
+        // ==================== 供应链过程进度模块切换 ====================
         function switchSupplyTab(tab) {
             // 切换标签样式
             document.querySelectorAll('.supply-flow-tab').forEach(item => item.classList.remove('active'));
@@ -7037,7 +8729,6 @@
 
         // ==================== 供应链数据表格模块 ====================
         let supplyTableState = {
-            currentDimension: 'warehouse', // warehouse, city, province
             currentPage: 1,
             pageSize: 20,
             totalItems: 0,
@@ -7045,9 +8736,7 @@
             sortField: null,
             sortOrder: null, // 'asc' or 'desc'
             filters: {
-                name: '',
-                city: '',
-                province: ''
+                name: ''
             },
             filteredData: [],
             rawData: []
@@ -7145,54 +8834,22 @@
             return Array.from(provinceMap.values());
         }
 
-        // 获取当前维度的数据
+        // 获取仓维度数据
         function getCurrentDimensionData() {
-            switch (supplyTableState.currentDimension) {
-                case 'city':
-                    return aggregateToCity(warehouseRawData);
-                case 'province':
-                    return aggregateToProvince(warehouseRawData);
-                default:
-                    return warehouseRawData;
-            }
+            return warehouseRawData;
         }
 
-        // 切换数据维度
-        function switchDataDimension(dimension) {
-            supplyTableState.currentDimension = dimension;
+        // 初始化表格数据（仅仓维度）
+        function initSupplyTableData() {
             supplyTableState.currentPage = 1;
             supplyTableState.sortField = null;
             supplyTableState.sortOrder = null;
-
-            // 更新维度标签
-            document.querySelectorAll('.dimension-tab').forEach(tab => {
-                tab.classList.toggle('active', tab.dataset.dimension === dimension);
-            });
-
-            // 更新维度徽章
-            const dimensionNames = {
-                warehouse: '仓维度视图',
-                city: '城市维度视图',
-                province: '省份维度视图'
-            };
-            document.getElementById('current-dimension-badge').textContent = dimensionNames[dimension];
-
-            // 重新加载数据
             loadSupplyTableData();
-
-            // 添加切换动画
-            const tableContainer = document.querySelector('.supply-table-container');
-            tableContainer.style.opacity = '0.5';
-            setTimeout(() => {
-                tableContainer.style.opacity = '1';
-            }, 200);
         }
 
         // 应用筛选
         function applySupplyTableFilters() {
             supplyTableState.filters.name = document.getElementById('filter-name').value.toLowerCase();
-            supplyTableState.filters.city = document.getElementById('filter-city').value;
-            supplyTableState.filters.province = document.getElementById('filter-province').value;
             supplyTableState.currentPage = 1;
             loadSupplyTableData();
         }
@@ -7200,9 +8857,7 @@
         // 重置筛选
         function resetSupplyTableFilters() {
             document.getElementById('filter-name').value = '';
-            document.getElementById('filter-city').value = '';
-            document.getElementById('filter-province').value = '';
-            supplyTableState.filters = { name: '', city: '', province: '' };
+            supplyTableState.filters = { name: '' };
             supplyTableState.currentPage = 1;
             loadSupplyTableData();
         }
@@ -7231,15 +8886,11 @@
         function loadSupplyTableData() {
             let data = getCurrentDimensionData();
 
-            // 应用筛选
+            // 应用筛选（仅按仓名称筛选）
             data = data.filter(item => {
                 const matchName = !supplyTableState.filters.name ||
-                    item.name.toLowerCase().includes(supplyTableState.filters.name) ||
-                    item.city.toLowerCase().includes(supplyTableState.filters.name) ||
-                    item.province.toLowerCase().includes(supplyTableState.filters.name);
-                const matchCity = !supplyTableState.filters.city || item.city === supplyTableState.filters.city;
-                const matchProvince = !supplyTableState.filters.province || item.province === supplyTableState.filters.province;
-                return matchName && matchCity && matchProvince;
+                    item.name.toLowerCase().includes(supplyTableState.filters.name);
+                return matchName;
             });
 
             // 应用排序
@@ -7279,21 +8930,12 @@
             const endIndex = Math.min(startIndex + supplyTableState.pageSize, supplyTableState.totalItems);
             const pageData = supplyTableState.filteredData.slice(startIndex, endIndex);
 
-            const dimensionTagClass = supplyTableState.currentDimension;
-            const dimensionTagText = {
-                warehouse: '仓',
-                city: '市',
-                province: '省'
-            }[supplyTableState.currentDimension];
-
             tbody.innerHTML = pageData.map(item => `
                 <tr>
                     <td>
-                        <span class="dimension-tag ${dimensionTagClass}">${dimensionTagText}</span>
+                        <span class="dimension-tag warehouse">仓</span>
                         ${item.name}
                     </td>
-                    <td>${item.city}</td>
-                    <td>${item.province}</td>
                     <td class="number">${item.currentStock.toLocaleString()}</td>
                     <td class="number">${item.orderQty.toLocaleString()}</td>
                     <td class="number">${item.warehouseQty.toLocaleString()}</td>
@@ -7391,12 +9033,10 @@
                 return;
             }
 
-            // 构建CSV内容
-            const headers = ['仓名称', '所属城市', '所属省份', '当前库存', '采购下单数', '实际到仓', '在途数量', '近7天出库件数', '近7天店均销售'];
+            // 构建CSV内容（仅仓维度）
+            const headers = ['仓名称', '当前库存', '采购下单数', '实际到仓', '在途数量', '近7天出库件数', '近7天店均销售'];
             const rows = data.map(item => [
                 item.name,
-                item.city,
-                item.province,
                 item.currentStock,
                 item.orderQty,
                 item.warehouseQty,
@@ -7411,29 +9051,10 @@
             const blob = new Blob(['\ufeff' + csvContent], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = `供应链数据_${supplyTableState.currentDimension}_${new Date().toISOString().slice(0, 10)}.csv`;
+            link.download = `供应链数据_仓维度_${new Date().toISOString().slice(0, 10)}.csv`;
             link.click();
 
             showNotification('数据导出成功', 'success');
-        }
-
-        // 初始化筛选选项
-        function initSupplyTableFilters() {
-            const cities = [...new Set(warehouseRawData.map(item => item.city))].sort();
-            const provinces = [...new Set(warehouseRawData.map(item => item.province))].sort();
-
-            const citySelect = document.getElementById('filter-city');
-            const provinceSelect = document.getElementById('filter-province');
-
-            if (citySelect) {
-                citySelect.innerHTML = '<option value="">全部城市</option>' +
-                    cities.map(city => `<option value="${city}">${city}</option>`).join('');
-            }
-
-            if (provinceSelect) {
-                provinceSelect.innerHTML = '<option value="">全部省份</option>' +
-                    provinces.map(province => `<option value="${province}">${province}</option>`).join('');
-            }
         }
 
         // 监听Enter键跳转
@@ -7446,7 +9067,6 @@
             }
 
             // 初始化数据表格
-            initSupplyTableFilters();
             loadSupplyTableData();
         });
 
@@ -7840,13 +9460,19 @@
         function handleScopeChange(select) {
             const panel = document.getElementById('scope-panel');
             const hint = document.querySelector('.scope-hint');
-            
+
             if (select.value === 'custom') {
                 panel.style.display = 'block';
-                hint.textContent = `当前已选 ${selectedRegions.length} 个区域`;
+                // 自定义选择时，如果已选区域有变化，进行冲突检测
+                if (selectedRegions.length > 0) {
+                    checkScopeConflict();
+                } else {
+                    hideConflictWarning();
+                }
             } else {
                 panel.style.display = 'none';
-                hint.textContent = '当前已选 20 个区域';
+                // 继承项目范围时，隐藏冲突提示（不存在冲突）
+                hideConflictWarning();
             }
         }
 
@@ -7859,11 +9485,11 @@
         function addSelectedRegions() {
             const availableList = document.getElementById('available-regions');
             const selectedList = document.getElementById('selected-regions');
-            
+
             availableList.querySelectorAll('.panel-item.selected').forEach(item => {
                 const regionName = item.querySelector('.panel-item-name').textContent;
                 const regionMeta = item.querySelector('.panel-item-meta').textContent;
-                
+
                 if (!selectedRegions.includes(regionName)) {
                     const newItem = document.createElement('div');
                     newItem.className = 'panel-item';
@@ -7878,17 +9504,19 @@
                     selectedList.appendChild(newItem);
                     selectedRegions.push(regionName);
                 }
-                
+
                 item.classList.remove('selected');
                 item.querySelector('.panel-item-checkbox').checked = false;
             });
-            
+
             updateRegionCount();
+            // 区域选择变化后，进行冲突检测
+            checkScopeConflict();
         }
 
         function removeSelectedRegions() {
             const selectedList = document.getElementById('selected-regions');
-            
+
             selectedList.querySelectorAll('.panel-item').forEach(item => {
                 const checkbox = item.querySelector('.panel-item-checkbox');
                 if (checkbox.checked) {
@@ -7897,8 +9525,10 @@
                     item.remove();
                 }
             });
-            
+
             updateRegionCount();
+            // 区域选择变化后，进行冲突检测
+            checkScopeConflict();
         }
 
         function toggleSelectedRegion(checkbox) {
@@ -7909,14 +9539,13 @@
             document.getElementById('selected-regions').innerHTML = '';
             selectedRegions = [];
             updateRegionCount();
+            // 清空区域后，隐藏冲突提示
+            hideConflictWarning();
         }
 
         function updateRegionCount() {
             document.getElementById('selected-region-count').textContent = selectedRegions.length;
             const hint = document.querySelector('.scope-hint');
-            if (document.getElementById('product-scope-select')?.value === 'custom') {
-                hint.textContent = `当前已选 ${selectedRegions.length} 个区域`;
-            }
         }
 
         // ==================== 省份展开收起 ====================
@@ -8036,10 +9665,6 @@
                 
                 if (validatedCount > totalCount) validatedCount = totalCount;
                 
-                // 随机发现异常商品
-                if (Math.random() > 0.7 && abnormalFound < 8) {
-                    abnormalFound++;
-                }
                 
                 // 更新UI
                 document.getElementById('validation-progress-fill').style.width = progress + '%';
@@ -8062,19 +9687,19 @@
             // 更新状态文本
             document.getElementById('validation-status').textContent = '校验完成';
             document.getElementById('validation-time').textContent = '';
-            
+
             // 3秒后隐藏进度条
             setTimeout(() => {
                 document.getElementById('validation-progress').style.display = 'none';
             }, 3000);
-            
+
             // 恢复按钮
             const validateBtn = document.getElementById('validate-all-btn');
             validateBtn.disabled = false;
             validateBtn.innerHTML = '<span class="validate-icon">🔍</span>全量校验';
-            
-            // 显示结果通知
-            showValidationToast(total, abnormal);
+
+            // 不显示结果通知和异常统计
+            // showValidationToast(total, abnormal);
         }
         
         function showValidationToast(total, abnormal) {
@@ -8396,10 +10021,566 @@
             });
             checkValidationExpiration();
         }, 60000); // 每分钟更新一次
-        
+
+        // ==================== 商品活动列表模块交互功能 ====================
+        // 活动列表Tab切换
+        function switchActivityTab(tabElement, tabType) {
+            // 移除所有Tab的active状态
+            document.querySelectorAll('.activity-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            // 添加当前Tab的active状态
+            tabElement.classList.add('active');
+
+            // 根据Tab类型加载对应数据（示例数据）
+            loadActivityData(tabType);
+        }
+
+        // 加载活动数据
+        function loadActivityData(tabType) {
+            const tbody = document.getElementById('activity-table-body');
+            if (!tbody) return;
+
+            // 模拟不同Tab的数据
+            const mockData = {
+                promotion: [
+                    { name: '活动0000001', id: '12345677', scope: '湖南省/长沙市、北京、<span class="activity-more">更多(67)</span>', type: '满减', mechanism: '满50减10', brand: '赵一鸣' },
+                    { name: '活动0000001', id: '12345677', scope: '湖南、湖北、上海、北京', type: '满减', mechanism: '满50减10', brand: '零食很忙' },
+                    { name: '活动0000001', id: '12345677', scope: '湖南、湖北、上海、北京', type: '满减', mechanism: '满50减10', brand: '赵一鸣' },
+                    { name: '活动0000001', id: '12345677', scope: '湖南、湖北、上海、北京', type: '满减', mechanism: '满50减10', brand: '赵一鸣' },
+                    { name: '活动0000001', id: '12345677', scope: '湖南、湖北、上海、北京', type: '满减', mechanism: '满50减10', brand: '赵一鸣' },
+                    { name: '活动0000001', id: '12345677', scope: '湖南、湖北、上海、北京', type: '满减', mechanism: '满50减10', brand: '赵一鸣' },
+                    { name: '活动0000001', id: '12345677', scope: '湖南、湖北、上海、北京', type: '满减', mechanism: '满50减10', brand: '赵一鸣' }
+                ],
+                display: [
+                    { name: '陈列活动0001', id: '22345677', scope: '上海、北京、广州', type: '陈列', mechanism: '端架陈列', brand: '品牌A' },
+                    { name: '陈列活动0002', id: '22345678', scope: '深圳、杭州', type: '陈列', mechanism: '堆头陈列', brand: '品牌B' },
+                    { name: '陈列活动0003', id: '22345679', scope: '全国', type: '陈列', mechanism: '货架陈列', brand: '品牌C' }
+                ],
+                position: [
+                    { name: '点位活动0001', id: '32345677', scope: '华东区', type: '点位', mechanism: '收银台点位', brand: '品牌D' },
+                    { name: '点位活动0002', id: '32345678', scope: '华南区', type: '点位', mechanism: '入口点位', brand: '品牌E' }
+                ],
+                other: [
+                    { name: '其他活动0001', id: '42345677', scope: '全国', type: '其他', mechanism: '联合促销', brand: '品牌F' }
+                ]
+            };
+
+            const data = mockData[tabType] || mockData.promotion;
+
+            tbody.innerHTML = data.map(item => `
+                <tr>
+                    <td>${item.name}</td>
+                    <td>${item.id}</td>
+                    <td>${item.scope}</td>
+                    <td>${item.type}</td>
+                    <td>${item.mechanism}</td>
+                    <td>${item.brand}</td>
+                    <td><a href="#" class="activity-view-link">查看活动</a></td>
+                </tr>
+            `).join('');
+        }
+
+        // 活动列表分页切换
+        let currentActivityPage = 1;
+        function changeActivityPage(direction) {
+            const totalPages = 10;
+
+            if (direction === 'prev' && currentActivityPage > 1) {
+                currentActivityPage--;
+            } else if (direction === 'next' && currentActivityPage < totalPages) {
+                currentActivityPage++;
+            }
+
+            // 更新分页按钮状态
+            updateActivityPagination();
+
+            // 重新加载数据（实际项目中这里会调用API）
+            console.log('切换到第', currentActivityPage, '页');
+        }
+
+        // 更新分页按钮状态
+        function updateActivityPagination() {
+            const buttons = document.querySelectorAll('.activity-pagination .pagination-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent === String(currentActivityPage)) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // ==================== 范围变更冲突处理功能 ====================
+        // 冲突活动数据存储
+        let conflictActivities = [];
+        let removedConflictIds = new Set();
+
+        // 检测范围变更冲突
+        function checkScopeConflict() {
+            // 只有自定义选择时才进行冲突检测
+            const scopeSelect = document.getElementById('product-scope-select');
+            if (!scopeSelect || scopeSelect.value !== 'custom') {
+                hideConflictWarning();
+                return;
+            }
+
+            // 获取当前选择的区域
+            const currentSelectedRegions = selectedRegions.length > 0 ? selectedRegions : getSelectedRegions();
+            const originalRegions = ['长沙市', '常德市']; // 原范围
+
+            // 如果没有选择任何区域，不显示冲突
+            if (currentSelectedRegions.length === 0) {
+                hideConflictWarning();
+                return;
+            }
+
+            // 检测是否有变更
+            const hasChanged = JSON.stringify(currentSelectedRegions.sort()) !== JSON.stringify(originalRegions.sort());
+
+            if (hasChanged) {
+                // 模拟检测冲突活动
+                conflictActivities = [
+                    { id: 'act001', name: '玛氏满赠活动', activityId: 'cx123456', scope: '长沙市门店A、门店B、门店C', type: '满赠', mechanism: '满18元送红包1个' },
+                    { id: 'act002', name: 'MD-S级大单品夏威夷果', activityId: 'cx123457', scope: '全国门店', type: '满减', mechanism: '满50减10' },
+                    { id: 'act003', name: '春节促销活动', activityId: 'cx123458', scope: '长沙市、株洲市', type: '折扣', mechanism: '8折优惠' }
+                ];
+
+                // 显示冲突提示
+                showConflictWarning(conflictActivities.length);
+            } else {
+                hideConflictWarning();
+            }
+        }
+
+        // 获取当前选择的区域
+        function getSelectedRegions() {
+            // 优先使用全局 selectedRegions 数组
+            if (selectedRegions && selectedRegions.length > 0) {
+                return selectedRegions;
+            }
+            // 实际项目中从选择器获取
+            // 这里模拟返回新选择的区域
+            return ['常德市'];
+        }
+
+        // 显示冲突警告
+        function showConflictWarning(count) {
+            const container = document.getElementById('conflict-warning-container');
+            const countEl = document.getElementById('conflict-count');
+            if (container && countEl) {
+                countEl.textContent = count;
+                container.style.display = 'block';
+            }
+        }
+
+        // 隐藏冲突警告
+        function hideConflictWarning() {
+            const container = document.getElementById('conflict-warning-container');
+            if (container) {
+                container.style.display = 'none';
+            }
+        }
+
+        // 打开冲突详情弹窗
+        function openConflictDetailModal() {
+            // 重置已移除的冲突
+            removedConflictIds.clear();
+
+            // 更新弹窗中的冲突数量
+            const modalCountEl = document.getElementById('conflict-modal-count');
+            if (modalCountEl) {
+                modalCountEl.textContent = conflictActivities.length;
+            }
+
+            // 重置所有冲突项状态
+            document.querySelectorAll('.conflict-item').forEach(item => {
+                item.classList.remove('removed');
+                const badge = item.querySelector('.conflict-status-badge');
+                if (badge) {
+                    badge.className = 'conflict-status-badge pending';
+                    badge.textContent = '待处理';
+                }
+                const btn = item.querySelector('.conflict-item-actions button');
+                if (btn) {
+                    btn.textContent = '删除对应区域';
+                    btn.disabled = false;
+                }
+            });
+
+            // 更新生效按钮状态
+            updateApplyButtonState();
+
+            openModal('conflict-detail');
+        }
+
+        // 移除冲突活动（从处理列表中排除）
+        function removeConflictActivity(activityId) {
+            const conflictItem = document.querySelector(`.conflict-item[data-activity-id="${activityId}"]`);
+            if (!conflictItem) return;
+
+            if (removedConflictIds.has(activityId)) {
+                // 恢复处理
+                removedConflictIds.delete(activityId);
+                conflictItem.classList.remove('removed');
+                const badge = conflictItem.querySelector('.conflict-status-badge');
+                if (badge) {
+                    badge.className = 'conflict-status-badge pending';
+                    badge.textContent = '待处理';
+                }
+                const btn = conflictItem.querySelector('.conflict-item-actions button');
+                if (btn) {
+                    btn.textContent = '删除对应区域';
+                }
+            } else {
+                // 标记为已移除
+                removedConflictIds.add(activityId);
+                conflictItem.classList.add('removed');
+                const badge = conflictItem.querySelector('.conflict-status-badge');
+                if (badge) {
+                    badge.className = 'conflict-status-badge skipped';
+                    badge.textContent = '已跳过';
+                }
+                const btn = conflictItem.querySelector('.conflict-item-actions button');
+                if (btn) {
+                    btn.textContent = '恢复处理';
+                }
+            }
+
+            updateApplyButtonState();
+        }
+
+        // 更新生效按钮状态
+        function updateApplyButtonState() {
+            const btn = document.getElementById('btn-apply-conflict');
+            if (!btn) return;
+
+            const pendingCount = conflictActivities.length - removedConflictIds.size;
+            if (pendingCount === 0) {
+                btn.textContent = '生效冲突范围';
+                btn.disabled = true;
+                btn.style.opacity = '0.5';
+            } else {
+                btn.textContent = `生效冲突范围（${pendingCount}个活动）`;
+                btn.disabled = false;
+                btn.style.opacity = '1';
+            }
+        }
+
+        // 处理单个冲突活动 - 跳转至新Tab页
+        function handleConflictActivity(activityId, activityName) {
+            // 关闭冲突详情弹窗
+            closeModal('conflict-detail');
+
+            // 打开活动编辑Tab页
+            openActivityEditTab(activityId, activityName);
+        }
+
+        // 打开活动编辑Tab页
+        function openActivityEditTab(activityId, activityName) {
+            // 生成唯一的tab ID
+            const tabId = 'activity-edit-' + activityId;
+
+            // 检查是否已存在该tab
+            const existingTab = document.querySelector(`.tab-item[data-tab="${tabId}"]`);
+            if (existingTab) {
+                // 如果已存在，切换到该tab
+                switchTab(tabId);
+                return;
+            }
+
+            // 创建新的tab
+            const tabContainer = document.querySelector('.tab-container');
+            const newTab = document.createElement('div');
+            newTab.className = 'tab-item active';
+            newTab.setAttribute('data-tab', tabId);
+            newTab.innerHTML = `
+                <span class="tab-name">${activityName}</span>
+                <span class="tab-close" onclick="closeTab('${tabId}', event)">×</span>
+            `;
+            newTab.onclick = function(e) {
+                if (!e.target.classList.contains('tab-close')) {
+                    switchTab(tabId);
+                }
+            };
+
+            // 移除其他tab的active状态
+            document.querySelectorAll('.tab-item').forEach(tab => tab.classList.remove('active'));
+
+            // 添加新tab到容器
+            tabContainer.appendChild(newTab);
+
+            // 隐藏其他内容区域
+            document.querySelectorAll('.content-area').forEach(content => {
+                content.style.display = 'none';
+            });
+
+            // 创建新的内容区域
+            const mainContent = document.querySelector('.main-content');
+            const newContent = document.createElement('div');
+            newContent.className = 'content-area';
+            newContent.id = tabId;
+            newContent.style.display = 'block';
+            newContent.innerHTML = `
+                <div class="activity-edit-container">
+                    <div class="activity-edit-header">
+                        <h2>活动编辑 - ${activityName}</h2>
+                        <div class="activity-edit-meta">
+                            <span>活动ID: ${activityId}</span>
+                            <span>状态: 进行中</span>
+                        </div>
+                    </div>
+                    <div class="activity-edit-body">
+                        <div class="activity-edit-section">
+                            <h3>商品管理</h3>
+                            <p>在此页面可以管理活动中的商品，包括删除产生冲突的商品。</p>
+                            <div class="activity-edit-actions">
+                                <button class="btn btn-primary" onclick="showRemoveProductDialog('${activityId}')">删除冲突商品</button>
+                                <button class="btn btn-default" onclick="saveActivityEdit('${activityId}')">保存修改</button>
+                            </div>
+                        </div>
+                        <div class="activity-edit-section">
+                            <h3>活动范围</h3>
+                            <p>查看和调整活动的生效范围。</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            mainContent.appendChild(newContent);
+
+            // 添加样式（如果不存在）
+            if (!document.getElementById('activity-edit-styles')) {
+                const style = document.createElement('style');
+                style.id = 'activity-edit-styles';
+                style.textContent = `
+                    .activity-edit-container {
+                        padding: 24px;
+                        background: #fff;
+                        border-radius: 8px;
+                        min-height: 600px;
+                    }
+                    .activity-edit-header {
+                        margin-bottom: 24px;
+                        padding-bottom: 16px;
+                        border-bottom: 1px solid #e8e8e8;
+                    }
+                    .activity-edit-header h2 {
+                        margin: 0 0 8px 0;
+                        font-size: 20px;
+                        color: #262626;
+                    }
+                    .activity-edit-meta {
+                        display: flex;
+                        gap: 24px;
+                        color: #8c8c8c;
+                        font-size: 14px;
+                    }
+                    .activity-edit-section {
+                        margin-bottom: 32px;
+                    }
+                    .activity-edit-section h3 {
+                        margin: 0 0 12px 0;
+                        font-size: 16px;
+                        color: #262626;
+                    }
+                    .activity-edit-section p {
+                        margin: 0 0 16px 0;
+                        color: #595959;
+                        font-size: 14px;
+                    }
+                    .activity-edit-actions {
+                        display: flex;
+                        gap: 12px;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+
+        // 显示删除商品对话框
+        function showRemoveProductDialog(activityId) {
+            if (confirm('确定要从活动中删除商品"脆香米牛奶巧克力24g"吗？\n\n删除后将解决范围冲突问题。')) {
+                alert('商品已从活动中删除');
+            }
+        }
+
+        // 保存活动编辑
+        function saveActivityEdit(activityId) {
+            alert('活动修改已保存');
+        }
+
+        // 关闭Tab
+        function closeTab(tabId, event) {
+            if (event) {
+                event.stopPropagation();
+            }
+
+            const tab = document.querySelector(`.tab-item[data-tab="${tabId}"]`);
+            const content = document.getElementById(tabId);
+
+            if (tab && content) {
+                // 如果关闭的是当前激活的tab，切换到其他tab
+                if (tab.classList.contains('active')) {
+                    const prevTab = tab.previousElementSibling;
+                    if (prevTab) {
+                        const prevTabId = prevTab.getAttribute('data-tab');
+                        switchTab(prevTabId);
+                    }
+                }
+
+                tab.remove();
+                content.remove();
+            }
+        }
+
+        // 切换Tab
+        function switchTab(tabId) {
+            // 移除所有tab的active状态
+            document.querySelectorAll('.tab-item').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // 隐藏所有内容区域
+            document.querySelectorAll('.content-area').forEach(content => {
+                content.style.display = 'none';
+            });
+
+            // 激活选中的tab
+            const selectedTab = document.querySelector(`.tab-item[data-tab="${tabId}"]`);
+            if (selectedTab) {
+                selectedTab.classList.add('active');
+            }
+
+            // 显示对应的内容区域
+            const selectedContent = document.getElementById(tabId);
+            if (selectedContent) {
+                selectedContent.style.display = 'block';
+            }
+        }
+
+        // 应用冲突变更
+        function applyConflictChanges() {
+            const pendingCount = conflictActivities.length - removedConflictIds.size;
+            if (pendingCount === 0) {
+                alert('没有需要处理的活动');
+                return;
+            }
+
+            // 二次确认
+            if (!confirm(`确定要处理 ${pendingCount} 个冲突活动吗？\n\n系统将：\n1. 从这些活动中删除当前商品\n2. 为当前商品创建新活动（仅包含新选择的区域）`)) {
+                return;
+            }
+
+            // 关闭冲突详情弹窗，显示进度弹窗
+            closeModal('conflict-detail');
+            openModal('progress');
+
+            // 开始执行流程
+            executeConflictProcess();
+        }
+
+        // 执行冲突处理流程
+        async function executeConflictProcess() {
+            const steps = [
+                { id: 'step-1', name: '检测冲突活动', duration: 500 },
+                { id: 'step-2', name: '从活动中删除商品', duration: 1500 },
+                { id: 'step-3', name: '创建新活动', duration: 1000 },
+                { id: 'step-4', name: '完成', duration: 500 }
+            ];
+
+            const activitiesToProcess = conflictActivities.filter(a => !removedConflictIds.has(a.id));
+            const detailText = document.getElementById('progress-detail-text');
+
+            for (let i = 0; i < steps.length; i++) {
+                const step = steps[i];
+
+                // 更新当前步骤状态
+                const stepEl = document.getElementById(step.id);
+                if (stepEl) {
+                    stepEl.classList.add('active');
+                    const statusEl = stepEl.querySelector('.progress-step-status');
+                    if (statusEl) {
+                        statusEl.textContent = '进行中...';
+                    }
+                }
+
+                // 更新详细文本
+                if (detailText) {
+                    if (step.id === 'step-2') {
+                        detailText.textContent = `正在从"${activitiesToProcess[0]?.name || '活动'}"中删除商品...`;
+                    } else if (step.id === 'step-3') {
+                        detailText.textContent = '正在创建新活动...';
+                    } else if (step.id === 'step-4') {
+                        detailText.textContent = '处理完成';
+                    }
+                }
+
+                // 模拟执行时间
+                await sleep(step.duration);
+
+                // 更新步骤完成状态
+                if (stepEl) {
+                    const statusEl = stepEl.querySelector('.progress-step-status');
+                    if (statusEl) {
+                        statusEl.textContent = '已完成';
+                    }
+                }
+            }
+
+            // 显示结果弹窗
+            await sleep(300);
+            closeModal('progress');
+            showResultModal(activitiesToProcess.length);
+        }
+
+        // 显示结果弹窗
+        function showResultModal(processedCount) {
+            const detailEl = document.getElementById('result-detail');
+            if (detailEl) {
+                detailEl.innerHTML = `
+                    <div class="result-detail-item">
+                        <span class="result-detail-label">删除操作：</span>
+                        <span class="result-detail-value">${processedCount} 个活动</span>
+                    </div>
+                    <div class="result-detail-item">
+                        <span class="result-detail-label">新建活动：</span>
+                        <span class="result-detail-value">1 个活动（常德市）</span>
+                    </div>
+                `;
+            }
+            openModal('result');
+        }
+
+        // 辅助函数：延迟
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        // 监听区域选择变化（模拟）
+        function onRegionSelectionChange() {
+            checkScopeConflict();
+        }
+
+        // ==================== 商品范围文本缩减显示 ====================
+        function initProductScopeDisplay() {
+            document.querySelectorAll('.product-scope-text').forEach(el => {
+                const fullText = el.getAttribute('data-scope') || el.textContent;
+                const regions = fullText.split('、');
+
+                if (regions.length > 3) {
+                    // 超出3个区域，显示缩减格式
+                    const visibleCount = 2;
+                    const hiddenCount = regions.length - visibleCount;
+                    const displayText = regions.slice(0, visibleCount).join('、') + ` +${hiddenCount}`;
+                    el.textContent = displayText;
+                    el.setAttribute('title', fullText);
+                }
+            });
+        }
+
         // 页面加载时初始化
         document.addEventListener('DOMContentLoaded', function() {
             initProductValidationStatus();
+            initProductScopeDisplay();
         });
     </script>
 </body>
