@@ -8,7 +8,7 @@ import os
 import sys
 
 MODULES_DIR = os.path.join(os.path.dirname(__file__), 'modules')
-OUTPUT_FILE = os.path.join(os.path.dirname(__file__), '主页.html')
+OUTPUT_FILE = os.path.join(os.path.dirname(__file__), 'index.html')
 
 # 模块加载顺序 - 按正确的HTML结构顺序
 MODULE_ORDER = [

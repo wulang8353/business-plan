@@ -9,7 +9,7 @@ const fs = require('fs');
 const path = require('path');
 
 const MODULES_DIR = path.join(__dirname, 'modules');
-const OUTPUT_FILE = path.join(__dirname, '主页.html');
+const OUTPUT_FILE = path.join(__dirname, 'index.html');
 
 // 模块加载顺序
 const MODULE_ORDER = [

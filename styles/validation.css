@@ -211,3 +211,93 @@
 .validate-icon {
     margin-right: 4px;
 }
+
+/* 校验中按钮样式 */
+#validate-all-btn.validating {
+    background: #f0f5ff;
+    border-color: #2f54eb;
+    color: #2f54eb;
+    cursor: not-allowed;
+}
+
+#validate-all-btn.validating:hover {
+    background: #f0f5ff;
+}
+
+/* 校验进度条容器 - 激活状态 */
+.validation-progress-container.active {
+    animation: progressPulse 2s ease-in-out infinite;
+}
+
+@keyframes progressPulse {
+    0%, 100% { 
+        box-shadow: 0 0 0 0 rgba(82, 196, 26, 0.2);
+    }
+    50% { 
+        box-shadow: 0 0 0 4px rgba(82, 196, 26, 0.1);
+    }
+}
+
+/* 校验标题组 */
+.validation-title-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* 取消校验按钮 */
+.btn-cancel-validation {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-cancel-validation:hover {
+    background: #fff1f0;
+    border-color: #ff4d4f;
+    color: #ff4d4f;
+}
+
+.btn-cancel-validation span {
+    font-size: 10px;
+}
+
+/* 校验结果通知 - 显示动画 */
+.validation-result-toast.show {
+    animation: slideIn 0.3s ease, fadeOut 0.3s ease 4.7s;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* 进度条填充动画优化 */
+.validation-progress-fill {
+    background: linear-gradient(90deg, #52c41a 0%, #73d13d 50%, #52c41a 100%);
+    background-size: 200% 100%;
+    animation: progressShine 2s linear infinite;
+}
+
+@keyframes progressShine {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* 异常商品统计样式 */
+.validation-stats .abnormal-count {
+    color: #ff4d4f;
+    font-weight: 500;
+}
+
+.validation-stats .abnormal-count strong {
+    color: #ff4d4f;
+}
